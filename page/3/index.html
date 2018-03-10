@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Seite 3 | Fool&#39;s router</title>
+  <meta name="author" content="lee">
+  
+  <meta name="description" content="diary of a fool">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Fool&#39;s router"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Fool&#39;s router" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Fool&#39;s router</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-04-10T12:44:40.000Z"><a href="/2017/04/10/android学习日记/">2017-04-10</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/04/10/android学习日记/"></a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-04-02T16:30:38.537Z"><a href="/2017/04/03/将TXT文本内八进制数字转成英文/">2017-04-03</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/04/03/将TXT文本内八进制数字转成英文/"></a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <hr>
+<h2 id="将TXT文本内八进制数字转成英文"><a href="#将TXT文本内八进制数字转成英文" class="headerlink" title="将TXT文本内八进制数字转成英文"></a>将TXT文本内八进制数字转成英文</h2><h5 id="2017-04-03-00-30-38"><a href="#2017-04-03-00-30-38" class="headerlink" title="2017-04-03 00:30:38"></a>2017-04-03 00:30:38</h5><h2 id="tags-java-oct"><a href="#tags-java-oct" class="headerlink" title="#####tags:java oct "></a>#####tags:java oct </h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line">import java.io.BufferedInputStream;</div><div class="line">import java.io.BufferedReader;</div><div class="line">import java.io.File;</div><div class="line">import java.io.FileInputStream;</div><div class="line">import java.io.InputStreamReader;</div><div class="line">import java.io.Reader;</div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line"></div><div class="line">	 /**</div><div class="line">     * 功能：Java读取txt文件的内容</div><div class="line">     * 步骤：1：先获得文件句柄</div><div class="line">     * 2：获得文件句柄当做是输入一个字节码流，需要对这个输入流进行读取</div><div class="line">     * 3：读取到输入流后，需要读取生成字节流</div><div class="line">     * 4：一行一行的输出。readline()。</div><div class="line">     * 备注：需要考虑的是异常情况</div><div class="line">     * @param filePath</div><div class="line">     */</div><div class="line">    public static void readTxtFile(String filePath)&#123;</div><div class="line">        try &#123;	</div><div class="line">        		String encoding=&quot;utf-8&quot;;</div><div class="line">                File file=new File(filePath);</div><div class="line">                if(file.isFile() &amp;&amp; file.exists())&#123; //判断文件是否存在</div><div class="line">                    InputStreamReader read = new InputStreamReader(</div><div class="line">                    new FileInputStream(file),encoding);//考虑到编码格式</div><div class="line">                    BufferedReader bufferedReader = new BufferedReader(read);</div><div class="line">                    String lineTxt = null;</div><div class="line">                    while((lineTxt = bufferedReader.readLine()) != null)&#123;</div><div class="line">                    	String s[]= lineTxt.split(&quot; &quot;) ;</div><div class="line">                    	if(s.length==0) break;</div><div class="line">                    	for(int i = 0 ; i &lt; s.length ; i++)&#123;</div><div class="line">                    	int num = Integer.parseInt(s[i]);</div><div class="line">                    	 int result = 0 ;</div><div class="line">                         int j = 1 ;</div><div class="line">                        </div><div class="line">                         while(num&gt;0)&#123;</div><div class="line">                              int a = num%10 ;        </div><div class="line">                              result = result + a*j ;</div><div class="line">                              num = num/10 ;</div><div class="line">                              j = 8*j ;</div><div class="line">                         &#125;</div><div class="line">                        </div><div class="line">                    	char c = (char)result;</div><div class="line">                    	System.out.print(c);</div><div class="line">                    	&#125;</div><div class="line">                    	</div><div class="line">                    	</div><div class="line">                    	</div><div class="line">                    	</div><div class="line">                    &#125;</div><div class="line">                 /*   for(int i = 0 ; i &lt; fina.length ; i++)&#123; </div><div class="line">                    System.out.println(fina[i]);  */</div><div class="line">                    read.close();</div><div class="line">                   // &#125;</div><div class="line">        &#125;else&#123;</div><div class="line">            System.out.println(&quot;找不到指定的文件&quot;);</div><div class="line">        &#125;</div><div class="line">        &#125; catch (Exception e) &#123;</div><div class="line">            System.out.println(&quot;读取文件内容出错&quot;);</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">     </div><div class="line">    &#125;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		</div><div class="line">		 String filePath = &quot;E:\\gmae\\g4java\\qs.txt&quot;;</div><div class="line">         readTxtFile(filePath);</div><div class="line">	/*	char a = (char)0115;</div><div class="line">		char b = (char)77;		</div><div class="line">		System.out.println(a);</div><div class="line">		System.out.println(b);   */</div><div class="line">		</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>&#8195;&#8195;想注册一个网站的账号，注册码是八进制数字，目标转换成可读的英文来回答问题，于是就写了这个。<br>遇到的问题:<br>-八进制不用转换成十进制，直接可以用八进制对应ACS2码打出英文。<br>-期间遇到挺多问题，现在都想不起来了，算了。</p>
+<p>Markdonw语言下的空格，用于首行缩进<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">半方大的空白&amp;ensp;或&amp;#8194;</div><div class="line">全方大的空白&amp;emsp;或&amp;#8195;</div><div class="line">不断行的空白格&amp;nbsp;或&amp;#160;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-04-01T16:21:56.934Z"><a href="/2017/04/02/To-be-a-fool/">2017-04-02</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/04/02/To-be-a-fool/"></a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <hr>
+<h1 id="To-be-a-fool"><a href="#To-be-a-fool" class="headerlink" title="To be a fool"></a>To be a fool</h1><h5 id="2017-04-02-00-21-56"><a href="#2017-04-02-00-21-56" class="headerlink" title="2017-04-02 00:21:56"></a>2017-04-02 00:21:56</h5><hr>
+<p>愚人节过了，这也许是一个认真的开始吧。</p>
+<hr>
+<p><img src="https://i.imgur.com/46dH55Pr.jpg" alt="2b小姐姐作证"></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/2/" class="alignleft prev">Vorherige Seite</a>
+  
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Suche">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2018 lee
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

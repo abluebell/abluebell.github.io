@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>operating system | Fool&#39;s router</title>
+  <meta name="author" content="lee">
+  
+  <meta name="description" content="diary of a fool">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="operating system"/>
+  <meta property="og:site_name" content="Fool&#39;s router"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Fool&#39;s router" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Fool&#39;s router</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-11-14T14:19:35.000Z"><a href="/2017/11/14/operating-system/">2017-11-14</a></time>
+      
+      
+  
+    <h1 class="title">operating system</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>#####什么是操作系统<br>从用户角度 提供一个控制软件<br>管理应用程序<br>为程序提供服务<br>杀死应用程序</p>
+<p>资源管理 管理外设 资源分配</p>
+<p>抽象作用<br>cpu  抽象为 线程<br>硬盘           文件<br>内存          地址空间</p>
+<p>操作系统特征<br>并发 共享 虚拟 异步</p>
+<p>####操作系统的启动</p>
+<p>#####计算机原理角度 基本 三部分   </p>
+<p>  cpu）</p>
+<p>  [总线]</p>
+<p> （io)            （内存）</p>
+<p>#####存放<br>DISK: 存放OS<br>BIOS: 基本io处理系统   检查基本外设<br>Bootloader 加载OS<br>cs 段寄存器 ip 指针寄存器  组成具体内存地址</p>
+<p>#####启动过程<br>POST（加电自检）<br>寻找显卡和执行BIOS<br>BIOS 加载 BOOTLOADER<br>bootloader 找到OS的起始扇区和长度 加载到内存</p>
+<p>#####操作系统与外设和程序交互<br>面向外设 中断和io<br>面向应用程序 系统调用和异常</p>
+<p>系统调用  应用程序主动向系统发出请求                处理时间    异步或同步<br>异常        非法指令或其他坏的处理状态 如内存出错            同步<br>中断        来自不同硬件设备的计时器和网络的中断            异步：不知道什么时候发生 </p>
+<p>中断<br>硬件<br>设置中断标记【cpu初始化】<br>1将内部、外部事件设置中断标记<br>2中断事件id<br>软件<br>保持当前状态（上下文？）<br>中断服务程序处理<br>清除中断标记<br>恢复之前保持的处理状态</p>
+<p>异常<br>保存现场<br>异常处理<br>恢复现场</p>
+<p>计算机体系结构/内存分层体系</p>
+<p>#####连续内存分配<br>内存碎片问题<br>分区的动态分配 第一适配 最佳适配  最差适配<br>压缩式碎片整理<br>交换式碎片整理</p>
+<p>#####非连续分配优点<br>一个程序的物理地址是非连续的<br>更好的利用内存和管理<br>允许共享代码与数据<br>支持动态加载和动态链接</p>
+<p>#####分段<br>段表 1 起始信息 2 长度限制</p>
+<p>#####分页<br>页号 页偏移<br>页大小固定不变  段会变</p>
+<p>#####页帧（FRAME)<br>物理内存被分割为大小相等的帧<br>f-页帧号 F位 共2^F个页帧<br>o-振内偏移（S位，每帧有2^S字节）<br>物理地址=2^S*f+o</p>
+<p>#####页<br>p-页号<br>o-页内偏移<br>虚拟地址=2^S*p+o</p>
+<p>#####存储结构<br>cpu<br>寄存器<br>cache<br>主存储<br>硬盘</p>
+<p>#####虚拟内存管理系数特征<br>大的用户空间<br>部分交换<br>不连续性</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Kommentare</h1>
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://yoursite.com/2017/11/14/operating-system/index.html" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Suche">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2018 lee
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>multiprocess for python | Fool&#39;s router</title>
+  <meta name="author" content="lee">
+  
+  <meta name="description" content="diary of a fool">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="multiprocess for python"/>
+  <meta property="og:site_name" content="Fool&#39;s router"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Fool&#39;s router" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Fool&#39;s router</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-11-10T10:17:33.000Z"><a href="/2017/11/10/multiprocess-for-python/">2017-11-10</a></time>
+      
+      
+  
+    <h1 class="title">multiprocess for python</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>#####进程 资源的集合 进程至少包含一个线程 起一个进程 相当于克隆一份父进程数据</p>
+<p>#####线程 cpu调度最小单位</p>
+<p>#####什么情况下用多线程：<br>io 操作不占CPU<br>计算占用CPU<br>python多线程 （原生县城）适合io密集（socket service）  不适合计算密集<br>用多进程做 计算密集（操作系统原生进程）</p>
+<p>######第一步<br>import multiprocessing</p>
+<p>######第二步<br>定义一个函数<br>def run(name):<br>    time.sleep(2)<br>    print(‘hello’,name)</p>
+<p>if <strong>name</strong>==’main’<br>    p = multiprocessing.process(target=run, args=(‘bob’,))<br>    p.start<br>    p.join</p>
+<p>每个子进程都由父进程启动。 验证 两个方法 getpid getppid 调用查看</p>
+<p>#####进程队列 queue<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">from multiprocessing import Process,Queue</div><div class="line">import queue</div><div class="line">import threading</div><div class="line">def f(q):</div><div class="line">    print(2)</div><div class="line">    q.put([1,2,3])</div><div class="line"></div><div class="line">if __name__==&apos;__main__&apos;:</div><div class="line">    print(1)</div><div class="line">    q=Queue()</div><div class="line">    p=Process(target=f,args=(q,))</div><div class="line">    # p=threading.Thread(target=f,)</div><div class="line">    p.start()</div><div class="line">    print(q.get())</div><div class="line">    p.join()</div></pre></td></tr></table></figure></p>
+<p>#####第二种<br>pip</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">from multiprocessing import Process,Pipe</div><div class="line">def f(conn):</div><div class="line">	conn.send([1,2,3])</div><div class="line">    conn.close()</div><div class="line">if __name__ == &apos;__main__&apos;</div><div class="line">	parent_conn,child_conn = Pipe()</div><div class="line">    p=Process(target=f,args=(child_conn,))</div><div class="line">	p.start()</div><div class="line">    print(parent_conn.recv())</div><div class="line">    p.join()</div></pre></td></tr></table></figure>
+<p>#####manager<br>数据共享</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">from multiprocessing import Process,Manager</div><div class="line">import multiprocessing</div><div class="line"></div><div class="line">def f(d, l):</div><div class="line">    d[1] = &apos;1&apos;</div><div class="line">    d[&apos;2&apos;] = 2</div><div class="line">    d[0.25] = None</div><div class="line">    l.append(1)</div><div class="line">    # l.append(l)</div><div class="line">    print(l,d)</div><div class="line">    print(d)</div><div class="line"></div><div class="line"></div><div class="line">if __name__==&apos;__main__&apos;:</div><div class="line">    with Manager() as manager:</div><div class="line">        d = manager.dict()</div><div class="line"></div><div class="line">        l = manager.list(range(5))</div><div class="line">        p_list=[]</div><div class="line">        for i in range(10):</div><div class="line">            p = Process(target=f,args=(d,l))</div><div class="line">            p.start()</div><div class="line">            p_list.append(p)</div><div class="line">        for res in p_list:</div><div class="line">            res.join()</div><div class="line">        print(d)</div><div class="line">        print(l)</div></pre></td></tr></table></figure>
+<p>#####进程锁<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">from multiprocessing import Lock</div><div class="line"></div><div class="line">def (l,i):</div><div class="line">	l.acquire()</div><div class="line">    try</div><div class="line">    	print(&apos;hello world&apos;,i)</div><div class="line">    finally</div><div class="line">    	;.lease()</div><div class="line">if __name__ ==&apos;__main__&apos;:</div><div class="line">	lock = Lock()</div><div class="line">    for num in rang(10):</div><div class="line">    	Process(target=f,(lock,num)).start()</div></pre></td></tr></table></figure></p>
+<p>#####进程池<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">from  multiprocessing import Process, Pool,freeze_support</div><div class="line">import time</div><div class="line">import os</div><div class="line"></div><div class="line">def Foo(i):</div><div class="line">    time.sleep(2)</div><div class="line">    print(&quot;in process&quot;,os.getpid())</div><div class="line">    return i + 100</div><div class="line"></div><div class="line">def Bar(arg):</div><div class="line">    print(&apos;--&gt;exec done:&apos;, arg,os.getpid())</div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    #freeze_support()</div><div class="line">    pool = Pool(processes=2) #允许进程池同时放入5个进程</div><div class="line">    print(&quot;主进程&quot;,os.getpid())</div><div class="line">    for i in range(10):</div><div class="line">        pool.apply_async(func=Foo, args=(i,), callback=Bar) #callback=回调</div><div class="line">        #pool.apply(func=Foo, args=(i,)) #串行</div><div class="line">        # pool.apply_async(func=Foo, args=(i,)) #串行</div><div class="line">    print(&apos;end&apos;)</div><div class="line">    pool.close()</div><div class="line">    pool.join() #进程池中进程执行完毕后再关闭，如果注释，那么程序直接关闭。.join()</div></pre></td></tr></table></figure></p>
+<p>#####协成 用户态轻量级线程</p>
+<p>手动切换<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">from greenlet import greenlet</div><div class="line">def test1():</div><div class="line">    print(12)</div><div class="line">    gr2.switch()</div><div class="line">    print(34)</div><div class="line">    gr2.switch()</div><div class="line">def test2():</div><div class="line">    print(56)</div><div class="line">    gr1.switch()</div><div class="line">    print(78)</div><div class="line"></div><div class="line">gr1 = greenlet(test1) #启动一个携程</div><div class="line">gr2 = greenlet(test2)</div><div class="line">gr1.switch()</div></pre></td></tr></table></figure></p>
+<p>自动IO操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">import gevent</div><div class="line"></div><div class="line">def foo():</div><div class="line">    print(&apos;Running in foo&apos;)</div><div class="line">    gevent.sleep(2)</div><div class="line">    print(&apos;Explicit context switch to foo again&apos;)</div><div class="line">def bar():</div><div class="line">    print(&apos;Explicit精确的 context内容 to bar&apos;)</div><div class="line">    gevent.sleep(1)</div><div class="line">    print(&apos;Implicit context switch back to bar&apos;)</div><div class="line">def func3():</div><div class="line">    print(&quot;running func3 &quot;)</div><div class="line">    gevent.sleep(0)</div><div class="line">    print(&quot;running func3  again &quot;)</div><div class="line"></div><div class="line"></div><div class="line">gevent.joinall([</div><div class="line">    gevent.spawn(foo), #生成，</div><div class="line">    gevent.spawn(bar),</div><div class="line">    gevent.spawn(func3),</div><div class="line">])</div></pre></td></tr></table></figure></p>
+<p>异步下载<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">from urllib import request</div><div class="line">import gevent,time</div><div class="line">from gevent import monkey</div><div class="line">monkey.patch_all() #把当前程序的所有的io操作给我单独的做上标记</div><div class="line"></div><div class="line">def f(url):</div><div class="line">    print(&apos;GET: %s&apos; % url)</div><div class="line">    resp = request.urlopen(url)</div><div class="line">    data = resp.read()</div><div class="line">    print(&apos;%d bytes received from %s.&apos; % (len(data), url))</div><div class="line"></div><div class="line">urls = [&apos;https://www.python.org/&apos;,</div><div class="line">        &apos;https://www.yahoo.com/&apos;,</div><div class="line">        &apos;https://github.com/&apos; ]</div><div class="line">time_start = time.time()</div><div class="line">for url in urls:</div><div class="line">    f(url)</div><div class="line">print(&quot;同步cost&quot;,time.time() - time_start)</div><div class="line">async_time_start = time.time()</div><div class="line">gevent.joinall([</div><div class="line">    gevent.spawn(f, &apos;https://www.python.org/&apos;),</div><div class="line">    gevent.spawn(f, &apos;https://www.yahoo.com/&apos;),</div><div class="line">    gevent.spawn(f, &apos;https://github.com/&apos;),</div><div class="line">])</div><div class="line">print(&quot;异步cost&quot;,time.time() - async_time_start)</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Kommentare</h1>
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://yoursite.com/2017/11/10/multiprocess-for-python/index.html" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Suche">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2018 lee
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

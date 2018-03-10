@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>D‘ | Fool&#39;s router</title>
+  <meta name="author" content="lee">
+  
+  <meta name="description" content="diary of a fool">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="D‘"/>
+  <meta property="og:site_name" content="Fool&#39;s router"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Fool&#39;s router" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Fool&#39;s router</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="first spider d‘ hexo new first">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-03-04T09:31:58.000Z"><a href="/2018/03/04/D‘/">2018-03-04</a></time>
+      
+      
+  
+    <h1 class="title">D‘</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line">import json</div><div class="line">import re</div><div class="line"></div><div class="line">import requests</div><div class="line">from requests.exceptions import RequestException</div><div class="line"></div><div class="line">#获取一个url下的html文件</div><div class="line">def get_one_page(url):</div><div class="line">    try:</div><div class="line">        res = requests.get(url)</div><div class="line">        if res.status_code == 200:</div><div class="line">            print(&apos;请求成功&apos;)</div><div class="line">            return res.text</div><div class="line">        print(&apos;请求失败&apos;)</div><div class="line">        return None</div><div class="line">    except RequestException:</div><div class="line">        return None</div><div class="line"></div><div class="line">#解析html文件   其中使用了正则匹配</div><div class="line">def parse_one_page(html):</div><div class="line">    #如果不加re.S(任意匹配)  .就不会匹配换行符!</div><div class="line">    pattern = re.compile(&apos;&lt;dd&gt;.*?board-index.*?&gt;(\d+)&lt;/i&gt;.*?data-src=&quot;(.*?)&quot; alt=&quot;(.*?)&quot; class=&quot;board-img&quot; /&gt;.*?star&quot;&gt;(.*?)&lt;/p&gt;.*?releasetime&quot;&gt;(.*?)&lt;/p&gt;.*?integer&quot;&gt;(.*?)&lt;/i&gt;.*?fraction&quot;&gt;(.*?)&lt;/i&gt;.*?&lt;/dd&gt;&apos;, re.S)</div><div class="line">    items = re.findall(pattern, html)</div><div class="line">    for item in items:  #构造一个生成器可以使用 for遍历</div><div class="line">        #生成一个字典</div><div class="line">        yield&#123;</div><div class="line">            &apos;index&apos; : item[0],</div><div class="line">            &apos;image&apos;: item[1],</div><div class="line">            &apos;title&apos;: item[2],</div><div class="line">            #strip()去除空格和\n  切片去除  主演:</div><div class="line">            &apos;actor&apos;: item[3].strip()[3:],</div><div class="line">            &apos;time&apos; : item[4].strip()[5:],</div><div class="line">            &apos;score&apos; : item[5]+item[6]</div><div class="line">        &#125;</div><div class="line"></div><div class="line">#写入文件 使用json加载字典</div><div class="line">def write_to_file(content):</div><div class="line">    #加上encoding=&apos;utf-8&apos;  和  ensure_ascii=False显示汉字</div><div class="line">    with open(&apos;result.txt&apos;, &apos;a&apos;, encoding=&apos;utf-8&apos;) as f:</div><div class="line">        #字典转换成 字符串</div><div class="line">        f.write(json.dumps(content, ensure_ascii=False) + &apos;\n&apos;)</div><div class="line">        f.close()</div><div class="line"></div><div class="line">#主函数运行</div><div class="line">def main():</div><div class="line">    html = get_one_page(&apos;http://maoyan.com/board/4?&apos;)</div><div class="line">    for item in parse_one_page(html):</div><div class="line">        print(item)</div><div class="line">        write_to_file(item)</div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    main()</div><div class="line">    </div><div class="line">def main(offset):</div><div class="line">    url = &apos;http://maoyan.com/board/4?offset=&#123;&#125;&apos;.format(offset)</div><div class="line">    html = get_one_page(url)</div><div class="line">    # total = []</div><div class="line">    for item in parse_one_page(html):</div><div class="line">        print(item)</div><div class="line">        # total.extend(item)</div><div class="line">        write_to_file(item)</div><div class="line">    # save_to_pandas(total)</div><div class="line"></div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    import time</div><div class="line">    time1 = time.time()</div><div class="line"></div><div class="line">    pool = Pool()</div><div class="line">    pool.map(main, [i*10 for i in range(10)])</div><div class="line"></div><div class="line">    # for i in range(10):   单进程</div><div class="line">    #     main(i*10)</div><div class="line"></div><div class="line">    time2 = time.time()</div><div class="line">    print(time2-time1)</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+        
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Kommentare</h1>
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://yoursite.com/2018/03/04/D‘/index.html" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Suche">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2018 lee
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

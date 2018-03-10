@@ -1,0 +1,324 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>线程 | Fool&#39;s router</title>
+  <meta name="author" content="lee">
+  
+  <meta name="description" content="diary of a fool">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="线程"/>
+  <meta property="og:site_name" content="Fool&#39;s router"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Fool&#39;s router" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Fool&#39;s router</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-10-30T11:38:14.000Z"><a href="/2017/10/30/线程/">2017-10-30</a></time>
+      
+      
+  
+    <h1 class="title">线程</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>HTML<br>1、一套规则，浏览器认识的规则。<br>2、开发者：<br>    学习Html规则<br>    开发后台程序：</p>
+<pre><code>- 写Html文件（充当模板的作用） ******
+ 数据库获取数据，然后替换到html文件的指定位置（Web框架）
+</code></pre><p>3、本地测试</p>
+<pre><code>- 找到文件路径，直接浏览器打开
+- pycharm打开测试
+</code></pre><p>4、编写Html文件</p>
+<pre><code>- doctype对应关系
+- html标签，标签内部可以写属性 ====&gt; 只能有一个
+- 注释：  &lt;!--  注释的内容  --&gt;
+</code></pre><p>5、标签分类</p>
+<pre><code>- 自闭合标签
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+- 主动闭合标签
+    title&gt;老男孩&lt;/title&gt;
+</code></pre><p>6、<br>    head标签中<br>    外不可见</p>
+<pre><code>    - &lt;meta  -&gt; 编码，跳转，刷新，关键字，描述，IE兼容
+            &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=IE9;IE=IE8;&quot; /&gt;
+&lt;meta http-equiv=&quot;content-type&quot; content=&apos;text/html;charset=utf-8&quot;&gt;
+&lt;mete http-equiv=&quot;Refresh&quot; Content=&quot;5;Url=http://www.ssddd.com&quot;/&gt;     跳转
+&lt;meta name=&quot;keywords&quot; content=&quot;dsadasd&quot;&gt;    
+    - title标签  窗口上
+    - &lt;link /&gt; 搞图标，欠
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;image/favicon.ico&quot;&gt;    title旁的小图标
+    - &lt;style /&gt;欠
+    - &lt;script&gt; 欠
+</code></pre><p>7、body标签</p>
+<pre><code> - 图标，  &amp;nbsp;  &amp;gt;   &amp;lt;
+ - p标签，段落
+ - br，换行   &lt;h1&gt; &lt;h6&gt; 大小
+ ======== 小总结  =====
+    所有标签分为：
+        块级标签： div（白板），H系列（加大加粗），p标签（段落和段落之间有间距）
+        行内标签： span（白板）
+    标签之间可以嵌套
+    标签存在的意义，css操作，js操作
+    ps:chorme审查元素的使用
+        - 定位
+        - 查看样式
+- h系列
+- div
+- span
+- input系列 + form标签
+    input type=&apos;text&apos;     - name属性，value=&quot;赵凡&quot; 
+    input type=&apos;password&apos; - name属性，value=&quot;赵凡&quot; 
+    input type=&apos;submit&apos;   - value=&apos;提交&apos; 提交按钮，表单
+    input type=&apos;button&apos;   - value=&apos;登录&apos; 按钮
+
+    input type=&apos;radio&apos;    - 单选框 value，checked=&quot;checked&quot;，name属性（name相同则互斥）
+    input type=&apos;checkbox&apos; - 复选框 value, checked=&quot;checked&quot;，name属性（批量获取数据）
+    input type=&apos;file&apos;     - 依赖form表单的一个属性 enctype=&quot;multipart/form-data&quot;
+    input type=&apos;rest&apos;     - 重置
+
+    &lt;textarea &gt;默认值&lt;/textarea&gt;  - name属性
+    select标签            - name,内部option value, 提交到后台，size，multiple
+
+- a标签
+    - 跳转
+    - 锚     href=&apos;#某个标签的ID&apos;    标签的ID不允许重复
+
+- img 
+     src
+     alt
+     title
+
+- 列表
+    ul
+        li
+    ol
+        li
+    dl
+        dt
+        dd
+- 表格
+    table
+        thead
+            tr
+                th
+        tbody
+            tr
+                td
+    colspan = &apos;&apos;
+    rowspan = &apos;&apos;
+- label
+    用于点击文件，使得关联的标签获取光标
+    &lt;label for=&quot;username&quot;&gt;用户名：&lt;/label&gt;
+    &lt;input id=&quot;username&quot; type=&quot;text&quot; name=&quot;user&quot; /&gt;
+- fieldset
+    legend
+</code></pre><ul>
+<li>20个标签<br>CSS</li>
+</ul>
+<p>在标签上设置style属性：<br>    background-color: #2459a2;<br>    height: 48px;<br>    …</p>
+<p>编写css样式：</p>
+<pre><code>1. 标签的style属性
+2. 写在head里面 style标签中写样式
+    - id选择区
+          #i1{
+            background-color: #2459a2;
+            height: 48px;
+          }
+
+    - class选择器 ******
+
+          .名称{
+            ...
+          }
+
+          &lt;标签 class=&apos;名称&apos;&gt; &lt;/标签&gt;
+
+    - 标签选择器
+            div{
+                ...
+            }
+
+
+            所有div设置上此样式
+
+    - 层级选择器（空格） ******
+           .c1 .c2 div{
+
+           }
+    - 组合选择器（逗号） ******
+            #c1,.c2,div{
+
+           }
+
+    - 属性选择器 ******
+           对选择到的标签再通过属性再进行一次筛选
+           .c1[n=&apos;alex&apos;]{ width:100px; height:200px; }
+
+    PS:
+        - 优先级，标签上style优先，编写顺序，就近原则
+
+2.5 css样式也可以写在单独文件中
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;commons.css&quot; /&gt;
+
+3、注释
+    /*   */
+
+4、边框
+     - 宽度，样式，颜色  (border: 4px dotted red;)
+     - border-left
+
+5、  
+    height，         高度 百分比
+    width，          宽度 像素，百分比
+    text-align:ceter, 水平方向居中
+    line-height，垂直方向根据标签高度
+    color、     字体颜色
+    font-size、 字体大小
+    font-weight 字体加粗
+
+6、float
+    让标签浪起来，块级标签也可以堆叠
+    老子管不住：
+        &lt;div style=&quot;clear: both;&quot;&gt;&lt;/div&gt;
+
+7、display
+    display: none; -- 让标签消失
+    display: inline;
+    display: block;
+    display: inline-block;
+             具有inline,默认自己有多少占多少
+             具有block，可以设置无法设置高度，宽度，padding  margin
+    ******
+    行内标签：无法设置高度，宽度，padding  margin
+    块级标签：设置高度，宽度，padding  margin
+
+
+8、padding  margin(0,auto)
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Kommentare</h1>
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://yoursite.com/2017/10/30/线程/index.html" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Suche">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2018 lee
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
