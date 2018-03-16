@@ -52,17 +52,44 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2018-03-09T16:08:24.000Z"><a href="/2018/03/10/静态方法‘hexo-g-dhexo-g-dhexo-g-dhexo-d-ghexo-new-静态方法‘/">2018-03-10</a></time>
+        <time datetime="2018-03-13T03:15:48.000Z"><a href="/2018/03/13/scrapy/">2018-03-13</a></time>
       
       
   
-    <h1 class="title"><a href="/2018/03/10/静态方法‘hexo-g-dhexo-g-dhexo-g-dhexo-d-ghexo-new-静态方法‘/">静态方法‘ hexo -g d hexo g -d hexo g -d hexo d -g hexo new 静态方法‘</a></h1>
+    <h1 class="title"><a href="/2018/03/13/scrapy/">scrapy</a></h1>
   
 
     </header>
     <div class="entry">
       
-        
+        <p>cmd 下 树形结构显示文件 tree /f<br>    type  查看文件内容</p>
+<p>#####创建项目<br>scrapy startproject <strong>*</strong><br>cd <em>**</em></p>
+<p>#####生成spiider<br>scrapy genspider [-t template] <namen>  wwww.<domain>.com<br>scrapy genspider -l  查看模板</domain></namen></p>
+<p>#####运行sd<br>scrapy crawl <em>**</em></p>
+<p>#####<br>scrapy check<br>scrapy list</p>
+<p>#####获取网址<br>scrapy fetch  参数   –nolog  –headers  –noredirect</p>
+<h5 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h5><p>scrapy shell <em>**</em></p>
+<h5 id="Parse"><a href="#Parse" class="headerlink" title="Parse"></a>Parse</h5><p>scrapy parse <url>[options]</url></p>
+<h5 id="bench测速"><a href="#bench测速" class="headerlink" title="bench测速"></a>bench测速</h5><p>scrapy bench  </p>
+<h5 id="scrapy-选择器"><a href="#scrapy-选择器" class="headerlink" title="scrapy 选择器"></a>scrapy 选择器</h5><p>response.xpath(‘//div[@id=”images”]’).css(‘img::attr(src)’).extract()<br>//a/@href    a::attr(href)<br>//a/text()   a::text<br>选择包含该属性的内容<br>//a[contains(@href,”image”)]/@href<br> (‘a[href*=image]::attr(href)’) </p>
+<h5 id="spider-用法"><a href="#spider-用法" class="headerlink" title="spider 用法"></a>spider 用法</h5><p><a href="http://scrapy-chs.readthedocs.io/zh_CN/latest/topics/spiders.html" target="_blank" rel="external">http://scrapy-chs.readthedocs.io/zh_CN/latest/topics/spiders.html</a><br>name  用于启动爬虫<br>allowed_domain  允许的域名<br>start_utl 起始url 可以是列表 多个地址<br>custom_setting 可覆盖项目setting 定制setting  USER-AGENT</p>
+<p>– from_crawler and __init<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">def __init__(self,mongo_uri,mongo_db,*args,**kwargs):</div><div class="line">	super(zhihuSpider,self).__init__(*args,**kwargs)</div><div class="line">    self.mongo_uri = mongo_uri</div><div class="line">    self.mongo_db = mongo_db</div><div class="line">    </div><div class="line">def from_crawler(cls,crawler):</div><div class="line">	return cls(</div><div class="line">    	mongo_uri = crawler.setting.get(&apos;MONGO_URI&apos;)</div><div class="line">    )</div><div class="line">spider pipline 都可以用这个类方法  获取项目配置</div></pre></td></tr></table></figure></p>
+<p>—start_request   改post方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">def start_requests(self): </div><div class="line">	yield scrapy.Request(url=&apos;http://httpbin.org/post&apos;,method=&apos;POST&apos;,callback=self.parse_post)</div><div class="line"></div><div class="line">def parse_pose(self,response):</div><div class="line">	print(&apos;Hello&apos;,response.status)</div></pre></td></tr></table></figure></p>
+<p>— make_requests<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def make_requests_from_url(self,url):</div><div class="line">	return scrapy.Request(url=url,callback=self.parse_index)  改写了start_requests的call_back方法</div></pre></td></tr></table></figure></p>
+<p>—-parse<br>必须生成返回一个 ITEM 或者 Request 可迭代对象</p>
+<p>—-log 日志输出<br>self.logger.iinfo(‘parse function called on $s’,response.url)<br>self.logger.debug()</p>
+<p>—-传参数<br>scrapy crawl badi -a category=Pic</p>
+<h5 id="pipline"><a href="#pipline" class="headerlink" title="pipline"></a>pipline</h5><p>process_item(self,item,spider)<br>item 接收自spider 传来的item  yield<br>需返回 item 或者 dropitem</p>
+<p>open_spidef      做初始化操作<br>close_spider<br>from_crawler(cls,crawler)  同SPIDER的</p>
+<p>#####downloadmiddleware<br>process_request(request,spider)<br>返回<br>none  继续处理processrequest<br>response  不再调用processrequest 调用prcessresponse<br>request  重新放入调度队列<br>ignorerequest   被middleware 捕捉作为异常</p>
+<p>process_response(request,reponse,spider)<br>response 继续运行其他middleware的response<br>request 不再调用response 将request加入队列<br>ignorequest 处理异常</p>
+<p>process_exception<br>none 继续执行exception 无影响<br>response 执行其他response<br>request 重新加入调度队列</p>
+<p>#####item pipline<br><a href="http://scrapy-chs.readthedocs.io/zh_CN/latest/topics/item-pipeline.html" target="_blank" rel="external">http://scrapy-chs.readthedocs.io/zh_CN/latest/topics/item-pipeline.html</a></p>
+<p>items  保存数据的数据结构<br>middlewares   中间件<br>piplines  管道 输出ITEMS<br>setting 配置信息  变量</p>
+<p>scrapy shell 网址   命令行调试模式</p>
+<p>#####全局命令<br>startproject<br>genspider<br>settings<br>runspider<br>shell<br>fetch<br>view<br>version</p>
+<p>#####项目限定命令<br>crawl<br>check<br>list<br>edit<br>parse<br>bench</p>
+
       
     </div>
     <footer>
@@ -796,14 +823,14 @@ for循环
 <nav id="pagination">
   
   
-    <a href="/page/2/" class="alignright next">Suivant</a>
+    <a href="/page/2/" class="alignright next">Next</a>
   
   <div class="clearfix"></div>
 </nav></div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Rechercher">
+    <input type="search" name="q" results="0" placeholder="Search">
     <input type="hidden" name="q" value="site:yoursite.com">
   </form>
 </div>

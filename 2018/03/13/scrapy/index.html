@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>scrapy | Fool&#39;s router</title>
+  <meta name="author" content="lee">
+  
+  <meta name="description" content="diary of a fool">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="scrapy"/>
+  <meta property="og:site_name" content="Fool&#39;s router"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Fool&#39;s router" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Fool&#39;s router</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-03-13T03:15:48.000Z"><a href="/2018/03/13/scrapy/">2018-03-13</a></time>
+      
+      
+  
+    <h1 class="title">scrapy</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>cmd 下 树形结构显示文件 tree /f<br>    type  查看文件内容</p>
+<p>#####创建项目<br>scrapy startproject <strong>*</strong><br>cd <em>**</em></p>
+<p>#####生成spiider<br>scrapy genspider [-t template] <namen>  wwww.<domain>.com<br>scrapy genspider -l  查看模板</domain></namen></p>
+<p>#####运行sd<br>scrapy crawl <em>**</em></p>
+<p>#####<br>scrapy check<br>scrapy list</p>
+<p>#####获取网址<br>scrapy fetch  参数   –nolog  –headers  –noredirect</p>
+<h5 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h5><p>scrapy shell <em>**</em></p>
+<h5 id="Parse"><a href="#Parse" class="headerlink" title="Parse"></a>Parse</h5><p>scrapy parse <url>[options]</url></p>
+<h5 id="bench测速"><a href="#bench测速" class="headerlink" title="bench测速"></a>bench测速</h5><p>scrapy bench  </p>
+<h5 id="scrapy-选择器"><a href="#scrapy-选择器" class="headerlink" title="scrapy 选择器"></a>scrapy 选择器</h5><p>response.xpath(‘//div[@id=”images”]’).css(‘img::attr(src)’).extract()<br>//a/@href    a::attr(href)<br>//a/text()   a::text<br>选择包含该属性的内容<br>//a[contains(@href,”image”)]/@href<br> (‘a[href*=image]::attr(href)’) </p>
+<h5 id="spider-用法"><a href="#spider-用法" class="headerlink" title="spider 用法"></a>spider 用法</h5><p><a href="http://scrapy-chs.readthedocs.io/zh_CN/latest/topics/spiders.html" target="_blank" rel="external">http://scrapy-chs.readthedocs.io/zh_CN/latest/topics/spiders.html</a><br>name  用于启动爬虫<br>allowed_domain  允许的域名<br>start_utl 起始url 可以是列表 多个地址<br>custom_setting 可覆盖项目setting 定制setting  USER-AGENT</p>
+<p>– from_crawler and __init<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">def __init__(self,mongo_uri,mongo_db,*args,**kwargs):</div><div class="line">	super(zhihuSpider,self).__init__(*args,**kwargs)</div><div class="line">    self.mongo_uri = mongo_uri</div><div class="line">    self.mongo_db = mongo_db</div><div class="line">    </div><div class="line">def from_crawler(cls,crawler):</div><div class="line">	return cls(</div><div class="line">    	mongo_uri = crawler.setting.get(&apos;MONGO_URI&apos;)</div><div class="line">    )</div><div class="line">spider pipline 都可以用这个类方法  获取项目配置</div></pre></td></tr></table></figure></p>
+<p>—start_request   改post方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">def start_requests(self): </div><div class="line">	yield scrapy.Request(url=&apos;http://httpbin.org/post&apos;,method=&apos;POST&apos;,callback=self.parse_post)</div><div class="line"></div><div class="line">def parse_pose(self,response):</div><div class="line">	print(&apos;Hello&apos;,response.status)</div></pre></td></tr></table></figure></p>
+<p>— make_requests<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def make_requests_from_url(self,url):</div><div class="line">	return scrapy.Request(url=url,callback=self.parse_index)  改写了start_requests的call_back方法</div></pre></td></tr></table></figure></p>
+<p>—-parse<br>必须生成返回一个 ITEM 或者 Request 可迭代对象</p>
+<p>—-log 日志输出<br>self.logger.iinfo(‘parse function called on $s’,response.url)<br>self.logger.debug()</p>
+<p>—-传参数<br>scrapy crawl badi -a category=Pic</p>
+<h5 id="pipline"><a href="#pipline" class="headerlink" title="pipline"></a>pipline</h5><p>process_item(self,item,spider)<br>item 接收自spider 传来的item  yield<br>需返回 item 或者 dropitem</p>
+<p>open_spidef      做初始化操作<br>close_spider<br>from_crawler(cls,crawler)  同SPIDER的</p>
+<p>#####downloadmiddleware<br>process_request(request,spider)<br>返回<br>none  继续处理processrequest<br>response  不再调用processrequest 调用prcessresponse<br>request  重新放入调度队列<br>ignorerequest   被middleware 捕捉作为异常</p>
+<p>process_response(request,reponse,spider)<br>response 继续运行其他middleware的response<br>request 不再调用response 将request加入队列<br>ignorequest 处理异常</p>
+<p>process_exception<br>none 继续执行exception 无影响<br>response 执行其他response<br>request 重新加入调度队列</p>
+<p>#####item pipline<br><a href="http://scrapy-chs.readthedocs.io/zh_CN/latest/topics/item-pipeline.html" target="_blank" rel="external">http://scrapy-chs.readthedocs.io/zh_CN/latest/topics/item-pipeline.html</a></p>
+<p>items  保存数据的数据结构<br>middlewares   中间件<br>piplines  管道 输出ITEMS<br>setting 配置信息  变量</p>
+<p>scrapy shell 网址   命令行调试模式</p>
+<p>#####全局命令<br>startproject<br>genspider<br>settings<br>runspider<br>shell<br>fetch<br>view<br>version</p>
+<p>#####项目限定命令<br>crawl<br>check<br>list<br>edit<br>parse<br>bench</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://yoursite.com/2018/03/13/scrapy/index.html" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2018 lee
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
