@@ -62,15 +62,19 @@
     <div class="entry">
       
         <p>cmd 下 树形结构显示文件 tree /f<br>    type  查看文件内容</p>
+<p>#####在scrapy下调试模式 DEBUG<br>在启动路径文件下建 main.py 文件<br>写如执行scrapy crawl 项目名称命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">from scrapy.cmdline import execute</div><div class="line"></div><div class="line">import sys</div><div class="line">import os</div><div class="line"></div><div class="line"># print(sys.path)</div><div class="line"># print(os.path.dirname(os.path.abspath(__file__)))</div><div class="line">sys.path.append(os.path.dirname(os.path.abspath(__file__)))</div><div class="line">execute([&apos;scrapy &apos;,&apos;crawl&apos;,&apos;zhih&apos;])</div></pre></td></tr></table></figure>
 <p>#####创建项目<br>scrapy startproject <strong>*</strong><br>cd <em>**</em></p>
 <p>#####生成spiider<br>scrapy genspider [-t template] <namen>  wwww.<domain>.com<br>scrapy genspider -l  查看模板</domain></namen></p>
 <p>#####运行sd<br>scrapy crawl <em>**</em></p>
 <p>#####<br>scrapy check<br>scrapy list</p>
 <p>#####获取网址<br>scrapy fetch  参数   –nolog  –headers  –noredirect</p>
-<h5 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h5><p>scrapy shell <em>**</em></p>
+<h5 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h5><p>scrapy shell 网址  </p>
 <h5 id="Parse"><a href="#Parse" class="headerlink" title="Parse"></a>Parse</h5><p>scrapy parse <url>[options]</url></p>
 <h5 id="bench测速"><a href="#bench测速" class="headerlink" title="bench测速"></a>bench测速</h5><p>scrapy bench  </p>
-<h5 id="scrapy-选择器"><a href="#scrapy-选择器" class="headerlink" title="scrapy 选择器"></a>scrapy 选择器</h5><p>response.xpath(‘//div[@id=”images”]’).css(‘img::attr(src)’).extract()<br>//a/@href    a::attr(href)<br>//a/text()   a::text<br>选择包含该属性的内容<br>//a[contains(@href,”image”)]/@href<br> (‘a[href*=image]::attr(href)’) </p>
+<h5 id="scrapy-选择器"><a href="#scrapy-选择器" class="headerlink" title="scrapy 选择器"></a>scrapy 选择器</h5><p>—xpath 选择器<br>//@class 选取所有class的属性<br>div//span 选取div后的span元素 不论位置<br>//div[@class]<br>/div/<em><br>//</em><br>//div[@*] 带属性的<br>//span |//u</p>
+<p>—css选择器<br>用<em>  星号 所有节点<br>用#container id<br>.container<br>li a  li下所有a节点<br>ul+p  ul后第一个p元素 兄弟节点<br>ul~p  相邻<br>a[title]<br>a[href=”htt”]<br>a[href</em>=”job”] 包含job<br>a[href^=”http”]  以http开头<br>a[href$=”.jpg”]      以jph结尾<br>input[type=radio]:checked 选中的元素<br>div:not(#container) id非container的<br>li:nth-child(3) 第3个li<br>tr:nth-child(2n) 偶数个tr<br>::text 选中内容文本<br>.next.page-numbers     匹配 class= next page-numers 匹配同时存在两个的</p>
+<p>response.xpath(‘//div[@id=”images”]’).css(‘img::attr(src)’).extract()<br>//a/@href    a::attr(href)<br>//a/text()   a::text<br>选择包含该属性的内容<br>//a[contains(@href,”image”)]/@href<br> (‘a[href*=image]::attr(href)’)<br>contains(.,’原文评论)  .代表当前文本</p>
 <h5 id="spider-用法"><a href="#spider-用法" class="headerlink" title="spider 用法"></a>spider 用法</h5><p><a href="http://scrapy-chs.readthedocs.io/zh_CN/latest/topics/spiders.html" target="_blank" rel="external">http://scrapy-chs.readthedocs.io/zh_CN/latest/topics/spiders.html</a><br>name  用于启动爬虫<br>allowed_domain  允许的域名<br>start_utl 起始url 可以是列表 多个地址<br>custom_setting 可覆盖项目setting 定制setting  USER-AGENT</p>
 <p>– from_crawler and __init<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">def __init__(self,mongo_uri,mongo_db,*args,**kwargs):</div><div class="line">	super(zhihuSpider,self).__init__(*args,**kwargs)</div><div class="line">    self.mongo_uri = mongo_uri</div><div class="line">    self.mongo_db = mongo_db</div><div class="line">    </div><div class="line">def from_crawler(cls,crawler):</div><div class="line">	return cls(</div><div class="line">    	mongo_uri = crawler.setting.get(&apos;MONGO_URI&apos;)</div><div class="line">    )</div><div class="line">spider pipline 都可以用这个类方法  获取项目配置</div></pre></td></tr></table></figure></p>
 <p>—start_request   改post方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">def start_requests(self): </div><div class="line">	yield scrapy.Request(url=&apos;http://httpbin.org/post&apos;,method=&apos;POST&apos;,callback=self.parse_post)</div><div class="line"></div><div class="line">def parse_pose(self,response):</div><div class="line">	print(&apos;Hello&apos;,response.status)</div></pre></td></tr></table></figure></p>
@@ -84,10 +88,17 @@
 <p>process_response(request,reponse,spider)<br>response 继续运行其他middleware的response<br>request 不再调用response 将request加入队列<br>ignorequest 处理异常</p>
 <p>process_exception<br>none 继续执行exception 无影响<br>response 执行其他response<br>request 重新加入调度队列</p>
 <p>#####item pipline<br><a href="http://scrapy-chs.readthedocs.io/zh_CN/latest/topics/item-pipeline.html" target="_blank" rel="external">http://scrapy-chs.readthedocs.io/zh_CN/latest/topics/item-pipeline.html</a></p>
+<p>spider 文件 必须引入 所建的Items类<br>之后实例化ITEM<br>赋值 实例化item article_list[‘titles’]=titles<br>yield artucke_list    yields item  传值到pipline<br>setting  ITEM_PIPLINES 设置生效<br>去编写itempipline</p>
+<p>下载图片<br>setting item_pipline 内添加设置<br>‘项目名文件夹.pipline.images.自定义pipline’:1<br>setting 设置<br>IMAGE_URLS_FIELD = “字段名字”<br>IMAGES_URLS_FIELD = “font_url_images”<br>project_dir = os.path.abspath(os.path.dirname(<strong>file</strong>))<br>IMAGES_STORE = os.path.join(project_dir,’images’)<br>spider 文件  赋值还需要赋值列表<br>article_list_item[‘font_url_images’]=[font_url_images]</p>
+<p>#####itemloader  生成ITEM<br>from scrapy.loader import ItemLoader<br>item_loader = ItemLoader(object)<br>item_loader.add_css(“title”,”css匹配规则”)<br>item_loader.add_xpath()<br>item_loader.add_value(“url”,response.url) 直接添加值<br>article_item = item_loader.load_item() 加载方法</p>
 <p>items  保存数据的数据结构<br>middlewares   中间件<br>piplines  管道 输出ITEMS<br>setting 配置信息  变量</p>
 <p>scrapy shell 网址   命令行调试模式</p>
 <p>#####全局命令<br>startproject<br>genspider<br>settings<br>runspider<br>shell<br>fetch<br>view<br>version</p>
-<p>#####项目限定命令<br>crawl<br>check<br>list<br>edit<br>parse<br>bench</p>
+<p>#####项目限定命令<br>crawl<br>check<br>list<br>edit<br>parse<br>1 获取文章列表页中的文章URL 并交给解析函数进行具体数字段解析<br>2 获取url 并交给scrapy解析<br>bench</p>
+<p>#####列表内 内容去除<br>除去了评论<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tag_list = [&apos;职场&apos;,&apos; 1 评论 &apos;,&apos;fun两点水&apos;]</div><div class="line">print([element for element in tag_list if not element.strip().endswith(&apos;评论&apos;)])</div></pre></td></tr></table></figure></p>
+<p>#####网址连接<br>from urllib import parse<br>urljoin(response.url,post)url)<br>        response就行    需添加的例如/12422.html</p>
+<p>#####selector<br>from scrapy.selector import Selectir<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">from selenium.webdriver import Chrome</div><div class="line"></div><div class="line">browser = Chrome()</div><div class="line">r=browser.get(&quot;https://www.baidu.com&quot;)</div><div class="line">print(browser.page_source)</div></pre></td></tr></table></figure></p>
+<p>t_selector = Selector(text = browser.page_source)<br>t_selector.css(“”)</p>
 
       
     </div>
@@ -121,7 +132,7 @@
 
 
 <section id="comment">
-  <h1 class="title">Comments</h1>
+  <h1 class="title">Kommentare</h1>
 
   
       <div id="fb-root"></div>
@@ -144,7 +155,7 @@
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="search" name="q" results="0" placeholder="Suche">
     <input type="hidden" name="q" value="site:yoursite.com">
   </form>
 </div>
