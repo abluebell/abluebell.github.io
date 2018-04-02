@@ -62,7 +62,10 @@
     <div class="entry">
       
         <p>主键 一个数据表只包含一个主键，你可以使用主键来查询数据<br>外键 用于关联两个表<br>复何健 将多个列作为一个索引键 一般用于复合索引<br>索引 快速访问数据库特定信息 是对数据库一列或多列的排序 类似书籍目录<br>参照完整性 数据必须存在</p>
-<p>刚安装 密码为空 通过<br>mysqladmin -u root password “new_password”    修改<br>登录<br>mysql -u root -p<br>增加用户<br>grant all on test(表名？).* ‘yourname’@’localhost’ identified by ‘youpassword’;</p>
+<p>刚安装 密码为空 通过<br>mysqladmin -u root password “new_password”    修改<br>登录<br>mysql -u root -p<br>show databases;<br>增加用户<br>grant all on test(表名？).* ‘yourname’@’localhost’ identified by ‘youpassword’;</p>
+<p>进入表<br>use mysql;<br>显示表<br>show tables;<br>查看表<br>desc user;</p>
+<p>create databases test charset utf8;<br>查看表创建记录<br>show create table lin<br>create table lin(<br>id int auto_increment,<br>name char(32) not null,<br>age int not null,<br>register_date date not null,<br>primary ke(id))<br> insert into lin (name,age,register_data) values(“lin”,22,”2016-3-22”);<br> select <em> from lin limit 2 offset 1<br>select </em> from lin where id &gt;3 and age &lt;2<br>改<br>update lin set name=”ddd”,age=22 where id=4;<br>删<br>delete from lin where name=”ddd”;<br>排序<br>select <em> from lin order by id desc; asc 降序升序<br>分组 计数<br>select name,count(</em>) from lin group by age;<br>select coalesce(name,”total”),sum(age) as total from lin group by name with rollup;<br>加列<br>alter table student add sex enum(“M”,”F”);<br>删列<br>alter table lin drop age;<br>改 是否为空<br>alter table lin modify sex enum(“M”,”F”) not null;<br>改字段名<br>alter table lin change sex gender char(32)not null default “X”<br>外键<br>create table lin_recd(<br>id int auto_increment primary key,<br>name char(32) not null,<br>age_rec int not null,<br>rec_date date not null,<br>KEY ‘fk_lin_key’ (‘stu_id’)<br>constraint ‘fk_lin_key’ foreign key (‘stu_id’)<br>references ‘lin’(‘id’))</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import pymysql</div><div class="line">conn = pymysql.connect(host=&apos;127.0.0.1&apos;,user = &apos;root&apos;,passwd = &apos;123456&apos;,db=&apos;test&apos;)</div><div class="line">cur =conn.cursor()</div><div class="line">reCount = cur.execute(&apos;insert into lin (name,age,register_data) values(&quot;lin&quot;,12,&quot;2011-3-22&quot;);&apos;)</div><div class="line">conn.commit()</div><div class="line">cur.close()</div><div class="line">conn.close()</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -96,7 +99,7 @@
 
 
 <section id="comment">
-  <h1 class="title">Kommentare</h1>
+  <h1 class="title">Comments</h1>
 
   
       <div id="fb-root"></div>
@@ -119,7 +122,7 @@
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Suche">
+    <input type="search" name="q" results="0" placeholder="Search">
     <input type="hidden" name="q" value="site:yoursite.com">
   </form>
 </div>

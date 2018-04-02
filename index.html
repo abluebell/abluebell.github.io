@@ -52,6 +52,45 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2018-04-01T03:53:55.000Z"><a href="/2018/04/01/算法/">2018-04-01</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/04/01/算法/">算法</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>算法 一个计算过程 解决问题的方法<br>递归：<br>1 调用自身<br>2 结束条件</p>
+<p>时间复杂度  运行时间的式子<br>一般来说  时间复杂度高的算法比复杂度低的算法快<br>二分查找<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">def bin_search(data_ser,value):</div><div class="line">    data_ser.sort()</div><div class="line">    low = 0</div><div class="line">    high  = len(data_ser)-1</div><div class="line">    while low&lt;=high:</div><div class="line">        mid = (low+high)//2</div><div class="line">        if  data_ser[mid]==value:</div><div class="line">            return mid</div><div class="line">        elif data_ser[mid]&gt;value:</div><div class="line">            high = mid -1</div><div class="line">        else:</div><div class="line">            low = mid+1</div><div class="line">    return</div><div class="line"></div><div class="line">print(bin_search(a,35))</div></pre></td></tr></table></figure></p>
+<p>排序<br>慢<br>冒泡排序 选择排序 插入排序<br>块<br>堆排序<br>归并排序<br>没人用<br>基数排序<br>希尔排序<br>桶排序</p>
+<p>冒泡排序   每次从第一个开始  与升序号元素比大小  大的交换继续比较  小的 尤大的升序元素继续 一个走n-1躺  第n躺走n-i-1步<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">import random</div><div class="line">def bubble_sort(li):</div><div class="line">    for i in range(len(li)-1):   #n-1躺</div><div class="line">        for j in range(len(li)-i-1):  #走n-i-1步</div><div class="line">            if li[j] &gt; li[j+1]:</div><div class="line">                li[j],li[j+1] =li[j+1],li[j]</div><div class="line">    return li</div><div class="line">data = list(range(1000))</div><div class="line">random.shuffle(data)</div><div class="line"># print(data)</div><div class="line">print(bubble_sort(data))</div></pre></td></tr></table></figure></p>
+<p>小优化版<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">def bubble_sort(li):</div><div class="line">    for i in range(len(li)-1):</div><div class="line">        exchange = False            </div><div class="line">        for j in range(len(li)-i-1):</div><div class="line">            if li[j] &gt; li[j+1]</div><div class="line">                li[j],li[j+1] =li[j+1],li[j]</div><div class="line">                exchange = True                #小优化  如果大小不需要交换 则排完了  剩下次数不用走了 </div><div class="line">        if  not exchange:</div><div class="line">            brea</div></pre></td></tr></table></figure></p>
+<p>选择排序<br>选择最小的  放在最左边 继续找最小的放在左边<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">def select_sort(li):</div><div class="line">    for i in range(len(li)-1):</div><div class="line">        min_loc = i</div><div class="line">        for j in range(i+1,len(li)):</div><div class="line">            if li[j]&lt;li[min_loc]:</div><div class="line">                li[j],li[min_loc]=li[min_loc],li[j]</div><div class="line"></div><div class="line">a=[1,2,4,32,543,6,43,6,346,4]</div><div class="line">select_sort(a)</div><div class="line">print(a)</div></pre></td></tr></table></figure></p>
+<p>#插入排序<br>抽第二张 与前面比较 插入中间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">def insert_sort(li):</div><div class="line">    for i in range(1,len(li)):</div><div class="line">        tmp = li[i]</div><div class="line">        j = i-1</div><div class="line">        while j&gt;0 and li[j]&gt;tmp:</div><div class="line">            li[j+1]=li[j]</div><div class="line">            j=j-1</div><div class="line">        li[j+1]=tmp</div><div class="line">a = [1, 2, 4, 32, 543, 6, 43, 6, 346, 4]</div><div class="line">insert_sort(a)</div><div class="line">print(a）</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2018-03-25T11:13:04.000Z"><a href="/2018/03/25/后端/">2018-03-25</a></time>
       
       
@@ -727,7 +766,10 @@ for循环
     <div class="entry">
       
         <p>主键 一个数据表只包含一个主键，你可以使用主键来查询数据<br>外键 用于关联两个表<br>复何健 将多个列作为一个索引键 一般用于复合索引<br>索引 快速访问数据库特定信息 是对数据库一列或多列的排序 类似书籍目录<br>参照完整性 数据必须存在</p>
-<p>刚安装 密码为空 通过<br>mysqladmin -u root password “new_password”    修改<br>登录<br>mysql -u root -p<br>增加用户<br>grant all on test(表名？).* ‘yourname’@’localhost’ identified by ‘youpassword’;</p>
+<p>刚安装 密码为空 通过<br>mysqladmin -u root password “new_password”    修改<br>登录<br>mysql -u root -p<br>show databases;<br>增加用户<br>grant all on test(表名？).* ‘yourname’@’localhost’ identified by ‘youpassword’;</p>
+<p>进入表<br>use mysql;<br>显示表<br>show tables;<br>查看表<br>desc user;</p>
+<p>create databases test charset utf8;<br>查看表创建记录<br>show create table lin<br>create table lin(<br>id int auto_increment,<br>name char(32) not null,<br>age int not null,<br>register_date date not null,<br>primary ke(id))<br> insert into lin (name,age,register_data) values(“lin”,22,”2016-3-22”);<br> select <em> from lin limit 2 offset 1<br>select </em> from lin where id &gt;3 and age &lt;2<br>改<br>update lin set name=”ddd”,age=22 where id=4;<br>删<br>delete from lin where name=”ddd”;<br>排序<br>select <em> from lin order by id desc; asc 降序升序<br>分组 计数<br>select name,count(</em>) from lin group by age;<br>select coalesce(name,”total”),sum(age) as total from lin group by name with rollup;<br>加列<br>alter table student add sex enum(“M”,”F”);<br>删列<br>alter table lin drop age;<br>改 是否为空<br>alter table lin modify sex enum(“M”,”F”) not null;<br>改字段名<br>alter table lin change sex gender char(32)not null default “X”<br>外键<br>create table lin_recd(<br>id int auto_increment primary key,<br>name char(32) not null,<br>age_rec int not null,<br>rec_date date not null,<br>KEY ‘fk_lin_key’ (‘stu_id’)<br>constraint ‘fk_lin_key’ foreign key (‘stu_id’)<br>references ‘lin’(‘id’))</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import pymysql</div><div class="line">conn = pymysql.connect(host=&apos;127.0.0.1&apos;,user = &apos;root&apos;,passwd = &apos;123456&apos;,db=&apos;test&apos;)</div><div class="line">cur =conn.cursor()</div><div class="line">reCount = cur.execute(&apos;insert into lin (name,age,register_data) values(&quot;lin&quot;,12,&quot;2011-3-22&quot;);&apos;)</div><div class="line">conn.commit()</div><div class="line">cur.close()</div><div class="line">conn.close()</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -776,74 +818,18 @@ for循环
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-11-14T14:19:35.000Z"><a href="/2017/11/14/operating-system/">2017-11-14</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/11/14/operating-system/">operating system</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>#####什么是操作系统<br>从用户角度 提供一个控制软件<br>管理应用程序<br>为程序提供服务<br>杀死应用程序</p>
-<p>资源管理 管理外设 资源分配</p>
-<p>抽象作用<br>cpu  抽象为 线程<br>硬盘           文件<br>内存          地址空间</p>
-<p>操作系统特征<br>并发 共享 虚拟 异步</p>
-<p>####操作系统的启动</p>
-<p>#####计算机原理角度 基本 三部分   </p>
-<p>  cpu）</p>
-<p>  [总线]</p>
-<p> （io)            （内存）</p>
-<p>#####存放<br>DISK: 存放OS<br>BIOS: 基本io处理系统   检查基本外设<br>Bootloader 加载OS<br>cs 段寄存器 ip 指针寄存器  组成具体内存地址</p>
-<p>#####启动过程<br>POST（加电自检）<br>寻找显卡和执行BIOS<br>BIOS 加载 BOOTLOADER<br>bootloader 找到OS的起始扇区和长度 加载到内存</p>
-<p>#####操作系统与外设和程序交互<br>面向外设 中断和io<br>面向应用程序 系统调用和异常</p>
-<p>系统调用  应用程序主动向系统发出请求                处理时间    异步或同步<br>异常        非法指令或其他坏的处理状态 如内存出错            同步<br>中断        来自不同硬件设备的计时器和网络的中断            异步：不知道什么时候发生 </p>
-<p>中断<br>硬件<br>设置中断标记【cpu初始化】<br>1将内部、外部事件设置中断标记<br>2中断事件id<br>软件<br>保持当前状态（上下文？）<br>中断服务程序处理<br>清除中断标记<br>恢复之前保持的处理状态</p>
-<p>异常<br>保存现场<br>异常处理<br>恢复现场</p>
-<p>计算机体系结构/内存分层体系</p>
-<p>#####连续内存分配<br>内存碎片问题<br>分区的动态分配 第一适配 最佳适配  最差适配<br>压缩式碎片整理<br>交换式碎片整理</p>
-<p>#####非连续分配优点<br>一个程序的物理地址是非连续的<br>更好的利用内存和管理<br>允许共享代码与数据<br>支持动态加载和动态链接</p>
-<p>#####分段<br>段表 1 起始信息 2 长度限制</p>
-<p>#####分页<br>页号 页偏移<br>页大小固定不变  段会变</p>
-<p>#####页帧（FRAME)<br>物理内存被分割为大小相等的帧<br>f-页帧号 F位 共2^F个页帧<br>o-振内偏移（S位，每帧有2^S字节）<br>物理地址=2^S*f+o</p>
-<p>#####页<br>p-页号<br>o-页内偏移<br>虚拟地址=2^S*p+o</p>
-<p>#####存储结构<br>cpu<br>寄存器<br>cache<br>主存储<br>硬盘</p>
-<p>#####虚拟内存管理系数特征<br>大的用户空间<br>部分交换<br>不连续性</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
 
 <nav id="pagination">
   
   
-    <a href="/page/2/" class="alignright next">Nächste Seite</a>
+    <a href="/page/2/" class="alignright next">Next</a>
   
   <div class="clearfix"></div>
 </nav></div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Suche">
+    <input type="search" name="q" results="0" placeholder="Search">
     <input type="hidden" name="q" value="site:yoursite.com">
   </form>
 </div>

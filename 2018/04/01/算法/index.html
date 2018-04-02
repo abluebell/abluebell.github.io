@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>算法 | Fool&#39;s router</title>
+  <meta name="author" content="lee">
+  
+  <meta name="description" content="diary of a fool">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="算法"/>
+  <meta property="og:site_name" content="Fool&#39;s router"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Fool&#39;s router" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Fool&#39;s router</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-04-01T03:53:55.000Z"><a href="/2018/04/01/算法/">2018-04-01</a></time>
+      
+      
+  
+    <h1 class="title">算法</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>算法 一个计算过程 解决问题的方法<br>递归：<br>1 调用自身<br>2 结束条件</p>
+<p>时间复杂度  运行时间的式子<br>一般来说  时间复杂度高的算法比复杂度低的算法快<br>二分查找<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">def bin_search(data_ser,value):</div><div class="line">    data_ser.sort()</div><div class="line">    low = 0</div><div class="line">    high  = len(data_ser)-1</div><div class="line">    while low&lt;=high:</div><div class="line">        mid = (low+high)//2</div><div class="line">        if  data_ser[mid]==value:</div><div class="line">            return mid</div><div class="line">        elif data_ser[mid]&gt;value:</div><div class="line">            high = mid -1</div><div class="line">        else:</div><div class="line">            low = mid+1</div><div class="line">    return</div><div class="line"></div><div class="line">print(bin_search(a,35))</div></pre></td></tr></table></figure></p>
+<p>排序<br>慢<br>冒泡排序 选择排序 插入排序<br>块<br>堆排序<br>归并排序<br>没人用<br>基数排序<br>希尔排序<br>桶排序</p>
+<p>冒泡排序   每次从第一个开始  与升序号元素比大小  大的交换继续比较  小的 尤大的升序元素继续 一个走n-1躺  第n躺走n-i-1步<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">import random</div><div class="line">def bubble_sort(li):</div><div class="line">    for i in range(len(li)-1):   #n-1躺</div><div class="line">        for j in range(len(li)-i-1):  #走n-i-1步</div><div class="line">            if li[j] &gt; li[j+1]:</div><div class="line">                li[j],li[j+1] =li[j+1],li[j]</div><div class="line">    return li</div><div class="line">data = list(range(1000))</div><div class="line">random.shuffle(data)</div><div class="line"># print(data)</div><div class="line">print(bubble_sort(data))</div></pre></td></tr></table></figure></p>
+<p>小优化版<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">def bubble_sort(li):</div><div class="line">    for i in range(len(li)-1):</div><div class="line">        exchange = False            </div><div class="line">        for j in range(len(li)-i-1):</div><div class="line">            if li[j] &gt; li[j+1]</div><div class="line">                li[j],li[j+1] =li[j+1],li[j]</div><div class="line">                exchange = True                #小优化  如果大小不需要交换 则排完了  剩下次数不用走了 </div><div class="line">        if  not exchange:</div><div class="line">            brea</div></pre></td></tr></table></figure></p>
+<p>选择排序<br>选择最小的  放在最左边 继续找最小的放在左边<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">def select_sort(li):</div><div class="line">    for i in range(len(li)-1):</div><div class="line">        min_loc = i</div><div class="line">        for j in range(i+1,len(li)):</div><div class="line">            if li[j]&lt;li[min_loc]:</div><div class="line">                li[j],li[min_loc]=li[min_loc],li[j]</div><div class="line"></div><div class="line">a=[1,2,4,32,543,6,43,6,346,4]</div><div class="line">select_sort(a)</div><div class="line">print(a)</div></pre></td></tr></table></figure></p>
+<p>#插入排序<br>抽第二张 与前面比较 插入中间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">def insert_sort(li):</div><div class="line">    for i in range(1,len(li)):</div><div class="line">        tmp = li[i]</div><div class="line">        j = i-1</div><div class="line">        while j&gt;0 and li[j]&gt;tmp:</div><div class="line">            li[j+1]=li[j]</div><div class="line">            j=j-1</div><div class="line">        li[j+1]=tmp</div><div class="line">a = [1, 2, 4, 32, 543, 6, 43, 6, 346, 4]</div><div class="line">insert_sort(a)</div><div class="line">print(a）</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://yoursite.com/2018/04/01/算法/index.html" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2018 lee
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
