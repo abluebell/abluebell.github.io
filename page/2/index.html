@@ -52,6 +52,475 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2018-02-22T07:57:19.000Z"><a href="/2018/02/22/网络是怎么连接的/">2018-02-22</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/02/22/网络是怎么连接的/">网络是怎么连接的</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>创建套接字时 首先分配一个套接字所需的内存空间 然后向其中写入初始状态</p>
+<p>通信操作中使用的控制信息分为两类：<br>1 头部中记录的信息<br>2 套接字（协议栈中的内存空间）中记录的信息</p>
+<p>连接操作的第一步是TCP模块处创建表示连接控制信息的头部<br>通过TCP头部中的发送方和接收方端口号可以找到连接的套接字</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-12-10T14:22:48.000Z"><a href="/2017/12/10/前端/">2017-12-10</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/12/10/前端/">前端</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>HTML<br>1、一套规则，浏览器认识的规则。<br>2、开发者：<br>    学习Html规则<br>    开发后台程序：</p>
+<pre><code>- 写Html文件（充当模板的作用） ******
+- 数据库获取数据，然后替换到html文件的指定位置（Web框架）
+</code></pre><p>3、本地测试</p>
+<pre><code>- 找到文件路径，直接浏览器打开
+- pycharm打开测试
+</code></pre><p>4、编写Html文件</p>
+<pre><code>- doctype对应关系
+- html标签，标签内部可以写属性 ====&gt; 只能有一个
+- 注释：  &lt;!--  注释的内容  --&gt;
+</code></pre><p>5、标签分类</p>
+<pre><code>- 自闭合标签
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+- 主动闭合标签
+    title&gt;老男孩&lt;/title&gt;
+</code></pre><p>6、<br>    head标签中<br>    外不可见</p>
+<pre><code>    - &lt;meta  -&gt; 编码，跳转，刷新，关键字，描述，IE兼容
+            &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=IE9;IE=IE8;&quot; /&gt;
+&lt;meta http-equiv=&quot;content-type&quot; content=&apos;text/html;charset=utf-8&quot;&gt;
+&lt;mete http-equiv=&quot;Refresh&quot; Content=&quot;5;Url=http://www.ssddd.com&quot;/&gt;     跳转
+&lt;meta name=&quot;keywords&quot; content=&quot;dsadasd&quot;&gt;    
+    - title标签  窗口上
+    - &lt;link /&gt; 搞图标，欠
+&lt;link rel=&quot;shortcut icon&quot; href=&quot;image/favicon.ico&quot;&gt;    title旁的小图标
+    - &lt;style /&gt;欠
+    - &lt;script&gt; 欠
+</code></pre><p>7、body标签</p>
+<pre><code> - 图标，  &amp;nbsp;  &amp;gt;   &amp;lt;
+ - p标签，段落
+ - br，换行
+ ======== 小总结  =====
+    所有标签分为：
+        块级标签： div（白板），H系列（加大加粗），p标签（段落和段落之间有间距）
+        行内标签： span（白板）
+    标签之间可以嵌套
+    标签存在的意义，css操作，js操作
+    ps:chorme审查元素的使用
+        - 定位
+        - 查看样式
+- h系列
+- div
+- span
+- input系列 + form标签
+    input type=&apos;text&apos;     - name属性，value=&quot;赵凡&quot; 
+    input type=&apos;password&apos; - name属性，value=&quot;赵凡&quot; 
+    input type=&apos;submit&apos;   - value=&apos;提交&apos; 提交按钮，表单
+    input type=&apos;button&apos;   - value=&apos;登录&apos; 按钮
+
+    input type=&apos;radio&apos;    - 单选框 value，checked=&quot;checked&quot;，name属性（name相同则互斥）
+    input type=&apos;checkbox&apos; - 复选框 value, checked=&quot;checked&quot;，name属性（批量获取数据）
+    input type=&apos;file&apos;     - 依赖form表单的一个属性 enctype=&quot;multipart/form-data&quot;
+    input type=&apos;rest&apos;     - 重置
+
+    &lt;textarea &gt;默认值&lt;/textarea&gt;  - name属性
+    select标签            - name,内部option value, 提交到后台，size，multiple
+
+- a标签
+    - 跳转
+    - 锚     href=&apos;#某个标签的ID&apos;    标签的ID不允许重复
+
+- img 
+     src
+     alt
+     title
+
+- 列表
+    ul
+        li
+    ol
+        li
+    dl
+        dt
+        dd
+- 表格
+    table
+        thead
+            tr
+                th
+        tbody
+            tr
+                td
+    colspan = &apos;&apos;
+    rowspan = &apos;&apos;
+- label
+    用于点击文件，使得关联的标签获取光标
+    &lt;label for=&quot;username&quot;&gt;用户名：&lt;/label&gt;
+    &lt;input id=&quot;username&quot; type=&quot;text&quot; name=&quot;user&quot; /&gt;
+- fieldset
+    legend
+</code></pre><ul>
+<li>20个标签<br>CSS</li>
+</ul>
+<p>在标签上设置style属性：<br>    background-color: #2459a2;<br>    height: 48px;<br>    …</p>
+<p>编写css样式：</p>
+<pre><code>1. 标签的style属性
+2. 写在head里面 style标签中写样式
+    - id选择区
+          #i1{
+            background-color: #2459a2;
+            height: 48px;
+          }
+
+    - class选择器 ******
+
+          .名称{
+            ...
+          }
+
+          &lt;标签 class=&apos;名称&apos;&gt; &lt;/标签&gt;
+
+    - 标签选择器
+            div{
+                ...
+            }
+
+
+            所有div设置上此样式
+
+    - 层级选择器（空格） ******
+           .c1 .c2 div{
+
+           }
+    - 组合选择器（逗号） ******
+            #c1,.c2,div{
+
+           }
+
+    - 属性选择器 ******
+           对选择到的标签再通过属性再进行一次筛选
+           .c1[n=&apos;alex&apos;]{ width:100px; height:200px; }
+
+    PS:
+        - 优先级，标签上style优先，编写顺序，就近原则
+
+2.5 css样式也可以写在单独文件中
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;commons.css&quot; /&gt;
+
+3、注释
+    /*   */
+
+4、边框
+     - 宽度，样式，颜色  (border: 4px dotted red;)
+     - border-left
+
+5、  
+    height，         高度 百分比
+    width，          宽度 像素，百分比
+    text-align:ceter, 水平方向居中
+    line-height，垂直方向根据标签高度
+    color、     字体颜色
+    font-size、 字体大小
+    font-weight 字体加粗
+
+6、float
+    让标签浪起来，块级标签也可以堆叠
+    老子管不住：
+        &lt;div style=&quot;clear: both;&quot;&gt;&lt;/div&gt;
+
+7、display
+    display: none; -- 让标签消失
+    display: inline;
+    display: block;
+    display: inline-block;
+             具有inline,默认自己有多少占多少
+             具有block，可以设置无法设置高度，宽度，padding  margin
+    ******
+    行内标签：无法设置高度，宽度，padding  margin
+    块级标签：设置高度，宽度，padding  margin
+
+
+8、padding  margin(0,auto)
+</code></pre><p>CSS补充<br>    position:<br>        a. fiexd =&gt; 固定在页面的某个位置</p>
+<pre><code>    b. relative + absolute
+
+        &lt;div style=&apos;position:relative;&apos;&gt;
+            &lt;div style=&apos;position:absolute;top:0;left:0;&apos;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+opcity: 0.5 透明度
+z-index: 层级顺序   
+overflow: hidden,auto
+hover
+
+background-image:url(&apos;image/4.gif&apos;); # 默认，div大，图片重复访
+background-repeat: repeat-y;
+background-position-x:
+background-position-y:
+
+示例：输入框
+</code></pre><p>JavaScript<br>    独立的语言，浏览器具有js解释器</p>
+<pre><code>JavaScript代码存在形式：
+    - Head中
+            &lt;script&gt;
+                //javascript代码
+                alert(123);
+            &lt;/script&gt;
+
+            &lt;script type=&quot;text/javascript&quot;&gt;
+                //javascript代码
+                alert(123);
+            &lt;/script&gt;
+    - 文件
+        &lt;script src=&apos;js文件路径&apos;&gt; &lt;/script&gt;
+
+    PS: JS代码需要放置在 &lt;body&gt;标签内部的最下方
+
+注释
+    当行注释 //
+    多行注释  /*     */
+
+变量：
+
+    python：
+        name = &apos;alex&apos;
+    JavaScript:
+        name = &apos;alex&apos;     # 全局变量
+        var name = &apos;eric&apos; # 局部变量
+
+写Js代码：
+    - html文件中编写
+    - 临时，浏览器的终端 console
+
+
+基本数据类型
+    数字
+        a = 18;
+    字符串
+        a = &quot;alex&quot;
+        a.chartAt(索引位置)
+        a.substring(起始位置，结束位置)
+        a.lenght    获取当前字符串长度
+        ...
+    列表(数组)
+        a = [11,22,33]
+
+    字典
+        a = {&apos;k1&apos;:&apos;v1&apos;,&apos;k2&apos;:&apos;v2&apos;}
+    布尔类型
+        小写
+
+for循环
+    1. 循环时，循环的元素是索引
+
+        a = [11,22,33,44]
+        for(var item in a){
+            console.log(item);
+        }
+
+        a = {&apos;k1&apos;:&apos;v1&apos;,&apos;k2&apos;:&apos;v2&apos;}
+        for(var item in a){
+            console.log(item);
+        }
+
+    2. 
+        for(var i=0;i&lt;10;i=i+1){
+
+        }
+
+        a = [11,22,33,44]
+        for(var i=0;i&lt;a.length;i=i+1){
+
+        }
+
+        不支持字典的循环
+
+
+条件语句
+    if(条件){
+
+    }else if(条件){
+
+    }else if(条件){
+
+    }else{
+
+    }
+
+    ==   值相等
+    ===  值和类型都相等
+    &amp;&amp;   and
+    ||   or
+
+
+函数：
+
+
+    function 函数名(a,b,c){
+
+    }
+
+    函数名(1,2,3)
+</code></pre><p>Dom<br>    1、找到标签<br>        获取单个元素        document.getElementById(‘i1’)<br>        获取多个元素（列表）document.getElementsByTagName(‘div’)<br>        获取多个元素（列表）document.getElementsByClassName(‘c1’)<br>        a. 直接找<br>            document.getElementById             根据ID获取一个标签<br>            document.getElementsByName          根据name属性获取标签集合<br>            document.getElementsByClassName     根据class属性获取标签集合<br>            document.getElementsByTagName       根据标签名获取标签集合</p>
+<pre><code>    b. 间接
+        tag = document.getElementById(&apos;i1&apos;)
+
+        parentElement           // 父节点标签元素
+        children                // 所有子标签
+        firstElementChild       // 第一个子标签元素
+        lastElementChild        // 最后一个子标签元素
+        nextElementtSibling     // 下一个兄弟标签元素
+        previousElementSibling  // 上一个兄弟标签元素
+
+2、操作标签
+
+    a. innerText
+
+        获取标签中的文本内容
+        标签.innerText
+
+        对标签内部文本进行重新复制
+
+        标签.innerText = &quot;&quot;
+
+    b. className
+        tag.className =》 直接整体做操作
+        tag.classList.add(&apos;样式名&apos;)   添加指定样式
+        tag.classList.remove(&apos;样式名&apos;)   删除指定样式
+
+        PS：
+
+            &lt;div onclick=&apos;func();&apos;&gt;点我&lt;/div&gt;
+            &lt;script&gt;
+                function func(){
+
+                }
+
+            &lt;/script&gt;
+
+    c. checkbox  
+            获取值
+            checkbox对象.checked
+            设置值
+            checkbox对象.checked = true
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-11-21T08:00:48.000Z"><a href="/2017/11/21/数据库/">2017-11-21</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/11/21/数据库/">数据库</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>主键 一个数据表只包含一个主键，你可以使用主键来查询数据<br>外键 用于关联两个表<br>复何健 将多个列作为一个索引键 一般用于复合索引<br>索引 快速访问数据库特定信息 是对数据库一列或多列的排序 类似书籍目录<br>参照完整性 数据必须存在</p>
+<p>刚安装 密码为空 通过<br>mysqladmin -u root password “new_password”    修改<br>登录<br>mysql -u root -p<br>show databases;<br>增加用户<br>grant all on test(表名？).* ‘yourname’@’localhost’ identified by ‘youpassword’;</p>
+<p>进入表<br>use mysql;<br>显示表<br>show tables;<br>查看表<br>desc user;</p>
+<p>create databases test charset utf8;<br>查看表创建记录<br>show create table lin<br>create table lin(<br>id int auto_increment,<br>name char(32) not null,<br>age int not null,<br>register_date date not null,<br>primary ke(id))<br> insert into lin (name,age,register_data) values(“lin”,22,”2016-3-22”);<br> select <em> from lin limit 2 offset 1<br>select </em> from lin where id &gt;3 and age &lt;2<br>改<br>update lin set name=”ddd”,age=22 where id=4;<br>删<br>delete from lin where name=”ddd”;<br>排序<br>select <em> from lin order by id desc; asc 降序升序<br>分组 计数<br>select name,count(</em>) from lin group by age;<br>select coalesce(name,”total”),sum(age) as total from lin group by name with rollup;<br>加列<br>alter table student add sex enum(“M”,”F”);<br>删列<br>alter table lin drop age;<br>改 是否为空<br>alter table lin modify sex enum(“M”,”F”) not null;<br>改字段名<br>alter table lin change sex gender char(32)not null default “X”<br>外键<br>create table lin_recd(<br>id int auto_increment primary key,<br>name char(32) not null,<br>age_rec int not null,<br>rec_date date not null,<br>KEY ‘fk_lin_key’ (‘stu_id’)<br>constraint ‘fk_lin_key’ foreign key (‘stu_id’)<br>references ‘lin’(‘id’))</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import pymysql</div><div class="line">conn = pymysql.connect(host=&apos;127.0.0.1&apos;,user = &apos;root&apos;,passwd = &apos;123456&apos;,db=&apos;test&apos;)</div><div class="line">cur =conn.cursor()</div><div class="line">reCount = cur.execute(&apos;insert into lin (name,age,register_data) values(&quot;lin&quot;,12,&quot;2011-3-22&quot;);&apos;)</div><div class="line">conn.commit()</div><div class="line">cur.close()</div><div class="line">conn.close()</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-11-18T14:24:35.000Z"><a href="/2017/11/18/client-server/">2017-11-18</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/11/18/client-server/">client&amp;server</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2017-11-14T14:19:35.000Z"><a href="/2017/11/14/operating-system/">2017-11-14</a></time>
       
       
@@ -445,197 +914,6 @@
 <p>包括 数字列表如何合并 列表倒序<br>print(“ “.join(str(a[::-1])))<br>输出 [ 4 ,   3 ,   2 ,   1 ]<br>print(“ “.join(map(str,a[::-1])))        #将后面列表内单个取出 换成str类型<br>输出 ：4 3 2 1<br>print(“ “.join(str(st) for st in (a[::-1])))      #将后面列表内单个取出 换成str类型<br>输出 4 3 2 1</p>
 <p>根据输入的数字 来决定后面语句执行次数<br>for i in range(int(input())): s=input()</p>
 
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-10-24T13:09:09.000Z"><a href="/2017/10/24/迭代器/">2017-10-24</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/10/24/迭代器/">迭代器</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>列表生成式 [i*2 for i in range(4)]<br>range()2.0 3.0 区别 2.0 是列表  3.0是迭代器<br>yield() + 函数 生成迭代器</p>
-<pre><code>
-class DataIter(object):
-
-    def __init__(self, *args):
-        self.data = list(args)
-        self.ind = 0
-
-    def __iter__(self): #返回自身
-        return self
-
-    def __next__(self): #　返回数据
-        if self.ind == len(self.data):
-            raise StopIteration
-        else:
-            data = self.data[self.ind]
-            self.ind += 1
-            return data
-## -- End pasted text --
-
-d  = DataIter(1,2)
-
-for x in d:
-    print(x)
-</code></pre><p>装饰器 为其他函数添加功能</p>
-<p>原则 1 不能修改被装饰函数<br>    2 函数调用方式不变</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-10-24T09:13:32.000Z"><a href="/2017/10/24/输入处理/">2017-10-24</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/10/24/输入处理/">输入处理</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>判断字符输入为空  继续输入<br>if len(msg)==0:continue<br>如果输入为空<br>if not input():</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-10-22T12:08:35.000Z"><a href="/2017/10/22/socket-coding网络/">2017-10-22</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/10/22/socket-coding网络/">socket coding</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p><img src="https://i.loli.net/2017/10/23/59ed63896e73d.png" alt="tcp socket flow diagram"></p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-10-21T11:34:44.000Z"><a href="/2017/10/21/日语/">2017-10-21</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/10/21/日语/">日日语</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>仕組み　【しくみ】【shikumi】</p>
-<ol>
-<li>（事物的）结构，构成，策划，安排。（物事の組み立て。仕掛け）。例句<br>おもしろい仕組み<br>有意思的计划<br>大体の仕組み<br>大致的计划</li>
-<li>结构，构造。（機械などの組み立てた物の構造）。例句</li>
-<li>（戏剧、小说等的）结构，情节。（戯曲・小説などの筋の立て方。趣向。構成）。</li>
-</ol>
-<p>さえ　</p>
-<ol>
-<li>连。甚至。表示举出一件事，使暗示、推测其他之意。（ 極端な事柄を例として提示し，他の一般を推し量らせる意を表す）。例句<br>夫婦喧嘩は犬さえ食わない。<br>夫妻吵架狗不管；夫妻吵架，外人别管。</li>
-<li>只要…就行。表示强调惟此条件，其他不必考虑之意。（ （仮定条件句の中で用いられて）そのことだけで，すべての条件が満足される意を表す）。例句</li>
-<li>又加上。而且。表示附加之意。（そればかりではなく，さらにつけ加わる意を表す）。</li>
-</ol>
-<p>実物日<br>【じつぶつ】【jitsubutsu】<br>【名词】 实物，实在的东西。;现货。 </p>
-<p>示す日<br>【しめす】【shimesu】<br>【他动词・五段/一类】 出示，拿出来给（对方）看。;表现；表示；感情、意志等外露。;指示；指教。;显示出……。 </p>
-<p>身振り日<br>【みぶり】【miburi】①<br>【名词】 姿态，动作。（意志や感情を表す（そうとする）体の動き。） </p>
-<p>思われる日<br>【おもわれる】【omowareru】<br>【他动词・一段/二类】</p>
-<pre><code>1. 被看作，被认为，人们认为；被思慕。（ひとにそう考えられる。）
-人によく思われる。/被人认为好。
-彼は学者と思われていた。/人们一直认为他是个学者。
-わたしはおまえに悪く思われたくない。/我不愿意你说我不好，我不愿意你对我有坏印象。
-ふたりは思い思われる仲だ。/两个人相思相爱。
-2. 总觉得，总认为，看来。〔…のようだ。〕
-どうも本当と思われる。/总觉得是真的。
-雨が降りそうに思われる。/看来要下雨的样子。
-彼のようすがへんに思われる。/总觉得他的样子可疑，他的样子令人可疑。
-この論文を書いたのはどうもあの人じゃないかと思われる。/我总觉得写这篇文章的可能就是他。
-…と思われてならない。/总觉得……。
-3. 可以认为，能够认为。〔納得できる。〕
-これが真実とは思われない。/这不能被认为是真实的。
-人間業とは思われない。/难以设想是人力所能做到的。
-</code></pre><p>ぱっぱと日<br>【ぱっぱと】【paqpato】◎ [点击发音]<br>【副词】</p>
-<pre><code>1. 大手大脚。（金などをどんどん惜し気もなく使うさまを表わす語。）
-ぱっぱと金を使う。/大手大脚的花钱。
-2. 信口开河。（遠慮なく言うようす。）
-人前をかまわずぱっぱと言いたいことを言う。/旁若无人的想说什么就说什么。
-</code></pre>
       
     </div>
     <footer>

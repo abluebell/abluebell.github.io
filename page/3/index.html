@@ -52,6 +52,197 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2017-10-24T13:09:09.000Z"><a href="/2017/10/24/迭代器/">2017-10-24</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/10/24/迭代器/">迭代器</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>列表生成式 [i*2 for i in range(4)]<br>range()2.0 3.0 区别 2.0 是列表  3.0是迭代器<br>yield() + 函数 生成迭代器</p>
+<pre><code>
+class DataIter(object):
+
+    def __init__(self, *args):
+        self.data = list(args)
+        self.ind = 0
+
+    def __iter__(self): #返回自身
+        return self
+
+    def __next__(self): #　返回数据
+        if self.ind == len(self.data):
+            raise StopIteration
+        else:
+            data = self.data[self.ind]
+            self.ind += 1
+            return data
+## -- End pasted text --
+
+d  = DataIter(1,2)
+
+for x in d:
+    print(x)
+</code></pre><p>装饰器 为其他函数添加功能</p>
+<p>原则 1 不能修改被装饰函数<br>    2 函数调用方式不变</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-10-24T09:13:32.000Z"><a href="/2017/10/24/输入处理/">2017-10-24</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/10/24/输入处理/">输入处理</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>判断字符输入为空  继续输入<br>if len(msg)==0:continue<br>如果输入为空<br>if not input():</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-10-22T12:08:35.000Z"><a href="/2017/10/22/socket-coding网络/">2017-10-22</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/10/22/socket-coding网络/">socket coding</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><img src="https://i.loli.net/2017/10/23/59ed63896e73d.png" alt="tcp socket flow diagram"></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-10-21T11:34:44.000Z"><a href="/2017/10/21/日语/">2017-10-21</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/10/21/日语/">日日语</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>仕組み　【しくみ】【shikumi】</p>
+<ol>
+<li>（事物的）结构，构成，策划，安排。（物事の組み立て。仕掛け）。例句<br>おもしろい仕組み<br>有意思的计划<br>大体の仕組み<br>大致的计划</li>
+<li>结构，构造。（機械などの組み立てた物の構造）。例句</li>
+<li>（戏剧、小说等的）结构，情节。（戯曲・小説などの筋の立て方。趣向。構成）。</li>
+</ol>
+<p>さえ　</p>
+<ol>
+<li>连。甚至。表示举出一件事，使暗示、推测其他之意。（ 極端な事柄を例として提示し，他の一般を推し量らせる意を表す）。例句<br>夫婦喧嘩は犬さえ食わない。<br>夫妻吵架狗不管；夫妻吵架，外人别管。</li>
+<li>只要…就行。表示强调惟此条件，其他不必考虑之意。（ （仮定条件句の中で用いられて）そのことだけで，すべての条件が満足される意を表す）。例句</li>
+<li>又加上。而且。表示附加之意。（そればかりではなく，さらにつけ加わる意を表す）。</li>
+</ol>
+<p>実物日<br>【じつぶつ】【jitsubutsu】<br>【名词】 实物，实在的东西。;现货。 </p>
+<p>示す日<br>【しめす】【shimesu】<br>【他动词・五段/一类】 出示，拿出来给（对方）看。;表现；表示；感情、意志等外露。;指示；指教。;显示出……。 </p>
+<p>身振り日<br>【みぶり】【miburi】①<br>【名词】 姿态，动作。（意志や感情を表す（そうとする）体の動き。） </p>
+<p>思われる日<br>【おもわれる】【omowareru】<br>【他动词・一段/二类】</p>
+<pre><code>1. 被看作，被认为，人们认为；被思慕。（ひとにそう考えられる。）
+人によく思われる。/被人认为好。
+彼は学者と思われていた。/人们一直认为他是个学者。
+わたしはおまえに悪く思われたくない。/我不愿意你说我不好，我不愿意你对我有坏印象。
+ふたりは思い思われる仲だ。/两个人相思相爱。
+2. 总觉得，总认为，看来。〔…のようだ。〕
+どうも本当と思われる。/总觉得是真的。
+雨が降りそうに思われる。/看来要下雨的样子。
+彼のようすがへんに思われる。/总觉得他的样子可疑，他的样子令人可疑。
+この論文を書いたのはどうもあの人じゃないかと思われる。/我总觉得写这篇文章的可能就是他。
+…と思われてならない。/总觉得……。
+3. 可以认为，能够认为。〔納得できる。〕
+これが真実とは思われない。/这不能被认为是真实的。
+人間業とは思われない。/难以设想是人力所能做到的。
+</code></pre><p>ぱっぱと日<br>【ぱっぱと】【paqpato】◎ [点击发音]<br>【副词】</p>
+<pre><code>1. 大手大脚。（金などをどんどん惜し気もなく使うさまを表わす語。）
+ぱっぱと金を使う。/大手大脚的花钱。
+2. 信口开河。（遠慮なく言うようす。）
+人前をかまわずぱっぱと言いたいことを言う。/旁若无人的想说什么就说什么。
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2017-10-20T14:16:10.000Z"><a href="/2017/10/20/编码占字节问题/">2017-10-20</a></time>
       
       
