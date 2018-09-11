@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>收集正则表达式 | Fool&#39;s router</title>
+  <title>Fool&#39;s router</title>
   <meta name="author" content="lee">
   
   <meta name="description" content="diary of a fool">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="收集正则表达式"/>
+  
   <meta property="og:site_name" content="Fool&#39;s router"/>
 
   
@@ -51,21 +51,55 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-11-08T10:22:38.000Z"><a href="/2017/11/08/收集正则表达式/">2017-11-08</a></time>
+        <time datetime="2018-04-22T10:20:43.268Z"><a href="/2018/04/22/python基础教程笔记—即时标记（详解）/">2018-04-22</a></time>
       
       
   
-    <h1 class="title">收集正则表达式</h1>
+    <h1 class="title"></h1>
   
 
     </header>
     <div class="entry">
       
-        <p>匹配任意网址 (?i)\b((?:[a-z][\w-]+:(?:/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.-]+[.][a-z]{2,4}/)(?:[^\s()&lt;&gt;]+|(([^\s()&lt;&gt;]+|(([^\s()&lt;&gt;]+)))<em>))+(?:(([^\s()&lt;&gt;]+|(([^\s()&lt;&gt;]+)))</em>)|[^\s`!()[]{};:’”.,&lt;&gt;?«»“”‘’]))</p>
-<p>匹配 汉字 [\u4E00-\u9FA5]+</p>
-<p><a href="http://www.cnblogs.com/dreamer-fish/p/5282679.html" target="_blank" rel="external">http://www.cnblogs.com/dreamer-fish/p/5282679.html</a></p>
-<p><a href="https://www.zhihu.com/question/36111342" target="_blank" rel="external">https://www.zhihu.com/question/36111342</a></p>
-<p>a=re.sub(r’*(.+?)*‘,r’<em>\1</em>‘,’<em>hhhhhh</em>‘)      /1   保留原先（） 内的内容 替换</p>
+        <hr>
+<p>title: python基础教程笔记—即时标记（详解）<br>date: 2018-04-22 18:20:43</p>
+<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><p>看的有点晚 基本上网上都有代码  但是看的时候 卡了下 </p>
+<pre><code>#encoding:utf-8
+#生成器，for循环时会依次返回每一行，它只在文件的最后追加了一个空行\n
+def lines(file):
+    for line in file:yield line
+    yield &apos;\n&apos;
+#生成器，for循环时会依次返回文本块组成的函数
+def blocks(file):
+    block = []
+    for line in lines(file):
+        if line.strip():
+            block.append(line)
+        elif block:
+            yield &apos;&apos;.join(block).strip()
+            block = []
+</code></pre><p>首先我们来看lines()方法，参数是文件，然后对文件进行循环，每次读取一行文件，yield关键字，这里代表方法是一个生成器，循环的时候到yield我们可以理解成返回一次line内容。文本读完后，yield处是一个’\n’。   </p>
+<p><font color="red">但是现在这个版本的python可以不需要这个步骤了 （3.6）导致我看的时候  卡了很长时间 。</font><br>blocks()方法就使用了上面的生成器，每次循环取出内容后，对line内容进行判断，如果有值，去除两边空格，添加到列表中，否则将block列表生成字符串。我们可以看出blocks也是一个生成器，他的实际功能是，从文件中，依次读取出来一个文本块。</p>
+<p>这里可以总结的 是<br>sys.stdin  可以在pycharm里直接输入  同时也可以将file 改成   open(‘files.txt’,’r+’)   代替在python命令里输入文件<br>同时 if 处理的是 line  而 elif处理的是block  打破了if 和 elif 必须比较同类的思维定势</p>
+<pre><code>import sys,re
+from util import *
+
+print &apos;&lt;html&gt;&lt;head&gt;&lt;title&gt;hello&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&apos;
+
+title = True
+for block in blocks(sys.stdin):
+    block = re.sub(r&apos;\*(.+?)\*&apos;,r&apos;&lt;em&gt;\1&lt;/em&gt;&apos;,block)
+    if title:
+        print &apos;&lt;h1&gt;&apos;
+        print block
+        print &apos;&lt;/h1&gt;&apos;
+        title = False
+    else:
+        print &apos;&lt;p&gt;&apos;
+        print block
+        print &apos;&lt;/p&gt;&apos;
+print &apos;&lt;/body&gt;&lt;/html&gt;&apos;
+</code></pre><p>这里注意的是   from util import *   可以直接用util里的方法和变量<br>而 import util  想引用要util.blocks()  加util名<br>正则的第二个参数  \1 可以保留前面匹配的内容。</p>
 
       
     </div>
@@ -113,7 +147,7 @@
   }(document, 'script', 'facebook-jssdk'));
 </script>
 
-<div class="fb-comments" data-href="http://yoursite.com/2017/11/08/收集正则表达式/index.html" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+<div class="fb-comments" data-href="http://yoursite.com/2018/04/22/python基础教程笔记—即时标记（详解）/index.html" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
       
   
 </section>

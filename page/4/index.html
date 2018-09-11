@@ -1,0 +1,474 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Page 4 | Fool&#39;s router</title>
+  <meta name="author" content="lee">
+  
+  <meta name="description" content="diary of a fool">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Fool&#39;s router"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Fool&#39;s router" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Fool&#39;s router</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-10-24T13:09:09.000Z"><a href="/2017/10/24/迭代器/">2017-10-24</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/10/24/迭代器/">迭代器</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>列表生成式 [i*2 for i in range(4)]<br>range()2.0 3.0 区别 2.0 是列表  3.0是迭代器<br>yield() + 函数 生成迭代器</p>
+<pre><code>
+class DataIter(object):
+
+    def __init__(self, *args):
+        self.data = list(args)
+        self.ind = 0
+
+    def __iter__(self): #返回自身
+        return self
+
+    def __next__(self): #　返回数据
+        if self.ind == len(self.data):
+            raise StopIteration
+        else:
+            data = self.data[self.ind]
+            self.ind += 1
+            return data
+## -- End pasted text --
+
+d  = DataIter(1,2)
+
+for x in d:
+    print(x)
+</code></pre><p>装饰器 为其他函数添加功能</p>
+<p>原则 1 不能修改被装饰函数<br>    2 函数调用方式不变</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-10-24T09:13:32.000Z"><a href="/2017/10/24/输入处理/">2017-10-24</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/10/24/输入处理/">输入处理</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>判断字符输入为空  继续输入<br>if len(msg)==0:continue<br>如果输入为空<br>if not input():</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-10-22T12:08:35.000Z"><a href="/2017/10/22/socket-coding网络/">2017-10-22</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/10/22/socket-coding网络/">socket coding</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><img src="https://i.loli.net/2017/10/23/59ed63896e73d.png" alt="tcp socket flow diagram"></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-10-21T11:34:44.000Z"><a href="/2017/10/21/日语/">2017-10-21</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/10/21/日语/">日日语</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>仕組み　【しくみ】【shikumi】</p>
+<ol>
+<li>（事物的）结构，构成，策划，安排。（物事の組み立て。仕掛け）。例句<br>おもしろい仕組み<br>有意思的计划<br>大体の仕組み<br>大致的计划</li>
+<li>结构，构造。（機械などの組み立てた物の構造）。例句</li>
+<li>（戏剧、小说等的）结构，情节。（戯曲・小説などの筋の立て方。趣向。構成）。</li>
+</ol>
+<p>さえ　</p>
+<ol>
+<li>连。甚至。表示举出一件事，使暗示、推测其他之意。（ 極端な事柄を例として提示し，他の一般を推し量らせる意を表す）。例句<br>夫婦喧嘩は犬さえ食わない。<br>夫妻吵架狗不管；夫妻吵架，外人别管。</li>
+<li>只要…就行。表示强调惟此条件，其他不必考虑之意。（ （仮定条件句の中で用いられて）そのことだけで，すべての条件が満足される意を表す）。例句</li>
+<li>又加上。而且。表示附加之意。（そればかりではなく，さらにつけ加わる意を表す）。</li>
+</ol>
+<p>実物日<br>【じつぶつ】【jitsubutsu】<br>【名词】 实物，实在的东西。;现货。 </p>
+<p>示す日<br>【しめす】【shimesu】<br>【他动词・五段/一类】 出示，拿出来给（对方）看。;表现；表示；感情、意志等外露。;指示；指教。;显示出……。 </p>
+<p>身振り日<br>【みぶり】【miburi】①<br>【名词】 姿态，动作。（意志や感情を表す（そうとする）体の動き。） </p>
+<p>思われる日<br>【おもわれる】【omowareru】<br>【他动词・一段/二类】</p>
+<pre><code>1. 被看作，被认为，人们认为；被思慕。（ひとにそう考えられる。）
+人によく思われる。/被人认为好。
+彼は学者と思われていた。/人们一直认为他是个学者。
+わたしはおまえに悪く思われたくない。/我不愿意你说我不好，我不愿意你对我有坏印象。
+ふたりは思い思われる仲だ。/两个人相思相爱。
+2. 总觉得，总认为，看来。〔…のようだ。〕
+どうも本当と思われる。/总觉得是真的。
+雨が降りそうに思われる。/看来要下雨的样子。
+彼のようすがへんに思われる。/总觉得他的样子可疑，他的样子令人可疑。
+この論文を書いたのはどうもあの人じゃないかと思われる。/我总觉得写这篇文章的可能就是他。
+…と思われてならない。/总觉得……。
+3. 可以认为，能够认为。〔納得できる。〕
+これが真実とは思われない。/这不能被认为是真实的。
+人間業とは思われない。/难以设想是人力所能做到的。
+</code></pre><p>ぱっぱと日<br>【ぱっぱと】【paqpato】◎ [点击发音]<br>【副词】</p>
+<pre><code>1. 大手大脚。（金などをどんどん惜し気もなく使うさまを表わす語。）
+ぱっぱと金を使う。/大手大脚的花钱。
+2. 信口开河。（遠慮なく言うようす。）
+人前をかまわずぱっぱと言いたいことを言う。/旁若无人的想说什么就说什么。
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-10-20T14:16:10.000Z"><a href="/2017/10/20/编码占字节问题/">2017-10-20</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/10/20/编码占字节问题/">&#39;编码占字节问题&#39;</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>英文字母和中文汉字在不同字符集编码下的字节数</p>
+<p>英文字母：</p>
+<p>字节数 : 1;编码：GB2312</p>
+<p>字节数 : 1;编码：GBK</p>
+<p>字节数 : 1;编码：GB18030</p>
+<p>字节数 : 1;编码：ISO-8859-1</p>
+<p>字节数 : 1;编码：UTF-8</p>
+<p>字节数 : 4;编码：UTF-16</p>
+<p>字节数 : 2;编码：UTF-16BE</p>
+<p>字节数 : 2;编码：UTF-16LE</p>
+<p>中文汉字：</p>
+<p>字节数 : 2;编码：GB2312</p>
+<p>字节数 : 2;编码：GBK</p>
+<p>字节数 : 2;编码：GB18030</p>
+<p>字节数 : 1;编码：ISO-8859-1</p>
+<p>字节数 : 3;编码：UTF-8</p>
+<p>字节数 : 4;编码：UTF-16</p>
+<p>字节数 : 2;编码：UTF-16BE</p>
+<p>字节数 : 2;编码：UTF-16LE</p>
+<p>这是个好问题，可以当作一个笔试题。先从字符编码讲起。 1、美国人首先对其英文字符进行了编码，也就是最早的ascii码，用一个字节的低7位来表示英文的128个字符，高1位统一为0； 2、后来欧洲人发现尼玛你这128位哪够用，比如我高贵的法国人字母上面的还有注音符，这个怎么区分，得，把高1位编进来吧，这样欧洲普遍使用一个全字节进行编码，最多可表示256位。欧美人就是喜欢直来直去，字符少，编码用得位数少； 3、但是即使位数少，不同国家地区用不同的字符编码，虽然0–127表示的符号是一样的，但是128–255这一段的解释完全乱套了，即使2进制完全一样，表示的字符完全不一样，比如135在法语，希伯来语，俄语编码中完全是不同的符号； 4、更麻烦的是，尼玛这电脑高科技传到中国后，中国人发现我们有10万多个汉字，你们欧美这256字塞牙缝都不够。于是就发明了GB2312这些汉字编码，典型的用2个字节来表示绝大部分的常用汉字，最多可以表示65536个汉字字符，这样就不难理解有些汉字你在新华字典里查得到，但是电脑上如果不处理一下你是显示不出来的了吧。 5、这下各用各的字符集编码，这世界咋统一？俄国人发封email给中国人，两边字符集编码不同，尼玛显示都是乱码啊。为了统一，于是就发明了unicode，将世界上所有的符号都纳入其中，每一个符号都给予一个独一无二的编码，现在unicode可以容纳100多万个符号，每个符号的编码都不一样，这下可统一了，所有语言都可以互通，一个网页页面里可以同时显示各国文字。 6、然而，unicode虽然统一了全世界字符的二进制编码，但没有规定如何存储啊，亲。x86和amd体系结构的电脑小端序和大端序都分不清，别提计算机如何识别到底是unicode还是acsii了。如果Unicode统一规定，每个符号用三个或四个字节表示，那么每个英文字母前都必然有二到三个字节是0，文本文件的大小会因此大出二三倍，这对于存储来说是极大的浪费。这样导致一个后果：出现了Unicode的多种存储方式。 7、互联网的兴起，网页上要显示各种字符，必须统一啊，亲。utf-8就是Unicode最重要的实现方式之一。另外还有utf-16、utf-32等。UTF-8不是固定字长编码的，而是一种变长的编码方式。它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度。这是种比较巧妙的设计，如果一个字节的第一位是0，则这个字节单独就是一个字符；如果第一位是1，则连续有多少个1，就表示当前字符占用多少个字节。 8、注意unicode的字符编码和utf-8的存储编码表示是不同的，例如”严”字的Unicode码是4E25，UTF-8编码是E4B8A5，这个7里面解释了的，UTF-8编码不仅考虑了编码，还考虑了存储，E4B8A5是在存储识别编码的基础上塞进了4E25。 9、UTF-8 使用一至四个字节为每个字符编码。128 个 ASCII 字符（Unicode 范围由 U+0000 至 U+007F）只需一个字节，带有变音符号的拉丁文、希腊文、西里尔字母、亚美尼亚语、希伯来文、阿拉伯文、叙利亚文及马尔代夫语（Unicode 范围由 U+0080 至 U+07FF）需要二个字节，其他基本多文种平面（BMP）中的字符（CJK属于此类-Qieqie注）使用三个字节，其他 Unicode 辅助平面的字符使用四字节编码。  10、最后，要回答你的问题，常规来看，中文汉字在utf-8中到底占几个字节，一般是3个字节，最常见的编码方式是1110xxxx 10xxxxxx 10xxxxxx。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-10-20T05:49:57.000Z"><a href="/2017/10/20/osi七层模型/">2017-10-20</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/10/20/osi七层模型/">osi七层模型</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>介绍osi模型的图片<br><img src="https://i.loli.net/2017/10/20/59e982847e460.png" alt="osi"></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-04-10T12:44:40.000Z"><a href="/2017/04/10/android学习日记/">2017-04-10</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/04/10/android学习日记/"></a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-04-02T16:30:38.537Z"><a href="/2017/04/03/将TXT文本内八进制数字转成英文/">2017-04-03</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/04/03/将TXT文本内八进制数字转成英文/"></a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <hr>
+<h2 id="将TXT文本内八进制数字转成英文"><a href="#将TXT文本内八进制数字转成英文" class="headerlink" title="将TXT文本内八进制数字转成英文"></a>将TXT文本内八进制数字转成英文</h2><h5 id="2017-04-03-00-30-38"><a href="#2017-04-03-00-30-38" class="headerlink" title="2017-04-03 00:30:38"></a>2017-04-03 00:30:38</h5><h2 id="tags-java-oct"><a href="#tags-java-oct" class="headerlink" title="#####tags:java oct "></a>#####tags:java oct </h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line">import java.io.BufferedInputStream;</div><div class="line">import java.io.BufferedReader;</div><div class="line">import java.io.File;</div><div class="line">import java.io.FileInputStream;</div><div class="line">import java.io.InputStreamReader;</div><div class="line">import java.io.Reader;</div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line"></div><div class="line">	 /**</div><div class="line">     * 功能：Java读取txt文件的内容</div><div class="line">     * 步骤：1：先获得文件句柄</div><div class="line">     * 2：获得文件句柄当做是输入一个字节码流，需要对这个输入流进行读取</div><div class="line">     * 3：读取到输入流后，需要读取生成字节流</div><div class="line">     * 4：一行一行的输出。readline()。</div><div class="line">     * 备注：需要考虑的是异常情况</div><div class="line">     * @param filePath</div><div class="line">     */</div><div class="line">    public static void readTxtFile(String filePath)&#123;</div><div class="line">        try &#123;	</div><div class="line">        		String encoding=&quot;utf-8&quot;;</div><div class="line">                File file=new File(filePath);</div><div class="line">                if(file.isFile() &amp;&amp; file.exists())&#123; //判断文件是否存在</div><div class="line">                    InputStreamReader read = new InputStreamReader(</div><div class="line">                    new FileInputStream(file),encoding);//考虑到编码格式</div><div class="line">                    BufferedReader bufferedReader = new BufferedReader(read);</div><div class="line">                    String lineTxt = null;</div><div class="line">                    while((lineTxt = bufferedReader.readLine()) != null)&#123;</div><div class="line">                    	String s[]= lineTxt.split(&quot; &quot;) ;</div><div class="line">                    	if(s.length==0) break;</div><div class="line">                    	for(int i = 0 ; i &lt; s.length ; i++)&#123;</div><div class="line">                    	int num = Integer.parseInt(s[i]);</div><div class="line">                    	 int result = 0 ;</div><div class="line">                         int j = 1 ;</div><div class="line">                        </div><div class="line">                         while(num&gt;0)&#123;</div><div class="line">                              int a = num%10 ;        </div><div class="line">                              result = result + a*j ;</div><div class="line">                              num = num/10 ;</div><div class="line">                              j = 8*j ;</div><div class="line">                         &#125;</div><div class="line">                        </div><div class="line">                    	char c = (char)result;</div><div class="line">                    	System.out.print(c);</div><div class="line">                    	&#125;</div><div class="line">                    	</div><div class="line">                    	</div><div class="line">                    	</div><div class="line">                    	</div><div class="line">                    &#125;</div><div class="line">                 /*   for(int i = 0 ; i &lt; fina.length ; i++)&#123; </div><div class="line">                    System.out.println(fina[i]);  */</div><div class="line">                    read.close();</div><div class="line">                   // &#125;</div><div class="line">        &#125;else&#123;</div><div class="line">            System.out.println(&quot;找不到指定的文件&quot;);</div><div class="line">        &#125;</div><div class="line">        &#125; catch (Exception e) &#123;</div><div class="line">            System.out.println(&quot;读取文件内容出错&quot;);</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">     </div><div class="line">    &#125;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		</div><div class="line">		 String filePath = &quot;E:\\gmae\\g4java\\qs.txt&quot;;</div><div class="line">         readTxtFile(filePath);</div><div class="line">	/*	char a = (char)0115;</div><div class="line">		char b = (char)77;		</div><div class="line">		System.out.println(a);</div><div class="line">		System.out.println(b);   */</div><div class="line">		</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>&#8195;&#8195;想注册一个网站的账号，注册码是八进制数字，目标转换成可读的英文来回答问题，于是就写了这个。<br>遇到的问题:<br>-八进制不用转换成十进制，直接可以用八进制对应ACS2码打出英文。<br>-期间遇到挺多问题，现在都想不起来了，算了。</p>
+<p>Markdonw语言下的空格，用于首行缩进<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">半方大的空白&amp;ensp;或&amp;#8194;</div><div class="line">全方大的空白&amp;emsp;或&amp;#8195;</div><div class="line">不断行的空白格&amp;nbsp;或&amp;#160;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-04-01T16:21:56.934Z"><a href="/2017/04/02/To-be-a-fool/">2017-04-02</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/04/02/To-be-a-fool/"></a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <hr>
+<h1 id="To-be-a-fool"><a href="#To-be-a-fool" class="headerlink" title="To be a fool"></a>To be a fool</h1><h5 id="2017-04-02-00-21-56"><a href="#2017-04-02-00-21-56" class="headerlink" title="2017-04-02 00:21:56"></a>2017-04-02 00:21:56</h5><hr>
+<p>愚人节过了，这也许是一个认真的开始吧。</p>
+<hr>
+<p><img src="https://i.imgur.com/46dH55Pr.jpg" alt="2b小姐姐作证"></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/3/" class="alignleft prev">Prev</a>
+  
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2018 lee
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

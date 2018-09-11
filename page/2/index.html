@@ -52,19 +52,17 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2018-02-22T07:57:19.000Z"><a href="/2018/02/22/网络是怎么连接的/">2018-02-22</a></time>
+        <time datetime="2018-04-12T15:34:11.000Z"><a href="/2018/04/12/os-module/">2018-04-12</a></time>
       
       
   
-    <h1 class="title"><a href="/2018/02/22/网络是怎么连接的/">网络是怎么连接的</a></h1>
+    <h1 class="title"><a href="/2018/04/12/os-module/">os module</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <p>创建套接字时 首先分配一个套接字所需的内存空间 然后向其中写入初始状态</p>
-<p>通信操作中使用的控制信息分为两类：<br>1 头部中记录的信息<br>2 套接字（协议栈中的内存空间）中记录的信息</p>
-<p>连接操作的第一步是TCP模块处创建表示连接控制信息的头部<br>通过TCP头部中的发送方和接收方端口号可以找到连接的套接字</p>
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div><div class="line">313</div><div class="line">314</div><div class="line">315</div><div class="line">316</div><div class="line">317</div><div class="line">318</div><div class="line">319</div><div class="line">320</div><div class="line">321</div><div class="line">322</div><div class="line">323</div><div class="line">324</div><div class="line">325</div><div class="line">326</div><div class="line">327</div><div class="line">328</div><div class="line">329</div><div class="line">330</div><div class="line">331</div><div class="line">332</div><div class="line">333</div><div class="line">334</div><div class="line">335</div><div class="line">336</div><div class="line">337</div><div class="line">338</div><div class="line">339</div><div class="line">340</div><div class="line">341</div><div class="line">342</div><div class="line">343</div><div class="line">344</div><div class="line">345</div><div class="line">346</div><div class="line">347</div><div class="line">348</div><div class="line">349</div><div class="line">350</div><div class="line">351</div><div class="line">352</div><div class="line">353</div><div class="line">354</div><div class="line">355</div><div class="line">356</div><div class="line">357</div><div class="line">358</div><div class="line">359</div><div class="line">360</div><div class="line">361</div><div class="line">362</div><div class="line">363</div><div class="line">364</div><div class="line">365</div><div class="line">366</div><div class="line">367</div><div class="line">368</div><div class="line">369</div><div class="line">370</div><div class="line">371</div><div class="line">372</div><div class="line">373</div><div class="line">374</div><div class="line">375</div><div class="line">376</div><div class="line">377</div><div class="line">378</div><div class="line">379</div><div class="line">380</div><div class="line">381</div><div class="line">382</div><div class="line">383</div><div class="line">384</div><div class="line">385</div><div class="line">386</div><div class="line">387</div><div class="line">388</div><div class="line">389</div><div class="line">390</div><div class="line">391</div><div class="line">392</div><div class="line">393</div><div class="line">394</div><div class="line">395</div><div class="line">396</div><div class="line">397</div><div class="line">398</div><div class="line">399</div><div class="line">400</div><div class="line">401</div><div class="line">402</div><div class="line">403</div><div class="line">404</div><div class="line">405</div><div class="line">406</div><div class="line">407</div><div class="line">408</div><div class="line">409</div><div class="line">410</div><div class="line">411</div><div class="line">412</div><div class="line">413</div><div class="line">414</div><div class="line">415</div><div class="line">416</div><div class="line">417</div><div class="line">418</div><div class="line">419</div><div class="line">420</div><div class="line">421</div><div class="line">422</div><div class="line">423</div><div class="line">424</div><div class="line">425</div><div class="line">426</div><div class="line">427</div><div class="line">428</div><div class="line">429</div><div class="line">430</div><div class="line">431</div><div class="line">432</div><div class="line">433</div><div class="line">434</div><div class="line">435</div><div class="line">436</div><div class="line">437</div><div class="line">438</div><div class="line">439</div><div class="line">440</div><div class="line">441</div><div class="line">442</div><div class="line">443</div><div class="line">444</div><div class="line">445</div><div class="line">446</div><div class="line">447</div><div class="line">448</div><div class="line">449</div><div class="line">450</div><div class="line">451</div><div class="line">452</div><div class="line">453</div><div class="line">454</div><div class="line">455</div><div class="line">456</div><div class="line">457</div><div class="line">458</div><div class="line">459</div><div class="line">460</div><div class="line">461</div><div class="line">462</div><div class="line">463</div><div class="line">464</div><div class="line">465</div><div class="line">466</div><div class="line">467</div><div class="line">468</div><div class="line">469</div><div class="line">470</div><div class="line">471</div><div class="line">472</div><div class="line">473</div><div class="line">474</div><div class="line">475</div><div class="line">476</div><div class="line">477</div><div class="line">478</div><div class="line">479</div><div class="line">480</div><div class="line">481</div><div class="line">482</div><div class="line">483</div><div class="line">484</div><div class="line">485</div><div class="line">486</div><div class="line">487</div><div class="line">488</div><div class="line">489</div><div class="line">490</div><div class="line">491</div><div class="line">492</div><div class="line">493</div><div class="line">494</div><div class="line">495</div><div class="line">496</div><div class="line">497</div><div class="line">498</div><div class="line">499</div><div class="line">500</div><div class="line">501</div><div class="line">502</div><div class="line">503</div><div class="line">504</div><div class="line">505</div><div class="line">506</div><div class="line">507</div><div class="line">508</div><div class="line">509</div><div class="line">510</div><div class="line">511</div><div class="line">512</div><div class="line">513</div><div class="line">514</div><div class="line">515</div><div class="line">516</div><div class="line">517</div><div class="line">518</div><div class="line">519</div><div class="line">520</div><div class="line">521</div><div class="line">522</div><div class="line">523</div><div class="line">524</div><div class="line">525</div><div class="line">526</div><div class="line">527</div><div class="line">528</div><div class="line">529</div><div class="line">530</div><div class="line">531</div><div class="line">532</div><div class="line">533</div><div class="line">534</div><div class="line">535</div><div class="line">536</div><div class="line">537</div><div class="line">538</div><div class="line">539</div><div class="line">540</div><div class="line">541</div><div class="line">542</div><div class="line">543</div><div class="line">544</div><div class="line">545</div><div class="line">546</div><div class="line">547</div><div class="line">548</div><div class="line">549</div><div class="line">550</div><div class="line">551</div><div class="line">552</div><div class="line">553</div><div class="line">554</div><div class="line">555</div><div class="line">556</div><div class="line">557</div><div class="line">558</div><div class="line">559</div><div class="line">560</div><div class="line">561</div><div class="line">562</div><div class="line">563</div><div class="line">564</div><div class="line">565</div><div class="line">566</div><div class="line">567</div><div class="line">568</div><div class="line">569</div><div class="line">570</div><div class="line">571</div><div class="line">572</div><div class="line">573</div><div class="line">574</div><div class="line">575</div><div class="line">576</div><div class="line">577</div><div class="line">578</div><div class="line">579</div><div class="line">580</div><div class="line">581</div><div class="line">582</div><div class="line">583</div><div class="line">584</div><div class="line">585</div><div class="line">586</div><div class="line">587</div><div class="line">588</div><div class="line">589</div><div class="line">590</div><div class="line">591</div><div class="line">592</div><div class="line">593</div><div class="line">594</div><div class="line">595</div><div class="line">596</div><div class="line">597</div><div class="line">598</div><div class="line">599</div><div class="line">600</div><div class="line">601</div><div class="line">602</div><div class="line">603</div><div class="line">604</div><div class="line">605</div><div class="line">606</div><div class="line">607</div><div class="line">608</div><div class="line">609</div><div class="line">610</div><div class="line">611</div><div class="line">612</div><div class="line">613</div><div class="line">614</div><div class="line">615</div><div class="line">616</div><div class="line">617</div><div class="line">618</div><div class="line">619</div><div class="line">620</div><div class="line">621</div><div class="line">622</div><div class="line">623</div><div class="line">624</div><div class="line">625</div><div class="line">626</div><div class="line">627</div><div class="line">628</div><div class="line">629</div><div class="line">630</div><div class="line">631</div><div class="line">632</div><div class="line">633</div><div class="line">634</div><div class="line">635</div><div class="line">636</div><div class="line">637</div><div class="line">638</div><div class="line">639</div><div class="line">640</div><div class="line">641</div><div class="line">642</div><div class="line">643</div><div class="line">644</div><div class="line">645</div><div class="line">646</div><div class="line">647</div><div class="line">648</div><div class="line">649</div><div class="line">650</div><div class="line">651</div><div class="line">652</div><div class="line">653</div><div class="line">654</div><div class="line">655</div><div class="line">656</div><div class="line">657</div><div class="line">658</div><div class="line">659</div><div class="line">660</div><div class="line">661</div><div class="line">662</div><div class="line">663</div><div class="line">664</div><div class="line">665</div><div class="line">666</div><div class="line">667</div><div class="line">668</div><div class="line">669</div><div class="line">670</div><div class="line">671</div><div class="line">672</div><div class="line">673</div><div class="line">674</div><div class="line">675</div><div class="line">676</div><div class="line">677</div><div class="line">678</div><div class="line">679</div><div class="line">680</div><div class="line">681</div><div class="line">682</div><div class="line">683</div><div class="line">684</div><div class="line">685</div><div class="line">686</div><div class="line">687</div><div class="line">688</div><div class="line">689</div><div class="line">690</div><div class="line">691</div><div class="line">692</div><div class="line">693</div><div class="line">694</div><div class="line">695</div><div class="line">696</div><div class="line">697</div><div class="line">698</div><div class="line">699</div><div class="line">700</div><div class="line">701</div><div class="line">702</div><div class="line">703</div><div class="line">704</div><div class="line">705</div><div class="line">706</div><div class="line">707</div><div class="line">708</div><div class="line">709</div><div class="line">710</div><div class="line">711</div><div class="line">712</div><div class="line">713</div><div class="line">714</div><div class="line">715</div><div class="line">716</div><div class="line">717</div><div class="line">718</div><div class="line">719</div><div class="line">720</div><div class="line">721</div><div class="line">722</div><div class="line">723</div><div class="line">724</div><div class="line">725</div><div class="line">726</div><div class="line">727</div><div class="line">728</div><div class="line">729</div><div class="line">730</div><div class="line">731</div><div class="line">732</div><div class="line">733</div><div class="line">734</div><div class="line">735</div><div class="line">736</div><div class="line">737</div><div class="line">738</div><div class="line">739</div><div class="line">740</div><div class="line">741</div><div class="line">742</div><div class="line">743</div><div class="line">744</div><div class="line">745</div><div class="line">746</div><div class="line">747</div><div class="line">748</div><div class="line">749</div><div class="line">750</div><div class="line">751</div><div class="line">752</div><div class="line">753</div><div class="line">754</div><div class="line">755</div><div class="line">756</div><div class="line">757</div><div class="line">758</div><div class="line">759</div><div class="line">760</div><div class="line">761</div><div class="line">762</div><div class="line">763</div><div class="line">764</div><div class="line">765</div><div class="line">766</div><div class="line">767</div><div class="line">768</div><div class="line">769</div><div class="line">770</div><div class="line">771</div><div class="line">772</div><div class="line">773</div><div class="line">774</div><div class="line">775</div><div class="line">776</div><div class="line">777</div><div class="line">778</div><div class="line">779</div><div class="line">780</div><div class="line">781</div><div class="line">782</div><div class="line">783</div><div class="line">784</div><div class="line">785</div><div class="line">786</div><div class="line">787</div><div class="line">788</div><div class="line">789</div><div class="line">790</div><div class="line">791</div><div class="line">792</div><div class="line">793</div><div class="line">794</div><div class="line">795</div><div class="line">796</div><div class="line">797</div><div class="line">798</div><div class="line">799</div><div class="line">800</div><div class="line">801</div><div class="line">802</div><div class="line">803</div><div class="line">804</div><div class="line">805</div><div class="line">806</div><div class="line">807</div><div class="line">808</div><div class="line">809</div><div class="line">810</div><div class="line">811</div><div class="line">812</div><div class="line">813</div><div class="line">814</div><div class="line">815</div><div class="line">816</div><div class="line">817</div><div class="line">818</div><div class="line">819</div><div class="line">820</div><div class="line">821</div><div class="line">822</div><div class="line">823</div><div class="line">824</div><div class="line">825</div><div class="line">826</div><div class="line">827</div><div class="line">828</div><div class="line">829</div><div class="line">830</div><div class="line">831</div><div class="line">832</div><div class="line">833</div><div class="line">834</div><div class="line">835</div><div class="line">836</div><div class="line">837</div><div class="line">838</div><div class="line">839</div><div class="line">840</div><div class="line">841</div><div class="line">842</div><div class="line">843</div><div class="line">844</div><div class="line">845</div><div class="line">846</div><div class="line">847</div><div class="line">848</div><div class="line">849</div><div class="line">850</div><div class="line">851</div><div class="line">852</div><div class="line">853</div><div class="line">854</div><div class="line">855</div><div class="line">856</div><div class="line">857</div><div class="line">858</div><div class="line">859</div><div class="line">860</div><div class="line">861</div><div class="line">862</div><div class="line">863</div><div class="line">864</div><div class="line">865</div><div class="line">866</div><div class="line">867</div><div class="line">868</div><div class="line">869</div><div class="line">870</div><div class="line">871</div><div class="line">872</div><div class="line">873</div><div class="line">874</div><div class="line">875</div><div class="line">876</div><div class="line">877</div><div class="line">878</div><div class="line">879</div><div class="line">880</div><div class="line">881</div><div class="line">882</div><div class="line">883</div><div class="line">884</div><div class="line">885</div><div class="line">886</div><div class="line">887</div><div class="line">888</div><div class="line">889</div><div class="line">890</div><div class="line">891</div><div class="line">892</div><div class="line">893</div><div class="line">894</div><div class="line">895</div><div class="line">896</div><div class="line">897</div><div class="line">898</div><div class="line">899</div><div class="line">900</div><div class="line">901</div><div class="line">902</div><div class="line">903</div><div class="line">904</div><div class="line">905</div><div class="line">906</div><div class="line">907</div><div class="line">908</div><div class="line">909</div><div class="line">910</div><div class="line">911</div><div class="line">912</div><div class="line">913</div><div class="line">914</div><div class="line">915</div><div class="line">916</div><div class="line">917</div><div class="line">918</div><div class="line">919</div><div class="line">920</div><div class="line">921</div><div class="line">922</div><div class="line">923</div><div class="line">924</div><div class="line">925</div><div class="line">926</div><div class="line">927</div><div class="line">928</div><div class="line">929</div><div class="line">930</div><div class="line">931</div><div class="line">932</div><div class="line">933</div><div class="line">934</div><div class="line">935</div><div class="line">936</div><div class="line">937</div><div class="line">938</div><div class="line">939</div><div class="line">940</div><div class="line">941</div><div class="line">942</div><div class="line">943</div><div class="line">944</div><div class="line">945</div><div class="line">946</div><div class="line">947</div><div class="line">948</div><div class="line">949</div><div class="line">950</div><div class="line">951</div><div class="line">952</div><div class="line">953</div><div class="line">954</div><div class="line">955</div><div class="line">956</div><div class="line">957</div><div class="line">958</div><div class="line">959</div><div class="line">960</div><div class="line">961</div><div class="line">962</div><div class="line">963</div><div class="line">964</div><div class="line">965</div><div class="line">966</div><div class="line">967</div><div class="line">968</div><div class="line">969</div><div class="line">970</div><div class="line">971</div><div class="line">972</div><div class="line">973</div><div class="line">974</div><div class="line">975</div><div class="line">976</div><div class="line">977</div><div class="line">978</div><div class="line">979</div><div class="line">980</div><div class="line">981</div><div class="line">982</div><div class="line">983</div><div class="line">984</div><div class="line">985</div><div class="line">986</div><div class="line">987</div><div class="line">988</div><div class="line">989</div><div class="line">990</div><div class="line">991</div><div class="line">992</div><div class="line">993</div><div class="line">994</div><div class="line">995</div><div class="line">996</div><div class="line">997</div><div class="line">998</div><div class="line">999</div><div class="line">1000</div><div class="line">1001</div><div class="line">1002</div><div class="line">1003</div><div class="line">1004</div><div class="line">1005</div><div class="line">1006</div><div class="line">1007</div><div class="line">1008</div><div class="line">1009</div><div class="line">1010</div><div class="line">1011</div><div class="line">1012</div><div class="line">1013</div><div class="line">1014</div><div class="line">1015</div><div class="line">1016</div><div class="line">1017</div><div class="line">1018</div><div class="line">1019</div><div class="line">1020</div><div class="line">1021</div><div class="line">1022</div><div class="line">1023</div><div class="line">1024</div><div class="line">1025</div><div class="line">1026</div><div class="line">1027</div><div class="line">1028</div><div class="line">1029</div><div class="line">1030</div><div class="line">1031</div><div class="line">1032</div><div class="line">1033</div><div class="line">1034</div><div class="line">1035</div><div class="line">1036</div><div class="line">1037</div><div class="line">1038</div><div class="line">1039</div><div class="line">1040</div><div class="line">1041</div><div class="line">1042</div><div class="line">1043</div><div class="line">1044</div><div class="line">1045</div><div class="line">1046</div><div class="line">1047</div><div class="line">1048</div><div class="line">1049</div><div class="line">1050</div><div class="line">1051</div><div class="line">1052</div><div class="line">1053</div><div class="line">1054</div><div class="line">1055</div><div class="line">1056</div><div class="line">1057</div><div class="line">1058</div><div class="line">1059</div><div class="line">1060</div><div class="line">1061</div><div class="line">1062</div><div class="line">1063</div><div class="line">1064</div><div class="line">1065</div><div class="line">1066</div><div class="line">1067</div><div class="line">1068</div></pre></td><td class="code"><pre><div class="line">&quot;&quot;&quot;</div><div class="line">OS routines for NT or Posix depending on what system we&apos;re on.</div><div class="line"></div><div class="line">This exports:</div><div class="line">  - all functions from posix or nt, e.g. unlink, stat, etc.</div><div class="line">  - os.path is either posixpath or ntpath</div><div class="line">  - os.name is either &apos;posix&apos; or &apos;nt&apos;</div><div class="line">  - os.curdir is a string representing the current directory (always &apos;.&apos;)</div><div class="line">  - os.pardir is a string representing the parent directory (always &apos;..&apos;)</div><div class="line">  - os.sep is the (or a most common) pathname separator (&apos;/&apos; or &apos;\\&apos;)</div><div class="line">  - os.extsep is the extension separator (always &apos;.&apos;)</div><div class="line">  - os.altsep is the alternate pathname separator (None or &apos;/&apos;)</div><div class="line">  - os.pathsep is the component separator used in $PATH etc</div><div class="line">  - os.linesep is the line separator in text files (&apos;\r&apos; or &apos;\n&apos; or &apos;\r\n&apos;)</div><div class="line">  - os.defpath is the default search path for executables</div><div class="line">  - os.devnull is the file path of the null device (&apos;/dev/null&apos;, etc.)</div><div class="line"></div><div class="line">Programs that import and use &apos;os&apos; stand a better chance of being</div><div class="line">portable between different platforms.  Of course, they must then</div><div class="line">only use functions that are defined by all platforms (e.g., unlink</div><div class="line">and opendir), and leave all pathname manipulation to os.path</div><div class="line">(e.g., split and join).</div><div class="line">&quot;&quot;&quot;</div><div class="line"></div><div class="line">#&apos;</div><div class="line">import abc</div><div class="line">import sys, errno</div><div class="line">import stat as st</div><div class="line"></div><div class="line">_names = sys.builtin_module_names</div><div class="line"></div><div class="line"># Note:  more names are added to __all__ later.</div><div class="line">__all__ = [&quot;altsep&quot;, &quot;curdir&quot;, &quot;pardir&quot;, &quot;sep&quot;, &quot;pathsep&quot;, &quot;linesep&quot;,</div><div class="line">           &quot;defpath&quot;, &quot;name&quot;, &quot;path&quot;, &quot;devnull&quot;, &quot;SEEK_SET&quot;, &quot;SEEK_CUR&quot;,</div><div class="line">           &quot;SEEK_END&quot;, &quot;fsencode&quot;, &quot;fsdecode&quot;, &quot;get_exec_path&quot;, &quot;fdopen&quot;,</div><div class="line">           &quot;popen&quot;, &quot;extsep&quot;]</div><div class="line"></div><div class="line">def _exists(name):</div><div class="line">    return name in globals()</div><div class="line"></div><div class="line">def _get_exports_list(module):</div><div class="line">    try:</div><div class="line">        return list(module.__all__)</div><div class="line">    except AttributeError:</div><div class="line">        return [n for n in dir(module) if n[0] != &apos;_&apos;]</div><div class="line"></div><div class="line"># Any new dependencies of the os module and/or changes in path separator</div><div class="line"># requires updating importlib as well.</div><div class="line">if &apos;posix&apos; in _names:</div><div class="line">    name = &apos;posix&apos;</div><div class="line">    linesep = &apos;\n&apos;</div><div class="line">    from posix import *</div><div class="line">    try:</div><div class="line">        from posix import _exit</div><div class="line">        __all__.append(&apos;_exit&apos;)</div><div class="line">    except ImportError:</div><div class="line">        pass</div><div class="line">    import posixpath as path</div><div class="line"></div><div class="line">    try:</div><div class="line">        from posix import _have_functions</div><div class="line">    except ImportError:</div><div class="line">        pass</div><div class="line"></div><div class="line">    import posix</div><div class="line">    __all__.extend(_get_exports_list(posix))</div><div class="line">    del posix</div><div class="line"></div><div class="line">elif &apos;nt&apos; in _names:</div><div class="line">    name = &apos;nt&apos;</div><div class="line">    linesep = &apos;\r\n&apos;</div><div class="line">    from nt import *</div><div class="line">    try:</div><div class="line">        from nt import _exit</div><div class="line">        __all__.append(&apos;_exit&apos;)</div><div class="line">    except ImportError:</div><div class="line">        pass</div><div class="line">    import ntpath as path</div><div class="line"></div><div class="line">    import nt</div><div class="line">    __all__.extend(_get_exports_list(nt))</div><div class="line">    del nt</div><div class="line"></div><div class="line">    try:</div><div class="line">        from nt import _have_functions</div><div class="line">    except ImportError:</div><div class="line">        pass</div><div class="line"></div><div class="line">else:</div><div class="line">    raise ImportError(&apos;no os specific module found&apos;)</div><div class="line"></div><div class="line">sys.modules[&apos;os.path&apos;] = path</div><div class="line">from os.path import (curdir, pardir, sep, pathsep, defpath, extsep, altsep,</div><div class="line">    devnull)</div><div class="line"></div><div class="line">del _names</div><div class="line"></div><div class="line"></div><div class="line">if _exists(&quot;_have_functions&quot;):</div><div class="line">    _globals = globals()</div><div class="line">    def _add(str, fn):</div><div class="line">        if (fn in _globals) and (str in _have_functions):</div><div class="line">            _set.add(_globals[fn])</div><div class="line"></div><div class="line">    _set = set()</div><div class="line">    _add(&quot;HAVE_FACCESSAT&quot;,  &quot;access&quot;)</div><div class="line">    _add(&quot;HAVE_FCHMODAT&quot;,   &quot;chmod&quot;)</div><div class="line">    _add(&quot;HAVE_FCHOWNAT&quot;,   &quot;chown&quot;)</div><div class="line">    _add(&quot;HAVE_FSTATAT&quot;,    &quot;stat&quot;)</div><div class="line">    _add(&quot;HAVE_FUTIMESAT&quot;,  &quot;utime&quot;)</div><div class="line">    _add(&quot;HAVE_LINKAT&quot;,     &quot;link&quot;)</div><div class="line">    _add(&quot;HAVE_MKDIRAT&quot;,    &quot;mkdir&quot;)</div><div class="line">    _add(&quot;HAVE_MKFIFOAT&quot;,   &quot;mkfifo&quot;)</div><div class="line">    _add(&quot;HAVE_MKNODAT&quot;,    &quot;mknod&quot;)</div><div class="line">    _add(&quot;HAVE_OPENAT&quot;,     &quot;open&quot;)</div><div class="line">    _add(&quot;HAVE_READLINKAT&quot;, &quot;readlink&quot;)</div><div class="line">    _add(&quot;HAVE_RENAMEAT&quot;,   &quot;rename&quot;)</div><div class="line">    _add(&quot;HAVE_SYMLINKAT&quot;,  &quot;symlink&quot;)</div><div class="line">    _add(&quot;HAVE_UNLINKAT&quot;,   &quot;unlink&quot;)</div><div class="line">    _add(&quot;HAVE_UNLINKAT&quot;,   &quot;rmdir&quot;)</div><div class="line">    _add(&quot;HAVE_UTIMENSAT&quot;,  &quot;utime&quot;)</div><div class="line">    supports_dir_fd = _set</div><div class="line"></div><div class="line">    _set = set()</div><div class="line">    _add(&quot;HAVE_FACCESSAT&quot;,  &quot;access&quot;)</div><div class="line">    supports_effective_ids = _set</div><div class="line"></div><div class="line">    _set = set()</div><div class="line">    _add(&quot;HAVE_FCHDIR&quot;,     &quot;chdir&quot;)</div><div class="line">    _add(&quot;HAVE_FCHMOD&quot;,     &quot;chmod&quot;)</div><div class="line">    _add(&quot;HAVE_FCHOWN&quot;,     &quot;chown&quot;)</div><div class="line">    _add(&quot;HAVE_FDOPENDIR&quot;,  &quot;listdir&quot;)</div><div class="line">    _add(&quot;HAVE_FEXECVE&quot;,    &quot;execve&quot;)</div><div class="line">    _set.add(stat) # fstat always works</div><div class="line">    _add(&quot;HAVE_FTRUNCATE&quot;,  &quot;truncate&quot;)</div><div class="line">    _add(&quot;HAVE_FUTIMENS&quot;,   &quot;utime&quot;)</div><div class="line">    _add(&quot;HAVE_FUTIMES&quot;,    &quot;utime&quot;)</div><div class="line">    _add(&quot;HAVE_FPATHCONF&quot;,  &quot;pathconf&quot;)</div><div class="line">    if _exists(&quot;statvfs&quot;) and _exists(&quot;fstatvfs&quot;): # mac os x10.3</div><div class="line">        _add(&quot;HAVE_FSTATVFS&quot;, &quot;statvfs&quot;)</div><div class="line">    supports_fd = _set</div><div class="line"></div><div class="line">    _set = set()</div><div class="line">    _add(&quot;HAVE_FACCESSAT&quot;,  &quot;access&quot;)</div><div class="line">    # Some platforms don&apos;t support lchmod().  Often the function exists</div><div class="line">    # anyway, as a stub that always returns ENOSUP or perhaps EOPNOTSUPP.</div><div class="line">    # (No, I don&apos;t know why that&apos;s a good design.)  ./configure will detect</div><div class="line">    # this and reject it--so HAVE_LCHMOD still won&apos;t be defined on such</div><div class="line">    # platforms.  This is Very Helpful.</div><div class="line">    #</div><div class="line">    # However, sometimes platforms without a working lchmod() *do* have</div><div class="line">    # fchmodat().  (Examples: Linux kernel 3.2 with glibc 2.15,</div><div class="line">    # OpenIndiana 3.x.)  And fchmodat() has a flag that theoretically makes</div><div class="line">    # it behave like lchmod().  So in theory it would be a suitable</div><div class="line">    # replacement for lchmod().  But when lchmod() doesn&apos;t work, fchmodat()&apos;s</div><div class="line">    # flag doesn&apos;t work *either*.  Sadly ./configure isn&apos;t sophisticated</div><div class="line">    # enough to detect this condition--it only determines whether or not</div><div class="line">    # fchmodat() minimally works.</div><div class="line">    #</div><div class="line">    # Therefore we simply ignore fchmodat() when deciding whether or not</div><div class="line">    # os.chmod supports follow_symlinks.  Just checking lchmod() is</div><div class="line">    # sufficient.  After all--if you have a working fchmodat(), your</div><div class="line">    # lchmod() almost certainly works too.</div><div class="line">    #</div><div class="line">    # _add(&quot;HAVE_FCHMODAT&quot;,   &quot;chmod&quot;)</div><div class="line">    _add(&quot;HAVE_FCHOWNAT&quot;,   &quot;chown&quot;)</div><div class="line">    _add(&quot;HAVE_FSTATAT&quot;,    &quot;stat&quot;)</div><div class="line">    _add(&quot;HAVE_LCHFLAGS&quot;,   &quot;chflags&quot;)</div><div class="line">    _add(&quot;HAVE_LCHMOD&quot;,     &quot;chmod&quot;)</div><div class="line">    if _exists(&quot;lchown&quot;): # mac os x10.3</div><div class="line">        _add(&quot;HAVE_LCHOWN&quot;, &quot;chown&quot;)</div><div class="line">    _add(&quot;HAVE_LINKAT&quot;,     &quot;link&quot;)</div><div class="line">    _add(&quot;HAVE_LUTIMES&quot;,    &quot;utime&quot;)</div><div class="line">    _add(&quot;HAVE_LSTAT&quot;,      &quot;stat&quot;)</div><div class="line">    _add(&quot;HAVE_FSTATAT&quot;,    &quot;stat&quot;)</div><div class="line">    _add(&quot;HAVE_UTIMENSAT&quot;,  &quot;utime&quot;)</div><div class="line">    _add(&quot;MS_WINDOWS&quot;,      &quot;stat&quot;)</div><div class="line">    supports_follow_symlinks = _set</div><div class="line"></div><div class="line">    del _set</div><div class="line">    del _have_functions</div><div class="line">    del _globals</div><div class="line">    del _add</div><div class="line"></div><div class="line"></div><div class="line"># Python uses fixed values for the SEEK_ constants; they are mapped</div><div class="line"># to native constants if necessary in posixmodule.c</div><div class="line"># Other possible SEEK values are directly imported from posixmodule.c</div><div class="line">SEEK_SET = 0</div><div class="line">SEEK_CUR = 1</div><div class="line">SEEK_END = 2</div><div class="line"></div><div class="line"># Super directory utilities.</div><div class="line"># (Inspired by Eric Raymond; the doc strings are mostly his)</div><div class="line"></div><div class="line">def makedirs(name, mode=0o777, exist_ok=False):</div><div class="line">    &quot;&quot;&quot;makedirs(name [, mode=0o777][, exist_ok=False])</div><div class="line"></div><div class="line">    Super-mkdir; create a leaf directory and all intermediate ones.  Works like</div><div class="line">    mkdir, except that any intermediate path segment (not just the rightmost)</div><div class="line">    will be created if it does not exist. If the target directory already</div><div class="line">    exists, raise an OSError if exist_ok is False. Otherwise no exception is</div><div class="line">    raised.  This is recursive.</div><div class="line"></div><div class="line">    &quot;&quot;&quot;</div><div class="line">    head, tail = path.split(name)</div><div class="line">    if not tail:</div><div class="line">        head, tail = path.split(head)</div><div class="line">    if head and tail and not path.exists(head):</div><div class="line">        try:</div><div class="line">            makedirs(head, mode, exist_ok)</div><div class="line">        except FileExistsError:</div><div class="line">            # Defeats race condition when another thread created the path</div><div class="line">            pass</div><div class="line">        cdir = curdir</div><div class="line">        if isinstance(tail, bytes):</div><div class="line">            cdir = bytes(curdir, &apos;ASCII&apos;)</div><div class="line">        if tail == cdir:           # xxx/newdir/. exists if xxx/newdir exists</div><div class="line">            return</div><div class="line">    try:</div><div class="line">        mkdir(name, mode)</div><div class="line">    except OSError:</div><div class="line">        # Cannot rely on checking for EEXIST, since the operating system</div><div class="line">        # could give priority to other errors like EACCES or EROFS</div><div class="line">        if not exist_ok or not path.isdir(name):</div><div class="line">            raise</div><div class="line"></div><div class="line">def removedirs(name):</div><div class="line">    &quot;&quot;&quot;removedirs(name)</div><div class="line"></div><div class="line">    Super-rmdir; remove a leaf directory and all empty intermediate</div><div class="line">    ones.  Works like rmdir except that, if the leaf directory is</div><div class="line">    successfully removed, directories corresponding to rightmost path</div><div class="line">    segments will be pruned away until either the whole path is</div><div class="line">    consumed or an error occurs.  Errors during this latter phase are</div><div class="line">    ignored -- they generally mean that a directory was not empty.</div><div class="line"></div><div class="line">    &quot;&quot;&quot;</div><div class="line">    rmdir(name)</div><div class="line">    head, tail = path.split(name)</div><div class="line">    if not tail:</div><div class="line">        head, tail = path.split(head)</div><div class="line">    while head and tail:</div><div class="line">        try:</div><div class="line">            rmdir(head)</div><div class="line">        except OSError:</div><div class="line">            break</div><div class="line">        head, tail = path.split(head)</div><div class="line"></div><div class="line">def renames(old, new):</div><div class="line">    &quot;&quot;&quot;renames(old, new)</div><div class="line"></div><div class="line">    Super-rename; create directories as necessary and delete any left</div><div class="line">    empty.  Works like rename, except creation of any intermediate</div><div class="line">    directories needed to make the new pathname good is attempted</div><div class="line">    first.  After the rename, directories corresponding to rightmost</div><div class="line">    path segments of the old name will be pruned until either the</div><div class="line">    whole path is consumed or a nonempty directory is found.</div><div class="line"></div><div class="line">    Note: this function can fail with the new directory structure made</div><div class="line">    if you lack permissions needed to unlink the leaf directory or</div><div class="line">    file.</div><div class="line"></div><div class="line">    &quot;&quot;&quot;</div><div class="line">    head, tail = path.split(new)</div><div class="line">    if head and tail and not path.exists(head):</div><div class="line">        makedirs(head)</div><div class="line">    rename(old, new)</div><div class="line">    head, tail = path.split(old)</div><div class="line">    if head and tail:</div><div class="line">        try:</div><div class="line">            removedirs(head)</div><div class="line">        except OSError:</div><div class="line">            pass</div><div class="line"></div><div class="line">__all__.extend([&quot;makedirs&quot;, &quot;removedirs&quot;, &quot;renames&quot;])</div><div class="line"></div><div class="line">def walk(top, topdown=True, onerror=None, followlinks=False):</div><div class="line">    &quot;&quot;&quot;Directory tree generator.</div><div class="line"></div><div class="line">    For each directory in the directory tree rooted at top (including top</div><div class="line">    itself, but excluding &apos;.&apos; and &apos;..&apos;), yields a 3-tuple</div><div class="line"></div><div class="line">        dirpath, dirnames, filenames</div><div class="line"></div><div class="line">    dirpath is a string, the path to the directory.  dirnames is a list of</div><div class="line">    the names of the subdirectories in dirpath (excluding &apos;.&apos; and &apos;..&apos;).</div><div class="line">    filenames is a list of the names of the non-directory files in dirpath.</div><div class="line">    Note that the names in the lists are just names, with no path components.</div><div class="line">    To get a full path (which begins with top) to a file or directory in</div><div class="line">    dirpath, do os.path.join(dirpath, name).</div><div class="line"></div><div class="line">    If optional arg &apos;topdown&apos; is true or not specified, the triple for a</div><div class="line">    directory is generated before the triples for any of its subdirectories</div><div class="line">    (directories are generated top down).  If topdown is false, the triple</div><div class="line">    for a directory is generated after the triples for all of its</div><div class="line">    subdirectories (directories are generated bottom up).</div><div class="line"></div><div class="line">    When topdown is true, the caller can modify the dirnames list in-place</div><div class="line">    (e.g., via del or slice assignment), and walk will only recurse into the</div><div class="line">    subdirectories whose names remain in dirnames; this can be used to prune the</div><div class="line">    search, or to impose a specific order of visiting.  Modifying dirnames when</div><div class="line">    topdown is false is ineffective, since the directories in dirnames have</div><div class="line">    already been generated by the time dirnames itself is generated. No matter</div><div class="line">    the value of topdown, the list of subdirectories is retrieved before the</div><div class="line">    tuples for the directory and its subdirectories are generated.</div><div class="line"></div><div class="line">    By default errors from the os.scandir() call are ignored.  If</div><div class="line">    optional arg &apos;onerror&apos; is specified, it should be a function; it</div><div class="line">    will be called with one argument, an OSError instance.  It can</div><div class="line">    report the error to continue with the walk, or raise the exception</div><div class="line">    to abort the walk.  Note that the filename is available as the</div><div class="line">    filename attribute of the exception object.</div><div class="line"></div><div class="line">    By default, os.walk does not follow symbolic links to subdirectories on</div><div class="line">    systems that support them.  In order to get this functionality, set the</div><div class="line">    optional argument &apos;followlinks&apos; to true.</div><div class="line"></div><div class="line">    Caution:  if you pass a relative pathname for top, don&apos;t change the</div><div class="line">    current working directory between resumptions of walk.  walk never</div><div class="line">    changes the current directory, and assumes that the client doesn&apos;t</div><div class="line">    either.</div><div class="line"></div><div class="line">    Example:</div><div class="line"></div><div class="line">    import os</div><div class="line">    from os.path import join, getsize</div><div class="line">    for root, dirs, files in os.walk(&apos;python/Lib/email&apos;):</div><div class="line">        print(root, &quot;consumes&quot;, end=&quot;&quot;)</div><div class="line">        print(sum([getsize(join(root, name)) for name in files]), end=&quot;&quot;)</div><div class="line">        print(&quot;bytes in&quot;, len(files), &quot;non-directory files&quot;)</div><div class="line">        if &apos;CVS&apos; in dirs:</div><div class="line">            dirs.remove(&apos;CVS&apos;)  # don&apos;t visit CVS directories</div><div class="line"></div><div class="line">    &quot;&quot;&quot;</div><div class="line">    top = fspath(top)</div><div class="line">    dirs = []</div><div class="line">    nondirs = []</div><div class="line">    walk_dirs = []</div><div class="line"></div><div class="line">    # We may not have read permission for top, in which case we can&apos;t</div><div class="line">    # get a list of the files the directory contains.  os.walk</div><div class="line">    # always suppressed the exception then, rather than blow up for a</div><div class="line">    # minor reason when (say) a thousand readable directories are still</div><div class="line">    # left to visit.  That logic is copied here.</div><div class="line">    try:</div><div class="line">        # Note that scandir is global in this module due</div><div class="line">        # to earlier import-*.</div><div class="line">        scandir_it = scandir(top)</div><div class="line">    except OSError as error:</div><div class="line">        if onerror is not None:</div><div class="line">            onerror(error)</div><div class="line">        return</div><div class="line"></div><div class="line">    with scandir_it:</div><div class="line">        while True:</div><div class="line">            try:</div><div class="line">                try:</div><div class="line">                    entry = next(scandir_it)</div><div class="line">                except StopIteration:</div><div class="line">                    break</div><div class="line">            except OSError as error:</div><div class="line">                if onerror is not None:</div><div class="line">                    onerror(error)</div><div class="line">                return</div><div class="line"></div><div class="line">            try:</div><div class="line">                is_dir = entry.is_dir()</div><div class="line">            except OSError:</div><div class="line">                # If is_dir() raises an OSError, consider that the entry is not</div><div class="line">                # a directory, same behaviour than os.path.isdir().</div><div class="line">                is_dir = False</div><div class="line"></div><div class="line">            if is_dir:</div><div class="line">                dirs.append(entry.name)</div><div class="line">            else:</div><div class="line">                nondirs.append(entry.name)</div><div class="line"></div><div class="line">            if not topdown and is_dir:</div><div class="line">                # Bottom-up: recurse into sub-directory, but exclude symlinks to</div><div class="line">                # directories if followlinks is False</div><div class="line">                if followlinks:</div><div class="line">                    walk_into = True</div><div class="line">                else:</div><div class="line">                    try:</div><div class="line">                        is_symlink = entry.is_symlink()</div><div class="line">                    except OSError:</div><div class="line">                        # If is_symlink() raises an OSError, consider that the</div><div class="line">                        # entry is not a symbolic link, same behaviour than</div><div class="line">                        # os.path.islink().</div><div class="line">                        is_symlink = False</div><div class="line">                    walk_into = not is_symlink</div><div class="line"></div><div class="line">                if walk_into:</div><div class="line">                    walk_dirs.append(entry.path)</div><div class="line"></div><div class="line">    # Yield before recursion if going top down</div><div class="line">    if topdown:</div><div class="line">        yield top, dirs, nondirs</div><div class="line"></div><div class="line">        # Recurse into sub-directories</div><div class="line">        islink, join = path.islink, path.join</div><div class="line">        for dirname in dirs:</div><div class="line">            new_path = join(top, dirname)</div><div class="line">            # Issue #23605: os.path.islink() is used instead of caching</div><div class="line">            # entry.is_symlink() result during the loop on os.scandir() because</div><div class="line">            # the caller can replace the directory entry during the &quot;yield&quot;</div><div class="line">            # above.</div><div class="line">            if followlinks or not islink(new_path):</div><div class="line">                yield from walk(new_path, topdown, onerror, followlinks)</div><div class="line">    else:</div><div class="line">        # Recurse into sub-directories</div><div class="line">        for new_path in walk_dirs:</div><div class="line">            yield from walk(new_path, topdown, onerror, followlinks)</div><div class="line">        # Yield after recursion if going bottom up</div><div class="line">        yield top, dirs, nondirs</div><div class="line"></div><div class="line">__all__.append(&quot;walk&quot;)</div><div class="line"></div><div class="line">if &#123;open, stat&#125; &lt;= supports_dir_fd and &#123;listdir, stat&#125; &lt;= supports_fd:</div><div class="line"></div><div class="line">    def fwalk(top=&quot;.&quot;, topdown=True, onerror=None, *, follow_symlinks=False, dir_fd=None):</div><div class="line">        &quot;&quot;&quot;Directory tree generator.</div><div class="line"></div><div class="line">        This behaves exactly like walk(), except that it yields a 4-tuple</div><div class="line"></div><div class="line">            dirpath, dirnames, filenames, dirfd</div><div class="line"></div><div class="line">        `dirpath`, `dirnames` and `filenames` are identical to walk() output,</div><div class="line">        and `dirfd` is a file descriptor referring to the directory `dirpath`.</div><div class="line"></div><div class="line">        The advantage of fwalk() over walk() is that it&apos;s safe against symlink</div><div class="line">        races (when follow_symlinks is False).</div><div class="line"></div><div class="line">        If dir_fd is not None, it should be a file descriptor open to a directory,</div><div class="line">          and top should be relative; top will then be relative to that directory.</div><div class="line">          (dir_fd is always supported for fwalk.)</div><div class="line"></div><div class="line">        Caution:</div><div class="line">        Since fwalk() yields file descriptors, those are only valid until the</div><div class="line">        next iteration step, so you should dup() them if you want to keep them</div><div class="line">        for a longer period.</div><div class="line"></div><div class="line">        Example:</div><div class="line"></div><div class="line">        import os</div><div class="line">        for root, dirs, files, rootfd in os.fwalk(&apos;python/Lib/email&apos;):</div><div class="line">            print(root, &quot;consumes&quot;, end=&quot;&quot;)</div><div class="line">            print(sum([os.stat(name, dir_fd=rootfd).st_size for name in files]),</div><div class="line">                  end=&quot;&quot;)</div><div class="line">            print(&quot;bytes in&quot;, len(files), &quot;non-directory files&quot;)</div><div class="line">            if &apos;CVS&apos; in dirs:</div><div class="line">                dirs.remove(&apos;CVS&apos;)  # don&apos;t visit CVS directories</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        if not isinstance(top, int) or not hasattr(top, &apos;__index__&apos;):</div><div class="line">            top = fspath(top)</div><div class="line">        # Note: To guard against symlink races, we use the standard</div><div class="line">        # lstat()/open()/fstat() trick.</div><div class="line">        orig_st = stat(top, follow_symlinks=False, dir_fd=dir_fd)</div><div class="line">        topfd = open(top, O_RDONLY, dir_fd=dir_fd)</div><div class="line">        try:</div><div class="line">            if (follow_symlinks or (st.S_ISDIR(orig_st.st_mode) and</div><div class="line">                                    path.samestat(orig_st, stat(topfd)))):</div><div class="line">                yield from _fwalk(topfd, top, topdown, onerror, follow_symlinks)</div><div class="line">        finally:</div><div class="line">            close(topfd)</div><div class="line"></div><div class="line">    def _fwalk(topfd, toppath, topdown, onerror, follow_symlinks):</div><div class="line">        # Note: This uses O(depth of the directory tree) file descriptors: if</div><div class="line">        # necessary, it can be adapted to only require O(1) FDs, see issue</div><div class="line">        # #13734.</div><div class="line"></div><div class="line">        names = listdir(topfd)</div><div class="line">        dirs, nondirs = [], []</div><div class="line">        for name in names:</div><div class="line">            try:</div><div class="line">                # Here, we don&apos;t use AT_SYMLINK_NOFOLLOW to be consistent with</div><div class="line">                # walk() which reports symlinks to directories as directories.</div><div class="line">                # We do however check for symlinks before recursing into</div><div class="line">                # a subdirectory.</div><div class="line">                if st.S_ISDIR(stat(name, dir_fd=topfd).st_mode):</div><div class="line">                    dirs.append(name)</div><div class="line">                else:</div><div class="line">                    nondirs.append(name)</div><div class="line">            except OSError:</div><div class="line">                try:</div><div class="line">                    # Add dangling symlinks, ignore disappeared files</div><div class="line">                    if st.S_ISLNK(stat(name, dir_fd=topfd, follow_symlinks=False)</div><div class="line">                                .st_mode):</div><div class="line">                        nondirs.append(name)</div><div class="line">                except OSError:</div><div class="line">                    continue</div><div class="line"></div><div class="line">        if topdown:</div><div class="line">            yield toppath, dirs, nondirs, topfd</div><div class="line"></div><div class="line">        for name in dirs:</div><div class="line">            try:</div><div class="line">                orig_st = stat(name, dir_fd=topfd, follow_symlinks=follow_symlinks)</div><div class="line">                dirfd = open(name, O_RDONLY, dir_fd=topfd)</div><div class="line">            except OSError as err:</div><div class="line">                if onerror is not None:</div><div class="line">                    onerror(err)</div><div class="line">                continue</div><div class="line">            try:</div><div class="line">                if follow_symlinks or path.samestat(orig_st, stat(dirfd)):</div><div class="line">                    dirpath = path.join(toppath, name)</div><div class="line">                    yield from _fwalk(dirfd, dirpath, topdown, onerror, follow_symlinks)</div><div class="line">            finally:</div><div class="line">                close(dirfd)</div><div class="line"></div><div class="line">        if not topdown:</div><div class="line">            yield toppath, dirs, nondirs, topfd</div><div class="line"></div><div class="line">    __all__.append(&quot;fwalk&quot;)</div><div class="line"></div><div class="line"># Make sure os.environ exists, at least</div><div class="line">try:</div><div class="line">    environ</div><div class="line">except NameError:</div><div class="line">    environ = &#123;&#125;</div><div class="line"></div><div class="line">def execl(file, *args):</div><div class="line">    &quot;&quot;&quot;execl(file, *args)</div><div class="line"></div><div class="line">    Execute the executable file with argument list args, replacing the</div><div class="line">    current process. &quot;&quot;&quot;</div><div class="line">    execv(file, args)</div><div class="line"></div><div class="line">def execle(file, *args):</div><div class="line">    &quot;&quot;&quot;execle(file, *args, env)</div><div class="line"></div><div class="line">    Execute the executable file with argument list args and</div><div class="line">    environment env, replacing the current process. &quot;&quot;&quot;</div><div class="line">    env = args[-1]</div><div class="line">    execve(file, args[:-1], env)</div><div class="line"></div><div class="line">def execlp(file, *args):</div><div class="line">    &quot;&quot;&quot;execlp(file, *args)</div><div class="line"></div><div class="line">    Execute the executable file (which is searched for along $PATH)</div><div class="line">    with argument list args, replacing the current process. &quot;&quot;&quot;</div><div class="line">    execvp(file, args)</div><div class="line"></div><div class="line">def execlpe(file, *args):</div><div class="line">    &quot;&quot;&quot;execlpe(file, *args, env)</div><div class="line"></div><div class="line">    Execute the executable file (which is searched for along $PATH)</div><div class="line">    with argument list args and environment env, replacing the current</div><div class="line">    process. &quot;&quot;&quot;</div><div class="line">    env = args[-1]</div><div class="line">    execvpe(file, args[:-1], env)</div><div class="line"></div><div class="line">def execvp(file, args):</div><div class="line">    &quot;&quot;&quot;execvp(file, args)</div><div class="line"></div><div class="line">    Execute the executable file (which is searched for along $PATH)</div><div class="line">    with argument list args, replacing the current process.</div><div class="line">    args may be a list or tuple of strings. &quot;&quot;&quot;</div><div class="line">    _execvpe(file, args)</div><div class="line"></div><div class="line">def execvpe(file, args, env):</div><div class="line">    &quot;&quot;&quot;execvpe(file, args, env)</div><div class="line"></div><div class="line">    Execute the executable file (which is searched for along $PATH)</div><div class="line">    with argument list args and environment env , replacing the</div><div class="line">    current process.</div><div class="line">    args may be a list or tuple of strings. &quot;&quot;&quot;</div><div class="line">    _execvpe(file, args, env)</div><div class="line"></div><div class="line">__all__.extend([&quot;execl&quot;,&quot;execle&quot;,&quot;execlp&quot;,&quot;execlpe&quot;,&quot;execvp&quot;,&quot;execvpe&quot;])</div><div class="line"></div><div class="line">def _execvpe(file, args, env=None):</div><div class="line">    if env is not None:</div><div class="line">        exec_func = execve</div><div class="line">        argrest = (args, env)</div><div class="line">    else:</div><div class="line">        exec_func = execv</div><div class="line">        argrest = (args,)</div><div class="line">        env = environ</div><div class="line"></div><div class="line">    head, tail = path.split(file)</div><div class="line">    if head:</div><div class="line">        exec_func(file, *argrest)</div><div class="line">        return</div><div class="line">    last_exc = saved_exc = None</div><div class="line">    saved_tb = None</div><div class="line">    path_list = get_exec_path(env)</div><div class="line">    if name != &apos;nt&apos;:</div><div class="line">        file = fsencode(file)</div><div class="line">        path_list = map(fsencode, path_list)</div><div class="line">    for dir in path_list:</div><div class="line">        fullname = path.join(dir, file)</div><div class="line">        try:</div><div class="line">            exec_func(fullname, *argrest)</div><div class="line">        except OSError as e:</div><div class="line">            last_exc = e</div><div class="line">            tb = sys.exc_info()[2]</div><div class="line">            if (e.errno != errno.ENOENT and e.errno != errno.ENOTDIR</div><div class="line">                and saved_exc is None):</div><div class="line">                saved_exc = e</div><div class="line">                saved_tb = tb</div><div class="line">    if saved_exc:</div><div class="line">        raise saved_exc.with_traceback(saved_tb)</div><div class="line">    raise last_exc.with_traceback(tb)</div><div class="line"></div><div class="line"></div><div class="line">def get_exec_path(env=None):</div><div class="line">    &quot;&quot;&quot;Returns the sequence of directories that will be searched for the</div><div class="line">    named executable (similar to a shell) when launching a process.</div><div class="line"></div><div class="line">    *env* must be an environment variable dict or None.  If *env* is None,</div><div class="line">    os.environ will be used.</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    # Use a local import instead of a global import to limit the number of</div><div class="line">    # modules loaded at startup: the os module is always loaded at startup by</div><div class="line">    # Python. It may also avoid a bootstrap issue.</div><div class="line">    import warnings</div><div class="line"></div><div class="line">    if env is None:</div><div class="line">        env = environ</div><div class="line"></div><div class="line">    # &#123;b&apos;PATH&apos;: ...&#125;.get(&apos;PATH&apos;) and &#123;&apos;PATH&apos;: ...&#125;.get(b&apos;PATH&apos;) emit a</div><div class="line">    # BytesWarning when using python -b or python -bb: ignore the warning</div><div class="line">    with warnings.catch_warnings():</div><div class="line">        warnings.simplefilter(&quot;ignore&quot;, BytesWarning)</div><div class="line"></div><div class="line">        try:</div><div class="line">            path_list = env.get(&apos;PATH&apos;)</div><div class="line">        except TypeError:</div><div class="line">            path_list = None</div><div class="line"></div><div class="line">        if supports_bytes_environ:</div><div class="line">            try:</div><div class="line">                path_listb = env[b&apos;PATH&apos;]</div><div class="line">            except (KeyError, TypeError):</div><div class="line">                pass</div><div class="line">            else:</div><div class="line">                if path_list is not None:</div><div class="line">                    raise ValueError(</div><div class="line">                        &quot;env cannot contain &apos;PATH&apos; and b&apos;PATH&apos; keys&quot;)</div><div class="line">                path_list = path_listb</div><div class="line"></div><div class="line">            if path_list is not None and isinstance(path_list, bytes):</div><div class="line">                path_list = fsdecode(path_list)</div><div class="line"></div><div class="line">    if path_list is None:</div><div class="line">        path_list = defpath</div><div class="line">    return path_list.split(pathsep)</div><div class="line"></div><div class="line"></div><div class="line"># Change environ to automatically call putenv(), unsetenv if they exist.</div><div class="line">from _collections_abc import MutableMapping</div><div class="line"></div><div class="line">class _Environ(MutableMapping):</div><div class="line">    def __init__(self, data, encodekey, decodekey, encodevalue, decodevalue, putenv, unsetenv):</div><div class="line">        self.encodekey = encodekey</div><div class="line">        self.decodekey = decodekey</div><div class="line">        self.encodevalue = encodevalue</div><div class="line">        self.decodevalue = decodevalue</div><div class="line">        self.putenv = putenv</div><div class="line">        self.unsetenv = unsetenv</div><div class="line">        self._data = data</div><div class="line"></div><div class="line">    def __getitem__(self, key):</div><div class="line">        try:</div><div class="line">            value = self._data[self.encodekey(key)]</div><div class="line">        except KeyError:</div><div class="line">            # raise KeyError with the original key value</div><div class="line">            raise KeyError(key) from None</div><div class="line">        return self.decodevalue(value)</div><div class="line"></div><div class="line">    def __setitem__(self, key, value):</div><div class="line">        key = self.encodekey(key)</div><div class="line">        value = self.encodevalue(value)</div><div class="line">        self.putenv(key, value)</div><div class="line">        self._data[key] = value</div><div class="line"></div><div class="line">    def __delitem__(self, key):</div><div class="line">        encodedkey = self.encodekey(key)</div><div class="line">        self.unsetenv(encodedkey)</div><div class="line">        try:</div><div class="line">            del self._data[encodedkey]</div><div class="line">        except KeyError:</div><div class="line">            # raise KeyError with the original key value</div><div class="line">            raise KeyError(key) from None</div><div class="line"></div><div class="line">    def __iter__(self):</div><div class="line">        for key in self._data:</div><div class="line">            yield self.decodekey(key)</div><div class="line"></div><div class="line">    def __len__(self):</div><div class="line">        return len(self._data)</div><div class="line"></div><div class="line">    def __repr__(self):</div><div class="line">        return &apos;environ(&#123;&#123;&#123;&#125;&#125;&#125;)&apos;.format(&apos;, &apos;.join(</div><div class="line">            (&apos;&#123;!r&#125;: &#123;!r&#125;&apos;.format(self.decodekey(key), self.decodevalue(value))</div><div class="line">            for key, value in self._data.items())))</div><div class="line"></div><div class="line">    def copy(self):</div><div class="line">        return dict(self)</div><div class="line"></div><div class="line">    def setdefault(self, key, value):</div><div class="line">        if key not in self:</div><div class="line">            self[key] = value</div><div class="line">        return self[key]</div><div class="line"></div><div class="line">try:</div><div class="line">    _putenv = putenv</div><div class="line">except NameError:</div><div class="line">    _putenv = lambda key, value: None</div><div class="line">else:</div><div class="line">    if &quot;putenv&quot; not in __all__:</div><div class="line">        __all__.append(&quot;putenv&quot;)</div><div class="line"></div><div class="line">try:</div><div class="line">    _unsetenv = unsetenv</div><div class="line">except NameError:</div><div class="line">    _unsetenv = lambda key: _putenv(key, &quot;&quot;)</div><div class="line">else:</div><div class="line">    if &quot;unsetenv&quot; not in __all__:</div><div class="line">        __all__.append(&quot;unsetenv&quot;)</div><div class="line"></div><div class="line">def _createenviron():</div><div class="line">    if name == &apos;nt&apos;:</div><div class="line">        # Where Env Var Names Must Be UPPERCASE</div><div class="line">        def check_str(value):</div><div class="line">            if not isinstance(value, str):</div><div class="line">                raise TypeError(&quot;str expected, not %s&quot; % type(value).__name__)</div><div class="line">            return value</div><div class="line">        encode = check_str</div><div class="line">        decode = str</div><div class="line">        def encodekey(key):</div><div class="line">            return encode(key).upper()</div><div class="line">        data = &#123;&#125;</div><div class="line">        for key, value in environ.items():</div><div class="line">            data[encodekey(key)] = value</div><div class="line">    else:</div><div class="line">        # Where Env Var Names Can Be Mixed Case</div><div class="line">        encoding = sys.getfilesystemencoding()</div><div class="line">        def encode(value):</div><div class="line">            if not isinstance(value, str):</div><div class="line">                raise TypeError(&quot;str expected, not %s&quot; % type(value).__name__)</div><div class="line">            return value.encode(encoding, &apos;surrogateescape&apos;)</div><div class="line">        def decode(value):</div><div class="line">            return value.decode(encoding, &apos;surrogateescape&apos;)</div><div class="line">        encodekey = encode</div><div class="line">        data = environ</div><div class="line">    return _Environ(data,</div><div class="line">        encodekey, decode,</div><div class="line">        encode, decode,</div><div class="line">        _putenv, _unsetenv)</div><div class="line"></div><div class="line"># unicode environ</div><div class="line">environ = _createenviron()</div><div class="line">del _createenviron</div><div class="line"></div><div class="line"></div><div class="line">def getenv(key, default=None):</div><div class="line">    &quot;&quot;&quot;Get an environment variable, return None if it doesn&apos;t exist.</div><div class="line">    The optional second argument can specify an alternate default.</div><div class="line">    key, default and the result are str.&quot;&quot;&quot;</div><div class="line">    return environ.get(key, default)</div><div class="line"></div><div class="line">supports_bytes_environ = (name != &apos;nt&apos;)</div><div class="line">__all__.extend((&quot;getenv&quot;, &quot;supports_bytes_environ&quot;))</div><div class="line"></div><div class="line">if supports_bytes_environ:</div><div class="line">    def _check_bytes(value):</div><div class="line">        if not isinstance(value, bytes):</div><div class="line">            raise TypeError(&quot;bytes expected, not %s&quot; % type(value).__name__)</div><div class="line">        return value</div><div class="line"></div><div class="line">    # bytes environ</div><div class="line">    environb = _Environ(environ._data,</div><div class="line">        _check_bytes, bytes,</div><div class="line">        _check_bytes, bytes,</div><div class="line">        _putenv, _unsetenv)</div><div class="line">    del _check_bytes</div><div class="line"></div><div class="line">    def getenvb(key, default=None):</div><div class="line">        &quot;&quot;&quot;Get an environment variable, return None if it doesn&apos;t exist.</div><div class="line">        The optional second argument can specify an alternate default.</div><div class="line">        key, default and the result are bytes.&quot;&quot;&quot;</div><div class="line">        return environb.get(key, default)</div><div class="line"></div><div class="line">    __all__.extend((&quot;environb&quot;, &quot;getenvb&quot;))</div><div class="line"></div><div class="line">def _fscodec():</div><div class="line">    encoding = sys.getfilesystemencoding()</div><div class="line">    errors = sys.getfilesystemencodeerrors()</div><div class="line"></div><div class="line">    def fsencode(filename):</div><div class="line">        &quot;&quot;&quot;Encode filename (an os.PathLike, bytes, or str) to the filesystem</div><div class="line">        encoding with &apos;surrogateescape&apos; error handler, return bytes unchanged.</div><div class="line">        On Windows, use &apos;strict&apos; error handler if the file system encoding is</div><div class="line">        &apos;mbcs&apos; (which is the default encoding).</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        filename = fspath(filename)  # Does type-checking of `filename`.</div><div class="line">        if isinstance(filename, str):</div><div class="line">            return filename.encode(encoding, errors)</div><div class="line">        else:</div><div class="line">            return filename</div><div class="line"></div><div class="line">    def fsdecode(filename):</div><div class="line">        &quot;&quot;&quot;Decode filename (an os.PathLike, bytes, or str) from the filesystem</div><div class="line">        encoding with &apos;surrogateescape&apos; error handler, return str unchanged. On</div><div class="line">        Windows, use &apos;strict&apos; error handler if the file system encoding is</div><div class="line">        &apos;mbcs&apos; (which is the default encoding).</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        filename = fspath(filename)  # Does type-checking of `filename`.</div><div class="line">        if isinstance(filename, bytes):</div><div class="line">            return filename.decode(encoding, errors)</div><div class="line">        else:</div><div class="line">            return filename</div><div class="line"></div><div class="line">    return fsencode, fsdecode</div><div class="line"></div><div class="line">fsencode, fsdecode = _fscodec()</div><div class="line">del _fscodec</div><div class="line"></div><div class="line"># Supply spawn*() (probably only for Unix)</div><div class="line">if _exists(&quot;fork&quot;) and not _exists(&quot;spawnv&quot;) and _exists(&quot;execv&quot;):</div><div class="line"></div><div class="line">    P_WAIT = 0</div><div class="line">    P_NOWAIT = P_NOWAITO = 1</div><div class="line"></div><div class="line">    __all__.extend([&quot;P_WAIT&quot;, &quot;P_NOWAIT&quot;, &quot;P_NOWAITO&quot;])</div><div class="line"></div><div class="line">    # XXX Should we support P_DETACH?  I suppose it could fork()**2</div><div class="line">    # and close the std I/O streams.  Also, P_OVERLAY is the same</div><div class="line">    # as execv*()?</div><div class="line"></div><div class="line">    def _spawnvef(mode, file, args, env, func):</div><div class="line">        # Internal helper; func is the exec*() function to use</div><div class="line">        if not isinstance(args, (tuple, list)):</div><div class="line">            raise TypeError(&apos;argv must be a tuple or a list&apos;)</div><div class="line">        if not args or not args[0]:</div><div class="line">            raise ValueError(&apos;argv first element cannot be empty&apos;)</div><div class="line">        pid = fork()</div><div class="line">        if not pid:</div><div class="line">            # Child</div><div class="line">            try:</div><div class="line">                if env is None:</div><div class="line">                    func(file, args)</div><div class="line">                else:</div><div class="line">                    func(file, args, env)</div><div class="line">            except:</div><div class="line">                _exit(127)</div><div class="line">        else:</div><div class="line">            # Parent</div><div class="line">            if mode == P_NOWAIT:</div><div class="line">                return pid # Caller is responsible for waiting!</div><div class="line">            while 1:</div><div class="line">                wpid, sts = waitpid(pid, 0)</div><div class="line">                if WIFSTOPPED(sts):</div><div class="line">                    continue</div><div class="line">                elif WIFSIGNALED(sts):</div><div class="line">                    return -WTERMSIG(sts)</div><div class="line">                elif WIFEXITED(sts):</div><div class="line">                    return WEXITSTATUS(sts)</div><div class="line">                else:</div><div class="line">                    raise OSError(&quot;Not stopped, signaled or exited???&quot;)</div><div class="line"></div><div class="line">    def spawnv(mode, file, args):</div><div class="line">        &quot;&quot;&quot;spawnv(mode, file, args) -&gt; integer</div><div class="line"></div><div class="line">Execute file with arguments from args in a subprocess.</div><div class="line">If mode == P_NOWAIT return the pid of the process.</div><div class="line">If mode == P_WAIT return the process&apos;s exit code if it exits normally;</div><div class="line">otherwise return -SIG, where SIG is the signal that killed it. &quot;&quot;&quot;</div><div class="line">        return _spawnvef(mode, file, args, None, execv)</div><div class="line"></div><div class="line">    def spawnve(mode, file, args, env):</div><div class="line">        &quot;&quot;&quot;spawnve(mode, file, args, env) -&gt; integer</div><div class="line"></div><div class="line">Execute file with arguments from args in a subprocess with the</div><div class="line">specified environment.</div><div class="line">If mode == P_NOWAIT return the pid of the process.</div><div class="line">If mode == P_WAIT return the process&apos;s exit code if it exits normally;</div><div class="line">otherwise return -SIG, where SIG is the signal that killed it. &quot;&quot;&quot;</div><div class="line">        return _spawnvef(mode, file, args, env, execve)</div><div class="line"></div><div class="line">    # Note: spawnvp[e] is&apos;t currently supported on Windows</div><div class="line"></div><div class="line">    def spawnvp(mode, file, args):</div><div class="line">        &quot;&quot;&quot;spawnvp(mode, file, args) -&gt; integer</div><div class="line"></div><div class="line">Execute file (which is looked for along $PATH) with arguments from</div><div class="line">args in a subprocess.</div><div class="line">If mode == P_NOWAIT return the pid of the process.</div><div class="line">If mode == P_WAIT return the process&apos;s exit code if it exits normally;</div><div class="line">otherwise return -SIG, where SIG is the signal that killed it. &quot;&quot;&quot;</div><div class="line">        return _spawnvef(mode, file, args, None, execvp)</div><div class="line"></div><div class="line">    def spawnvpe(mode, file, args, env):</div><div class="line">        &quot;&quot;&quot;spawnvpe(mode, file, args, env) -&gt; integer</div><div class="line"></div><div class="line">Execute file (which is looked for along $PATH) with arguments from</div><div class="line">args in a subprocess with the supplied environment.</div><div class="line">If mode == P_NOWAIT return the pid of the process.</div><div class="line">If mode == P_WAIT return the process&apos;s exit code if it exits normally;</div><div class="line">otherwise return -SIG, where SIG is the signal that killed it. &quot;&quot;&quot;</div><div class="line">        return _spawnvef(mode, file, args, env, execvpe)</div><div class="line"></div><div class="line"></div><div class="line">    __all__.extend([&quot;spawnv&quot;, &quot;spawnve&quot;, &quot;spawnvp&quot;, &quot;spawnvpe&quot;])</div><div class="line"></div><div class="line"></div><div class="line">if _exists(&quot;spawnv&quot;):</div><div class="line">    # These aren&apos;t supplied by the basic Windows code</div><div class="line">    # but can be easily implemented in Python</div><div class="line"></div><div class="line">    def spawnl(mode, file, *args):</div><div class="line">        &quot;&quot;&quot;spawnl(mode, file, *args) -&gt; integer</div><div class="line"></div><div class="line">Execute file with arguments from args in a subprocess.</div><div class="line">If mode == P_NOWAIT return the pid of the process.</div><div class="line">If mode == P_WAIT return the process&apos;s exit code if it exits normally;</div><div class="line">otherwise return -SIG, where SIG is the signal that killed it. &quot;&quot;&quot;</div><div class="line">        return spawnv(mode, file, args)</div><div class="line"></div><div class="line">    def spawnle(mode, file, *args):</div><div class="line">        &quot;&quot;&quot;spawnle(mode, file, *args, env) -&gt; integer</div><div class="line"></div><div class="line">Execute file with arguments from args in a subprocess with the</div><div class="line">supplied environment.</div><div class="line">If mode == P_NOWAIT return the pid of the process.</div><div class="line">If mode == P_WAIT return the process&apos;s exit code if it exits normally;</div><div class="line">otherwise return -SIG, where SIG is the signal that killed it. &quot;&quot;&quot;</div><div class="line">        env = args[-1]</div><div class="line">        return spawnve(mode, file, args[:-1], env)</div><div class="line"></div><div class="line"></div><div class="line">    __all__.extend([&quot;spawnl&quot;, &quot;spawnle&quot;])</div><div class="line"></div><div class="line"></div><div class="line">if _exists(&quot;spawnvp&quot;):</div><div class="line">    # At the moment, Windows doesn&apos;t implement spawnvp[e],</div><div class="line">    # so it won&apos;t have spawnlp[e] either.</div><div class="line">    def spawnlp(mode, file, *args):</div><div class="line">        &quot;&quot;&quot;spawnlp(mode, file, *args) -&gt; integer</div><div class="line"></div><div class="line">Execute file (which is looked for along $PATH) with arguments from</div><div class="line">args in a subprocess with the supplied environment.</div><div class="line">If mode == P_NOWAIT return the pid of the process.</div><div class="line">If mode == P_WAIT return the process&apos;s exit code if it exits normally;</div><div class="line">otherwise return -SIG, where SIG is the signal that killed it. &quot;&quot;&quot;</div><div class="line">        return spawnvp(mode, file, args)</div><div class="line"></div><div class="line">    def spawnlpe(mode, file, *args):</div><div class="line">        &quot;&quot;&quot;spawnlpe(mode, file, *args, env) -&gt; integer</div><div class="line"></div><div class="line">Execute file (which is looked for along $PATH) with arguments from</div><div class="line">args in a subprocess with the supplied environment.</div><div class="line">If mode == P_NOWAIT return the pid of the process.</div><div class="line">If mode == P_WAIT return the process&apos;s exit code if it exits normally;</div><div class="line">otherwise return -SIG, where SIG is the signal that killed it. &quot;&quot;&quot;</div><div class="line">        env = args[-1]</div><div class="line">        return spawnvpe(mode, file, args[:-1], env)</div><div class="line"></div><div class="line"></div><div class="line">    __all__.extend([&quot;spawnlp&quot;, &quot;spawnlpe&quot;])</div><div class="line"></div><div class="line"></div><div class="line"># Supply os.popen()</div><div class="line">def popen(cmd, mode=&quot;r&quot;, buffering=-1):</div><div class="line">    if not isinstance(cmd, str):</div><div class="line">        raise TypeError(&quot;invalid cmd type (%s, expected string)&quot; % type(cmd))</div><div class="line">    if mode not in (&quot;r&quot;, &quot;w&quot;):</div><div class="line">        raise ValueError(&quot;invalid mode %r&quot; % mode)</div><div class="line">    if buffering == 0 or buffering is None:</div><div class="line">        raise ValueError(&quot;popen() does not support unbuffered streams&quot;)</div><div class="line">    import subprocess, io</div><div class="line">    if mode == &quot;r&quot;:</div><div class="line">        proc = subprocess.Popen(cmd,</div><div class="line">                                shell=True,</div><div class="line">                                stdout=subprocess.PIPE,</div><div class="line">                                bufsize=buffering)</div><div class="line">        return _wrap_close(io.TextIOWrapper(proc.stdout), proc)</div><div class="line">    else:</div><div class="line">        proc = subprocess.Popen(cmd,</div><div class="line">                                shell=True,</div><div class="line">                                stdin=subprocess.PIPE,</div><div class="line">                                bufsize=buffering)</div><div class="line">        return _wrap_close(io.TextIOWrapper(proc.stdin), proc)</div><div class="line"></div><div class="line"># Helper for popen() -- a proxy for a file whose close waits for the process</div><div class="line">class _wrap_close:</div><div class="line">    def __init__(self, stream, proc):</div><div class="line">        self._stream = stream</div><div class="line">        self._proc = proc</div><div class="line">    def close(self):</div><div class="line">        self._stream.close()</div><div class="line">        returncode = self._proc.wait()</div><div class="line">        if returncode == 0:</div><div class="line">            return None</div><div class="line">        if name == &apos;nt&apos;:</div><div class="line">            return returncode</div><div class="line">        else:</div><div class="line">            return returncode &lt;&lt; 8  # Shift left to match old behavior</div><div class="line">    def __enter__(self):</div><div class="line">        return self</div><div class="line">    def __exit__(self, *args):</div><div class="line">        self.close()</div><div class="line">    def __getattr__(self, name):</div><div class="line">        return getattr(self._stream, name)</div><div class="line">    def __iter__(self):</div><div class="line">        return iter(self._stream)</div><div class="line"></div><div class="line"># Supply os.fdopen()</div><div class="line">def fdopen(fd, *args, **kwargs):</div><div class="line">    if not isinstance(fd, int):</div><div class="line">        raise TypeError(&quot;invalid fd type (%s, expected integer)&quot; % type(fd))</div><div class="line">    import io</div><div class="line">    return io.open(fd, *args, **kwargs)</div><div class="line"></div><div class="line"></div><div class="line"># For testing purposes, make sure the function is available when the C</div><div class="line"># implementation exists.</div><div class="line">def _fspath(path):</div><div class="line">    &quot;&quot;&quot;Return the path representation of a path-like object.</div><div class="line"></div><div class="line">    If str or bytes is passed in, it is returned unchanged. Otherwise the</div><div class="line">    os.PathLike interface is used to get the path representation. If the</div><div class="line">    path representation is not str or bytes, TypeError is raised. If the</div><div class="line">    provided path is not str, bytes, or os.PathLike, TypeError is raised.</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    if isinstance(path, (str, bytes)):</div><div class="line">        return path</div><div class="line"></div><div class="line">    # Work from the object&apos;s type to match method resolution of other magic</div><div class="line">    # methods.</div><div class="line">    path_type = type(path)</div><div class="line">    try:</div><div class="line">        path_repr = path_type.__fspath__(path)</div><div class="line">    except AttributeError:</div><div class="line">        if hasattr(path_type, &apos;__fspath__&apos;):</div><div class="line">            raise</div><div class="line">        else:</div><div class="line">            raise TypeError(&quot;expected str, bytes or os.PathLike object, &quot;</div><div class="line">                            &quot;not &quot; + path_type.__name__)</div><div class="line">    if isinstance(path_repr, (str, bytes)):</div><div class="line">        return path_repr</div><div class="line">    else:</div><div class="line">        raise TypeError(&quot;expected &#123;&#125;.__fspath__() to return str or bytes, &quot;</div><div class="line">                        &quot;not &#123;&#125;&quot;.format(path_type.__name__,</div><div class="line">                                        type(path_repr).__name__))</div><div class="line"></div><div class="line"># If there is no C implementation, make the pure Python version the</div><div class="line"># implementation as transparently as possible.</div><div class="line">if not _exists(&apos;fspath&apos;):</div><div class="line">    fspath = _fspath</div><div class="line">    fspath.__name__ = &quot;fspath&quot;</div><div class="line"></div><div class="line"></div><div class="line">class PathLike(abc.ABC):</div><div class="line"></div><div class="line">    &quot;&quot;&quot;Abstract base class for implementing the file system path protocol.&quot;&quot;&quot;</div><div class="line"></div><div class="line">    @abc.abstractmethod</div><div class="line">    def __fspath__(self):</div><div class="line">        &quot;&quot;&quot;Return the file system path representation of the object.&quot;&quot;&quot;</div><div class="line">        raise NotImplementedError</div><div class="line"></div><div class="line">    @classmethod</div><div class="line">    def __subclasshook__(cls, subclass):</div><div class="line">        return hasattr(subclass, &apos;__fspath__&apos;)</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -87,386 +85,20 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-12-10T14:22:48.000Z"><a href="/2017/12/10/前端/">2017-12-10</a></time>
+        <time datetime="2018-04-05T13:27:28.000Z"><a href="/2018/04/05/git/">2018-04-05</a></time>
       
       
   
-    <h1 class="title"><a href="/2017/12/10/前端/">前端</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>HTML<br>1、一套规则，浏览器认识的规则。<br>2、开发者：<br>    学习Html规则<br>    开发后台程序：</p>
-<pre><code>- 写Html文件（充当模板的作用） ******
-- 数据库获取数据，然后替换到html文件的指定位置（Web框架）
-</code></pre><p>3、本地测试</p>
-<pre><code>- 找到文件路径，直接浏览器打开
-- pycharm打开测试
-</code></pre><p>4、编写Html文件</p>
-<pre><code>- doctype对应关系
-- html标签，标签内部可以写属性 ====&gt; 只能有一个
-- 注释：  &lt;!--  注释的内容  --&gt;
-</code></pre><p>5、标签分类</p>
-<pre><code>- 自闭合标签
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-- 主动闭合标签
-    title&gt;老男孩&lt;/title&gt;
-</code></pre><p>6、<br>    head标签中<br>    外不可见</p>
-<pre><code>    - &lt;meta  -&gt; 编码，跳转，刷新，关键字，描述，IE兼容
-            &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=IE9;IE=IE8;&quot; /&gt;
-&lt;meta http-equiv=&quot;content-type&quot; content=&apos;text/html;charset=utf-8&quot;&gt;
-&lt;mete http-equiv=&quot;Refresh&quot; Content=&quot;5;Url=http://www.ssddd.com&quot;/&gt;     跳转
-&lt;meta name=&quot;keywords&quot; content=&quot;dsadasd&quot;&gt;    
-    - title标签  窗口上
-    - &lt;link /&gt; 搞图标，欠
-&lt;link rel=&quot;shortcut icon&quot; href=&quot;image/favicon.ico&quot;&gt;    title旁的小图标
-    - &lt;style /&gt;欠
-    - &lt;script&gt; 欠
-</code></pre><p>7、body标签</p>
-<pre><code> - 图标，  &amp;nbsp;  &amp;gt;   &amp;lt;
- - p标签，段落
- - br，换行
- ======== 小总结  =====
-    所有标签分为：
-        块级标签： div（白板），H系列（加大加粗），p标签（段落和段落之间有间距）
-        行内标签： span（白板）
-    标签之间可以嵌套
-    标签存在的意义，css操作，js操作
-    ps:chorme审查元素的使用
-        - 定位
-        - 查看样式
-- h系列
-- div
-- span
-- input系列 + form标签
-    input type=&apos;text&apos;     - name属性，value=&quot;赵凡&quot; 
-    input type=&apos;password&apos; - name属性，value=&quot;赵凡&quot; 
-    input type=&apos;submit&apos;   - value=&apos;提交&apos; 提交按钮，表单
-    input type=&apos;button&apos;   - value=&apos;登录&apos; 按钮
-
-    input type=&apos;radio&apos;    - 单选框 value，checked=&quot;checked&quot;，name属性（name相同则互斥）
-    input type=&apos;checkbox&apos; - 复选框 value, checked=&quot;checked&quot;，name属性（批量获取数据）
-    input type=&apos;file&apos;     - 依赖form表单的一个属性 enctype=&quot;multipart/form-data&quot;
-    input type=&apos;rest&apos;     - 重置
-
-    &lt;textarea &gt;默认值&lt;/textarea&gt;  - name属性
-    select标签            - name,内部option value, 提交到后台，size，multiple
-
-- a标签
-    - 跳转
-    - 锚     href=&apos;#某个标签的ID&apos;    标签的ID不允许重复
-
-- img 
-     src
-     alt
-     title
-
-- 列表
-    ul
-        li
-    ol
-        li
-    dl
-        dt
-        dd
-- 表格
-    table
-        thead
-            tr
-                th
-        tbody
-            tr
-                td
-    colspan = &apos;&apos;
-    rowspan = &apos;&apos;
-- label
-    用于点击文件，使得关联的标签获取光标
-    &lt;label for=&quot;username&quot;&gt;用户名：&lt;/label&gt;
-    &lt;input id=&quot;username&quot; type=&quot;text&quot; name=&quot;user&quot; /&gt;
-- fieldset
-    legend
-</code></pre><ul>
-<li>20个标签<br>CSS</li>
-</ul>
-<p>在标签上设置style属性：<br>    background-color: #2459a2;<br>    height: 48px;<br>    …</p>
-<p>编写css样式：</p>
-<pre><code>1. 标签的style属性
-2. 写在head里面 style标签中写样式
-    - id选择区
-          #i1{
-            background-color: #2459a2;
-            height: 48px;
-          }
-
-    - class选择器 ******
-
-          .名称{
-            ...
-          }
-
-          &lt;标签 class=&apos;名称&apos;&gt; &lt;/标签&gt;
-
-    - 标签选择器
-            div{
-                ...
-            }
-
-
-            所有div设置上此样式
-
-    - 层级选择器（空格） ******
-           .c1 .c2 div{
-
-           }
-    - 组合选择器（逗号） ******
-            #c1,.c2,div{
-
-           }
-
-    - 属性选择器 ******
-           对选择到的标签再通过属性再进行一次筛选
-           .c1[n=&apos;alex&apos;]{ width:100px; height:200px; }
-
-    PS:
-        - 优先级，标签上style优先，编写顺序，就近原则
-
-2.5 css样式也可以写在单独文件中
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;commons.css&quot; /&gt;
-
-3、注释
-    /*   */
-
-4、边框
-     - 宽度，样式，颜色  (border: 4px dotted red;)
-     - border-left
-
-5、  
-    height，         高度 百分比
-    width，          宽度 像素，百分比
-    text-align:ceter, 水平方向居中
-    line-height，垂直方向根据标签高度
-    color、     字体颜色
-    font-size、 字体大小
-    font-weight 字体加粗
-
-6、float
-    让标签浪起来，块级标签也可以堆叠
-    老子管不住：
-        &lt;div style=&quot;clear: both;&quot;&gt;&lt;/div&gt;
-
-7、display
-    display: none; -- 让标签消失
-    display: inline;
-    display: block;
-    display: inline-block;
-             具有inline,默认自己有多少占多少
-             具有block，可以设置无法设置高度，宽度，padding  margin
-    ******
-    行内标签：无法设置高度，宽度，padding  margin
-    块级标签：设置高度，宽度，padding  margin
-
-
-8、padding  margin(0,auto)
-</code></pre><p>CSS补充<br>    position:<br>        a. fiexd =&gt; 固定在页面的某个位置</p>
-<pre><code>    b. relative + absolute
-
-        &lt;div style=&apos;position:relative;&apos;&gt;
-            &lt;div style=&apos;position:absolute;top:0;left:0;&apos;&gt;&lt;/div&gt;
-        &lt;/div&gt;
-
-opcity: 0.5 透明度
-z-index: 层级顺序   
-overflow: hidden,auto
-hover
-
-background-image:url(&apos;image/4.gif&apos;); # 默认，div大，图片重复访
-background-repeat: repeat-y;
-background-position-x:
-background-position-y:
-
-示例：输入框
-</code></pre><p>JavaScript<br>    独立的语言，浏览器具有js解释器</p>
-<pre><code>JavaScript代码存在形式：
-    - Head中
-            &lt;script&gt;
-                //javascript代码
-                alert(123);
-            &lt;/script&gt;
-
-            &lt;script type=&quot;text/javascript&quot;&gt;
-                //javascript代码
-                alert(123);
-            &lt;/script&gt;
-    - 文件
-        &lt;script src=&apos;js文件路径&apos;&gt; &lt;/script&gt;
-
-    PS: JS代码需要放置在 &lt;body&gt;标签内部的最下方
-
-注释
-    当行注释 //
-    多行注释  /*     */
-
-变量：
-
-    python：
-        name = &apos;alex&apos;
-    JavaScript:
-        name = &apos;alex&apos;     # 全局变量
-        var name = &apos;eric&apos; # 局部变量
-
-写Js代码：
-    - html文件中编写
-    - 临时，浏览器的终端 console
-
-
-基本数据类型
-    数字
-        a = 18;
-    字符串
-        a = &quot;alex&quot;
-        a.chartAt(索引位置)
-        a.substring(起始位置，结束位置)
-        a.lenght    获取当前字符串长度
-        ...
-    列表(数组)
-        a = [11,22,33]
-
-    字典
-        a = {&apos;k1&apos;:&apos;v1&apos;,&apos;k2&apos;:&apos;v2&apos;}
-    布尔类型
-        小写
-
-for循环
-    1. 循环时，循环的元素是索引
-
-        a = [11,22,33,44]
-        for(var item in a){
-            console.log(item);
-        }
-
-        a = {&apos;k1&apos;:&apos;v1&apos;,&apos;k2&apos;:&apos;v2&apos;}
-        for(var item in a){
-            console.log(item);
-        }
-
-    2. 
-        for(var i=0;i&lt;10;i=i+1){
-
-        }
-
-        a = [11,22,33,44]
-        for(var i=0;i&lt;a.length;i=i+1){
-
-        }
-
-        不支持字典的循环
-
-
-条件语句
-    if(条件){
-
-    }else if(条件){
-
-    }else if(条件){
-
-    }else{
-
-    }
-
-    ==   值相等
-    ===  值和类型都相等
-    &amp;&amp;   and
-    ||   or
-
-
-函数：
-
-
-    function 函数名(a,b,c){
-
-    }
-
-    函数名(1,2,3)
-</code></pre><p>Dom<br>    1、找到标签<br>        获取单个元素        document.getElementById(‘i1’)<br>        获取多个元素（列表）document.getElementsByTagName(‘div’)<br>        获取多个元素（列表）document.getElementsByClassName(‘c1’)<br>        a. 直接找<br>            document.getElementById             根据ID获取一个标签<br>            document.getElementsByName          根据name属性获取标签集合<br>            document.getElementsByClassName     根据class属性获取标签集合<br>            document.getElementsByTagName       根据标签名获取标签集合</p>
-<pre><code>    b. 间接
-        tag = document.getElementById(&apos;i1&apos;)
-
-        parentElement           // 父节点标签元素
-        children                // 所有子标签
-        firstElementChild       // 第一个子标签元素
-        lastElementChild        // 最后一个子标签元素
-        nextElementtSibling     // 下一个兄弟标签元素
-        previousElementSibling  // 上一个兄弟标签元素
-
-2、操作标签
-
-    a. innerText
-
-        获取标签中的文本内容
-        标签.innerText
-
-        对标签内部文本进行重新复制
-
-        标签.innerText = &quot;&quot;
-
-    b. className
-        tag.className =》 直接整体做操作
-        tag.classList.add(&apos;样式名&apos;)   添加指定样式
-        tag.classList.remove(&apos;样式名&apos;)   删除指定样式
-
-        PS：
-
-            &lt;div onclick=&apos;func();&apos;&gt;点我&lt;/div&gt;
-            &lt;script&gt;
-                function func(){
-
-                }
-
-            &lt;/script&gt;
-
-    c. checkbox  
-            获取值
-            checkbox对象.checked
-            设置值
-            checkbox对象.checked = true
-</code></pre>
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-11-21T08:00:48.000Z"><a href="/2017/11/21/数据库/">2017-11-21</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/11/21/数据库/">数据库</a></h1>
+    <h1 class="title"><a href="/2018/04/05/git/">git</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <p>主键 一个数据表只包含一个主键，你可以使用主键来查询数据<br>外键 用于关联两个表<br>复何健 将多个列作为一个索引键 一般用于复合索引<br>索引 快速访问数据库特定信息 是对数据库一列或多列的排序 类似书籍目录<br>参照完整性 数据必须存在</p>
-<p>刚安装 密码为空 通过<br>mysqladmin -u root password “new_password”    修改<br>登录<br>mysql -u root -p<br>show databases;<br>增加用户<br>grant all on test(表名？).* ‘yourname’@’localhost’ identified by ‘youpassword’;</p>
-<p>进入表<br>use mysql;<br>显示表<br>show tables;<br>查看表<br>desc user;</p>
-<p>create databases test charset utf8;<br>查看表创建记录<br>show create table lin<br>create table lin(<br>id int auto_increment,<br>name char(32) not null,<br>age int not null,<br>register_date date not null,<br>primary ke(id))<br> insert into lin (name,age,register_data) values(“lin”,22,”2016-3-22”);<br> select <em> from lin limit 2 offset 1<br>select </em> from lin where id &gt;3 and age &lt;2<br>改<br>update lin set name=”ddd”,age=22 where id=4;<br>删<br>delete from lin where name=”ddd”;<br>排序<br>select <em> from lin order by id desc; asc 降序升序<br>分组 计数<br>select name,count(</em>) from lin group by age;<br>select coalesce(name,”total”),sum(age) as total from lin group by name with rollup;<br>加列<br>alter table student add sex enum(“M”,”F”);<br>删列<br>alter table lin drop age;<br>改 是否为空<br>alter table lin modify sex enum(“M”,”F”) not null;<br>改字段名<br>alter table lin change sex gender char(32)not null default “X”<br>外键<br>create table lin_recd(<br>id int auto_increment primary key,<br>name char(32) not null,<br>age_rec int not null,<br>rec_date date not null,<br>KEY ‘fk_lin_key’ (‘stu_id’)<br>constraint ‘fk_lin_key’ foreign key (‘stu_id’)<br>references ‘lin’(‘id’))</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import pymysql</div><div class="line">conn = pymysql.connect(host=&apos;127.0.0.1&apos;,user = &apos;root&apos;,passwd = &apos;123456&apos;,db=&apos;test&apos;)</div><div class="line">cur =conn.cursor()</div><div class="line">reCount = cur.execute(&apos;insert into lin (name,age,register_data) values(&quot;lin&quot;,12,&quot;2011-3-22&quot;);&apos;)</div><div class="line">conn.commit()</div><div class="line">cur.close()</div><div class="line">conn.close()</div></pre></td></tr></table></figure>
+        <p>git init<br>git status<br>git add.  加入暂存区<br>git commit -m “写说明”<br>git log  记录<br>git log –oneline  简短显示<br>git log –oneline –all –graph<br>git checkout 搜索符   返回节点<br>git checkout -  回到之前的节点<br>git log -p 修改内容查看<br>git tag -a 标签名 -m  “备注”    大节点记录<br>git tag  显示所有tag<br>git show tag名  详细信息</p>
+<p>分支<br>git barnch 分支名<br>git checkout rich   切换分支<br>git merge 分支名   合并分支</p>
+<p>远程电脑<br>git remote add 远程名称 远程地址<br>gut remote 查看<br>git remote -v 详细信息<br>git push -u 远程名 分支名 </p>
+<p>下载代码  合作<br>git pull 获取远程更新<br>git pull = git fetch &amp;&amp; git merge  等价</p>
 
       
     </div>
@@ -489,11 +121,135 @@ for循环
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-11-18T14:24:35.000Z"><a href="/2017/11/18/client-server/">2017-11-18</a></time>
+        <time datetime="2018-04-05T07:37:35.000Z"><a href="/2018/04/05/redis/">2018-04-05</a></time>
       
       
   
-    <h1 class="title"><a href="/2017/11/18/client-server/">client&amp;server</a></h1>
+    <h1 class="title"><a href="/2018/04/05/redis/">redis</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>####列表命令<br>lpush/rpush mylist 数据  左 右 push<br>lrange mylist 0 10  查看数据<br>blpop/brpop key1[key2] timeout  左 右 出栈<br>lpop/rpop key  非阻塞  执行立回  无等待<br>llen key  长度<br>lindex key index  取第几个元素</p>
+<p>####集合命令<br>sadd course_set “django”   添加集合 如果存在返回0 不存在 返回1<br>sadd myset “dddd”<br>scard course_set  计数<br>sdiff myset1 myset2  做减法<br>sinter myser1 myset2   交集<br>spop key  随机删除一个 然后返回<br>srandmember myset 1    随机获取1个<br>smembers myset 获取所有</p>
+<p>####可排序集合<br>zadd zmyset 0 “sdsad” 3 “sdasd” 4 “sdjaklj”  分数<br>zrangebyscore zmyset 0 100  获取0 到100分之间的<br>zcount key 0 100   0 到100 有多少个KEY</p>
+<p>第一步启动SPIDER后<br>scrapy runspider saadd.py<br>将初始URL 加入队列<br>redis -cli lpush myspider:start_utls http:..google.com</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-04-03T14:05:39.000Z"><a href="/2018/04/03/linux-shell/">2018-04-03</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/04/03/linux-shell/">linux shell</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>echo $shell</p>
+<p>vi<br>vi filename</p>
+<p>####命令模式<br>( 上一行<br>) 下一行<br>{ 上一段落<br>} 下一段落<br>        change    delete    yank(copy)<br>line    cc        dd        yy<br>letter    cl        dl        yl    </p>
+<p>u   撤销最近一次修改<br>ctrl-r  取消最后一次撤销<br>U 撤销所有修改</p>
+<p>word    cw        dw        yw<br>p  粘贴<br>dtn  删除光标到n间的 字符<br>rc   替换光标所在的位置为c<br>dw<br>5dd   删除5行<br>5yy<br>5x   删除5个<br>R  进入替换状态</p>
+<p>####插入模式</p>
+<p>####扩展模式<br>查找<br>/  向后搜索<br>？  想抢搜索<br>n   搜索下一个<br>N   搜索上 一个<br>：w  保存<br>:q<br>:wq<br>:w!<br>:q!<br>:wq!</p>
+<p>b 前跳一词 w 后跳一词</p>
+<p>文件定位<br>G 跳转到最后一行<br>2G 跳转到文件第2行<br>ctrl-d   下滚半屏<br>ctrl-u   上滚半屏</p>
+<p>屏幕定位相关<br>H  跳转到本屏幕显示第一行<br>M  跳中间行<br>L  跳最后一行<br>z+ Enter 将光标所在位置显示为屏幕第一行<br>z-  光标成最后一行</p>
+<p>查找 替换<br>sed<br>：s/i/-   i 换横线  换一个<br>:s/i/-/g   光标行所有都换<br>：1,10s/i/-/g   1-10行所有i替换<br>：1,$     替换整个文本</p>
+<p>读取和保存<br>:r file   将另一个文本读入当前文件<br>1,20 w file  将1-20行的内容写入一个新文件<br>1,20 w&gt;&gt;file  追加到文本</p>
+<p>set number  显示行号<br>set  显示常用设置<br>set all 显示所有设置</p>
+<p>别名<br>alias cls=’clear’<br>set -o noclobber   无法覆盖<br>set-o vi        换成vim 下的模式</p>
+<p>脚本格式</p>
+<p>#@/bin/bash</p>
+<h1 id="for-what"><a href="#for-what" class="headerlink" title="for what"></a>for what</h1><p>main script</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-04-01T03:53:55.000Z"><a href="/2018/04/01/算法/">2018-04-01</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/04/01/算法/">算法</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>算法 一个计算过程 解决问题的方法<br>递归：<br>1 调用自身<br>2 结束条件</p>
+<p>时间复杂度  运行时间的式子<br>一般来说  时间复杂度高的算法比复杂度低的算法快<br>二分查找<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">def bin_search(data_ser,value):</div><div class="line">    data_ser.sort()</div><div class="line">    low = 0</div><div class="line">    high  = len(data_ser)-1</div><div class="line">    while low&lt;=high:</div><div class="line">        mid = (low+high)//2</div><div class="line">        if  data_ser[mid]==value:</div><div class="line">            return mid</div><div class="line">        elif data_ser[mid]&gt;value:</div><div class="line">            high = mid -1</div><div class="line">        else:</div><div class="line">            low = mid+1</div><div class="line">    return</div><div class="line"></div><div class="line">print(bin_search(a,35))</div></pre></td></tr></table></figure></p>
+<p>排序<br>慢<br>冒泡排序 选择排序 插入排序<br>块<br>堆排序<br>归并排序<br>没人用<br>基数排序<br>希尔排序<br>桶排序</p>
+<p>冒泡排序   每次从第一个开始  与升序号元素比大小  大的交换继续比较  小的 尤大的升序元素继续 一个走n-1躺  第n躺走n-i-1步<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">import random</div><div class="line">def bubble_sort(li):</div><div class="line">    for i in range(len(li)-1):   #n-1躺</div><div class="line">        for j in range(len(li)-i-1):  #走n-i-1步</div><div class="line">            if li[j] &gt; li[j+1]:</div><div class="line">                li[j],li[j+1] =li[j+1],li[j]</div><div class="line">    return li</div><div class="line">data = list(range(1000))</div><div class="line">random.shuffle(data)</div><div class="line"># print(data)</div><div class="line">print(bubble_sort(data))</div></pre></td></tr></table></figure></p>
+<p>小优化版<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">def bubble_sort(li):</div><div class="line">    for i in range(len(li)-1):</div><div class="line">        exchange = False            </div><div class="line">        for j in range(len(li)-i-1):</div><div class="line">            if li[j] &gt; li[j+1]</div><div class="line">                li[j],li[j+1] =li[j+1],li[j]</div><div class="line">                exchange = True                #小优化  如果大小不需要交换 则排完了  剩下次数不用走了 </div><div class="line">        if  not exchange:</div><div class="line">            brea</div></pre></td></tr></table></figure></p>
+<p>选择排序<br>选择最小的  放在最左边 继续找最小的放在左边<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">def select_sort(li):</div><div class="line">    for i in range(len(li)-1):</div><div class="line">        min_loc = i</div><div class="line">        for j in range(i+1,len(li)):</div><div class="line">            if li[j]&lt;li[min_loc]:</div><div class="line">                li[j],li[min_loc]=li[min_loc],li[j]</div><div class="line"></div><div class="line">a=[1,2,4,32,543,6,43,6,346,4]</div><div class="line">select_sort(a)</div><div class="line">print(a)</div></pre></td></tr></table></figure></p>
+<p>#插入排序<br>抽第二张 与前面比较 插入中间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">def insert_sort(li):</div><div class="line">    for i in range(1,len(li)):</div><div class="line">        tmp = li[i]</div><div class="line">        j = i-1</div><div class="line">        while j&gt;0 and li[j]&gt;tmp:</div><div class="line">            li[j+1]=li[j]</div><div class="line">            j=j-1</div><div class="line">        li[j+1]=tmp</div><div class="line">a = [1, 2, 4, 32, 543, 6, 43, 6, 346, 4]</div><div class="line">insert_sort(a)</div><div class="line">print(a）</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-03-25T11:13:04.000Z"><a href="/2018/03/25/后端/">2018-03-25</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/03/25/后端/">后端</a></h1>
   
 
     </header>
@@ -521,40 +277,182 @@ for循环
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-11-14T14:19:35.000Z"><a href="/2017/11/14/operating-system/">2017-11-14</a></time>
+        <time datetime="2018-03-13T03:15:48.000Z"><a href="/2018/03/13/scrapy/">2018-03-13</a></time>
       
       
   
-    <h1 class="title"><a href="/2017/11/14/operating-system/">operating system</a></h1>
+    <h1 class="title"><a href="/2018/03/13/scrapy/">scrapy</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <p>#####什么是操作系统<br>从用户角度 提供一个控制软件<br>管理应用程序<br>为程序提供服务<br>杀死应用程序</p>
-<p>资源管理 管理外设 资源分配</p>
-<p>抽象作用<br>cpu  抽象为 线程<br>硬盘           文件<br>内存          地址空间</p>
-<p>操作系统特征<br>并发 共享 虚拟 异步</p>
-<p>####操作系统的启动</p>
-<p>#####计算机原理角度 基本 三部分   </p>
-<p>  cpu）</p>
-<p>  [总线]</p>
-<p> （io)            （内存）</p>
-<p>#####存放<br>DISK: 存放OS<br>BIOS: 基本io处理系统   检查基本外设<br>Bootloader 加载OS<br>cs 段寄存器 ip 指针寄存器  组成具体内存地址</p>
-<p>#####启动过程<br>POST（加电自检）<br>寻找显卡和执行BIOS<br>BIOS 加载 BOOTLOADER<br>bootloader 找到OS的起始扇区和长度 加载到内存</p>
-<p>#####操作系统与外设和程序交互<br>面向外设 中断和io<br>面向应用程序 系统调用和异常</p>
-<p>系统调用  应用程序主动向系统发出请求                处理时间    异步或同步<br>异常        非法指令或其他坏的处理状态 如内存出错            同步<br>中断        来自不同硬件设备的计时器和网络的中断            异步：不知道什么时候发生 </p>
-<p>中断<br>硬件<br>设置中断标记【cpu初始化】<br>1将内部、外部事件设置中断标记<br>2中断事件id<br>软件<br>保持当前状态（上下文？）<br>中断服务程序处理<br>清除中断标记<br>恢复之前保持的处理状态</p>
-<p>异常<br>保存现场<br>异常处理<br>恢复现场</p>
-<p>计算机体系结构/内存分层体系</p>
-<p>#####连续内存分配<br>内存碎片问题<br>分区的动态分配 第一适配 最佳适配  最差适配<br>压缩式碎片整理<br>交换式碎片整理</p>
-<p>#####非连续分配优点<br>一个程序的物理地址是非连续的<br>更好的利用内存和管理<br>允许共享代码与数据<br>支持动态加载和动态链接</p>
-<p>#####分段<br>段表 1 起始信息 2 长度限制</p>
-<p>#####分页<br>页号 页偏移<br>页大小固定不变  段会变</p>
-<p>#####页帧（FRAME)<br>物理内存被分割为大小相等的帧<br>f-页帧号 F位 共2^F个页帧<br>o-振内偏移（S位，每帧有2^S字节）<br>物理地址=2^S*f+o</p>
-<p>#####页<br>p-页号<br>o-页内偏移<br>虚拟地址=2^S*p+o</p>
-<p>#####存储结构<br>cpu<br>寄存器<br>cache<br>主存储<br>硬盘</p>
-<p>#####虚拟内存管理系数特征<br>大的用户空间<br>部分交换<br>不连续性</p>
+        <p>cmd 下 树形结构显示文件 tree /f<br>    type  查看文件内容</p>
+<p>#####在scrapy下调试模式 DEBUG<br>在启动路径文件下建 main.py 文件<br>写如执行scrapy crawl 项目名称命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">from scrapy.cmdline import execute</div><div class="line"></div><div class="line">import sys</div><div class="line">import os</div><div class="line"></div><div class="line"># print(sys.path)</div><div class="line"># print(os.path.dirname(os.path.abspath(__file__)))</div><div class="line">sys.path.append(os.path.dirname(os.path.abspath(__file__)))</div><div class="line">execute([&apos;scrapy &apos;,&apos;crawl&apos;,&apos;zhih&apos;])</div></pre></td></tr></table></figure>
+<p>#####创建项目<br>scrapy startproject <strong>*</strong><br>cd <em>**</em></p>
+<p>#####生成spiider<br>scrapy genspider [-t template] <namen>  wwww.<domain>.com<br>scrapy genspider -l  查看模板</domain></namen></p>
+<p>#####运行sd<br>scrapy crawl <em>**</em></p>
+<p>#####<br>scrapy check<br>scrapy list</p>
+<p>#####获取网址<br>scrapy fetch  参数   –nolog  –headers  –noredirect</p>
+<h5 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h5><p>scrapy shell 网址  </p>
+<h5 id="Parse"><a href="#Parse" class="headerlink" title="Parse"></a>Parse</h5><p>scrapy parse <url>[options]</url></p>
+<h5 id="bench测速"><a href="#bench测速" class="headerlink" title="bench测速"></a>bench测速</h5><p>scrapy bench  </p>
+<h5 id="scrapy-选择器"><a href="#scrapy-选择器" class="headerlink" title="scrapy 选择器"></a>scrapy 选择器</h5><p>—xpath 选择器<br>//@class 选取所有class的属性<br>div//span 选取div后的span元素 不论位置<br>//div[@class]<br>/div/<em><br>//</em><br>//div[@*] 带属性的<br>//span |//u</p>
+<p>—css选择器<br>用<em>  星号 所有节点<br>用#container id<br>.container<br>li a  li下所有a节点<br>ul+p  ul后第一个p元素 兄弟节点<br>ul~p  相邻<br>a[title]<br>a[href=”htt”]<br>a[href</em>=”job”] 包含job<br>a[href^=”http”]  以http开头<br>a[href$=”.jpg”]      以jph结尾<br>input[type=radio]:checked 选中的元素<br>div:not(#container) id非container的<br>li:nth-child(3) 第3个li<br>tr:nth-child(2n) 偶数个tr<br>::text 选中内容文本<br>.next.page-numbers     匹配 class= next page-numers 匹配同时存在两个的</p>
+<p>response.xpath(‘//div[@id=”images”]’).css(‘img::attr(src)’).extract()<br>//a/@href    a::attr(href)<br>//a/text()   a::text<br>选择包含该属性的内容<br>//a[contains(@href,”image”)]/@href<br> (‘a[href*=image]::attr(href)’)<br>contains(.,’原文评论)  .代表当前文本</p>
+<h5 id="spider-用法"><a href="#spider-用法" class="headerlink" title="spider 用法"></a>spider 用法</h5><p><a href="http://scrapy-chs.readthedocs.io/zh_CN/latest/topics/spiders.html" target="_blank" rel="external">http://scrapy-chs.readthedocs.io/zh_CN/latest/topics/spiders.html</a><br>name  用于启动爬虫<br>allowed_domain  允许的域名<br>start_utl 起始url 可以是列表 多个地址<br>custom_setting 可覆盖项目setting 定制setting  USER-AGENT</p>
+<p>– from_crawler and __init<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">def __init__(self,mongo_uri,mongo_db,*args,**kwargs):</div><div class="line">	super(zhihuSpider,self).__init__(*args,**kwargs)</div><div class="line">    self.mongo_uri = mongo_uri</div><div class="line">    self.mongo_db = mongo_db</div><div class="line">    </div><div class="line">def from_crawler(cls,crawler):</div><div class="line">	return cls(</div><div class="line">    	mongo_uri = crawler.setting.get(&apos;MONGO_URI&apos;)</div><div class="line">    )</div><div class="line">spider pipline 都可以用这个类方法  获取项目配置</div></pre></td></tr></table></figure></p>
+<p>—start_request   改post方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">def start_requests(self): </div><div class="line">	yield scrapy.Request(url=&apos;http://httpbin.org/post&apos;,method=&apos;POST&apos;,callback=self.parse_post)</div><div class="line"></div><div class="line">def parse_pose(self,response):</div><div class="line">	print(&apos;Hello&apos;,response.status)</div></pre></td></tr></table></figure></p>
+<p>— make_requests<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">def make_requests_from_url(self,url):</div><div class="line">	return scrapy.Request(url=url,callback=self.parse_index)  改写了start_requests的call_back方法</div></pre></td></tr></table></figure></p>
+<p>—-parse<br>必须生成返回一个 ITEM 或者 Request 可迭代对象</p>
+<p>—-log 日志输出<br>self.logger.iinfo(‘parse function called on $s’,response.url)<br>self.logger.debug()</p>
+<p>—-传参数<br>scrapy crawl badi -a category=Pic</p>
+<h5 id="pipline"><a href="#pipline" class="headerlink" title="pipline"></a>pipline</h5><p>process_item(self,item,spider)<br>item 接收自spider 传来的item  yield<br>需返回 item 或者 dropitem</p>
+<p>open_spidef      做初始化操作<br>close_spider<br>from_crawler(cls,crawler)  同SPIDER的</p>
+<p>#####downloadmiddleware<br>process_request(request,spider)<br>返回<br>none  继续处理processrequest<br>response  不再调用processrequest 调用prcessresponse<br>request  重新放入调度队列<br>ignorerequest   被middleware 捕捉作为异常</p>
+<p>process_response(request,reponse,spider)<br>response 继续运行其他middleware的response<br>request 不再调用response 将request加入队列<br>ignorequest 处理异常</p>
+<p>process_exception<br>none 继续执行exception 无影响<br>response 执行其他response<br>request 重新加入调度队列</p>
+<p>#####item pipline<br><a href="http://scrapy-chs.readthedocs.io/zh_CN/latest/topics/item-pipeline.html" target="_blank" rel="external">http://scrapy-chs.readthedocs.io/zh_CN/latest/topics/item-pipeline.html</a></p>
+<p>spider 文件 必须引入 所建的Items类<br>之后实例化ITEM<br>赋值 实例化item article_list[‘titles’]=titles<br>yield artucke_list    yields item  传值到pipline<br>setting  ITEM_PIPLINES 设置生效<br>去编写itempipline</p>
+<p>下载图片<br>setting item_pipline 内添加设置<br>‘项目名文件夹.pipline.images.自定义pipline’:1<br>setting 设置<br>IMAGE_URLS_FIELD = “字段名字”<br>IMAGES_URLS_FIELD = “font_url_images”<br>project_dir = os.path.abspath(os.path.dirname(<strong>file</strong>))<br>IMAGES_STORE = os.path.join(project_dir,’images’)<br>spider 文件  赋值还需要赋值列表<br>article_list_item[‘font_url_images’]=[font_url_images]</p>
+<p>#####itemloader  生成ITEM<br>from scrapy.loader import ItemLoader<br>item_loader = ItemLoader(object)<br>item_loader.add_css(“title”,”css匹配规则”)<br>item_loader.add_xpath()<br>item_loader.add_value(“url”,response.url) 直接添加值<br>article_item = item_loader.load_item() 加载方法</p>
+<p>items  保存数据的数据结构<br>middlewares   中间件<br>piplines  管道 输出ITEMS<br>setting 配置信息  变量</p>
+<p>scrapy shell 网址   命令行调试模式</p>
+<p>#####全局命令<br>startproject<br>genspider<br>settings<br>runspider<br>shell<br>fetch<br>view<br>version</p>
+<p>#####项目限定命令<br>crawl<br>check<br>list<br>edit<br>parse<br>1 获取文章列表页中的文章URL 并交给解析函数进行具体数字段解析<br>2 获取url 并交给scrapy解析<br>bench</p>
+<p>#####列表内 内容去除<br>除去了评论<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">tag_list = [&apos;职场&apos;,&apos; 1 评论 &apos;,&apos;fun两点水&apos;]</div><div class="line">print([element for element in tag_list if not element.strip().endswith(&apos;评论&apos;)])</div></pre></td></tr></table></figure></p>
+<p>#####网址连接<br>from urllib import parse<br>urljoin(response.url,post)url)<br>        response就行    需添加的例如/12422.html</p>
+<p>#####selector<br>from scrapy.selector import Selectir<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">from selenium.webdriver import Chrome</div><div class="line"></div><div class="line">browser = Chrome()</div><div class="line">r=browser.get(&quot;https://www.baidu.com&quot;)</div><div class="line">print(browser.page_source)</div></pre></td></tr></table></figure></p>
+<p>t_selector = Selector(text = browser.page_source)<br>t_selector.css(“”)</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="first spider d‘ hexo new first">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-03-04T09:31:58.000Z"><a href="/2018/03/04/D‘/">2018-03-04</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/03/04/D‘/">D‘</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line">import json</div><div class="line">import re</div><div class="line"></div><div class="line">import requests</div><div class="line">from requests.exceptions import RequestException</div><div class="line"></div><div class="line">#获取一个url下的html文件</div><div class="line">def get_one_page(url):</div><div class="line">    try:</div><div class="line">        res = requests.get(url)</div><div class="line">        if res.status_code == 200:</div><div class="line">            print(&apos;请求成功&apos;)</div><div class="line">            return res.text</div><div class="line">        print(&apos;请求失败&apos;)</div><div class="line">        return None</div><div class="line">    except RequestException:</div><div class="line">        return None</div><div class="line"></div><div class="line">#解析html文件   其中使用了正则匹配</div><div class="line">def parse_one_page(html):</div><div class="line">    #如果不加re.S(任意匹配)  .就不会匹配换行符!</div><div class="line">    pattern = re.compile(&apos;&lt;dd&gt;.*?board-index.*?&gt;(\d+)&lt;/i&gt;.*?data-src=&quot;(.*?)&quot; alt=&quot;(.*?)&quot; class=&quot;board-img&quot; /&gt;.*?star&quot;&gt;(.*?)&lt;/p&gt;.*?releasetime&quot;&gt;(.*?)&lt;/p&gt;.*?integer&quot;&gt;(.*?)&lt;/i&gt;.*?fraction&quot;&gt;(.*?)&lt;/i&gt;.*?&lt;/dd&gt;&apos;, re.S)</div><div class="line">    items = re.findall(pattern, html)</div><div class="line">    for item in items:  #构造一个生成器可以使用 for遍历</div><div class="line">        #生成一个字典</div><div class="line">        yield&#123;</div><div class="line">            &apos;index&apos; : item[0],</div><div class="line">            &apos;image&apos;: item[1],</div><div class="line">            &apos;title&apos;: item[2],</div><div class="line">            #strip()去除空格和\n  切片去除  主演:</div><div class="line">            &apos;actor&apos;: item[3].strip()[3:],</div><div class="line">            &apos;time&apos; : item[4].strip()[5:],</div><div class="line">            &apos;score&apos; : item[5]+item[6]</div><div class="line">        &#125;</div><div class="line"></div><div class="line">#写入文件 使用json加载字典</div><div class="line">def write_to_file(content):</div><div class="line">    #加上encoding=&apos;utf-8&apos;  和  ensure_ascii=False显示汉字</div><div class="line">    with open(&apos;result.txt&apos;, &apos;a&apos;, encoding=&apos;utf-8&apos;) as f:</div><div class="line">        #字典转换成 字符串</div><div class="line">        f.write(json.dumps(content, ensure_ascii=False) + &apos;\n&apos;)</div><div class="line">        f.close()</div><div class="line"></div><div class="line">#主函数运行</div><div class="line">def main():</div><div class="line">    html = get_one_page(&apos;http://maoyan.com/board/4?&apos;)</div><div class="line">    for item in parse_one_page(html):</div><div class="line">        print(item)</div><div class="line">        write_to_file(item)</div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    main()</div><div class="line">    </div><div class="line">def main(offset):</div><div class="line">    url = &apos;http://maoyan.com/board/4?offset=&#123;&#125;&apos;.format(offset)</div><div class="line">    html = get_one_page(url)</div><div class="line">    # total = []</div><div class="line">    for item in parse_one_page(html):</div><div class="line">        print(item)</div><div class="line">        # total.extend(item)</div><div class="line">        write_to_file(item)</div><div class="line">    # save_to_pandas(total)</div><div class="line"></div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    import time</div><div class="line">    time1 = time.time()</div><div class="line"></div><div class="line">    pool = Pool()</div><div class="line">    pool.map(main, [i*10 for i in range(10)])</div><div class="line"></div><div class="line">    # for i in range(10):   单进程</div><div class="line">    #     main(i*10)</div><div class="line"></div><div class="line">    time2 = time.time()</div><div class="line">    print(time2-time1)</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-02-23T10:39:27.000Z"><a href="/2018/02/23/spider/">2018-02-23</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/02/23/spider/">spider</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>request 对象常用属性<br>r.status_code<br>r.text<br>r.encoding<br>r.apparent_encoding<br>r.content</p>
+<p>request 异常<br>requests.ConnectionError<br>requests.HTTPError<br>requests.URLRequired<br>requests.TooManyRedirects<br>requests.ConnectTimeout<br>requests.Timeout</p>
+<p>r.raise_for_status()</p>
+<p>http 协议对资源的操作<br>get<br>head<br>post<br>put<br>patch<br>delete</p>
+<p>requests.requesr(method,url,<strong>kwargs)
+</strong>kwargs 控制访问参数 均可选<br>params  data json headers cookies auth files timeout<br>proxies allow_redirects stream verify cert </p>
+<p>from bs4 import BeautifulSoup<br>soup = BeautifulSoup(‘</p><p>data</p><p>‘,’html.parser’)<br>解析器 lxml xml html5lib </p>
+<p>urllib 库<br>//获取网页<br>r=urllib.request.urlopen()<br>r.read().decode(‘utf-8)<br>//编码文字 post方法访问<br>data = bytes(urllib.parse.urlencode({‘word’:’hello’}),encoding=’utf-8’)<br>r = urllib.request.urlopen(‘<a href="http://httpbin.org/post&#39;,data" target="_blank" rel="external">http://httpbin.org/post&#39;,data</a> =data)</p>
+<p>//timeout  超时  单位 秒<br>import socket<br>import urllib.request<br>import urllib.error</p>
+<p>try:<br>    r = urllib.request.urlopen(‘<a href="http://httpbin.org/get&#39;,timeout=0.1" target="_blank" rel="external">http://httpbin.org/get&#39;,timeout=0.1</a>)<br>except urllib.error.URLError as e :<br>    if isinstance(e.reason,socker.timeout):<br>        print(‘TIMEOUT’)</p>
+<p>//request<br>url = ‘h…..’<br>dict = {<br>    ‘name’:’Germey’<br>}<br>data = bytes(parse.urlencode(dict),encoding=’utf-8’)<br>req = request.Request(url=rul,data=data,method=’POST’)<br>r = request.urlopen(req)</p>
+<p>//代理</p>
+<p>proxy_handler = urllib.request.ProvyHandler({<br>    ‘http’:’<a href="http://127.0.0.1:9743" target="_blank" rel="external">http://127.0.0.1:9743</a>‘,<br>    ‘https’:’<a href="https://127.0.0.1:9743" target="_blank" rel="external">https://127.0.0.1:9743</a>‘<br>})<br>opener = urllib.request.build_opener(proxy_handler)<br>response = opener.open(‘<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a>‘)</p>
+<p>//cookie<br>//获取COOKIE<br>import http.cookiejar,urllib.request<br>cookie = http.cookiejar.CookieJar()<br>handler = urllib.request.HTTPCookieProcessor(cookie)<br>opener = urllib.request.build_opener(handler)<br>response = opener.open(‘<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a>‘)<br>for item in cookie:<br>print(item.name+’=’+item.valir)<br>//文件保存cookie<br>import http.cookiejar,urllib.request<br>filename=’cookie.txt’<br>cookie=http.cookiejar.MozillaCookie.Jar(filename)<br>handler=urlliv.request.HTTPCookieProcessor(cookie)<br>opener=urllib.request.build_opener(handler)<br>response=opener.open(‘<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a>‘)<br>cookie.save(ignore_discard=True,ignore_expires=True)</p>
+<p>import http.cookiejar,urllib.request<br>filename=’cookie.txt’<br>cookie=http.cookiejar.LWPCookieJar(filename)<br>handler=urlliv.request.HTTPCookieProcessor(cookie)<br>opener=urllib.request.build_opener(handler)<br>response=opener.open(‘<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a>‘)<br>cookie.save(ignore_discard=True,ignore_expires=True)</p>
+<p>//文件读取<br>import http.cookiejar,urllib.request<br>cookie= http.cookiejar.LWPCookie.Jar()<br>cookie.load(‘cookie.txt,ignore_discard = True,ignore_expires=True)<br>handler = urllib.request.HTTPCookieProcessor(cookie)<br>opener = urllib.request.build_opener(handler)<br>response = opener.open(‘<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a>‘)<br>print(response.read().decod(‘utf-8))</p>
+<p>###异常处理<br>from urllib import request,error<br>try:<br>    response = request.urlopen(‘<a href="http://sdadad" target="_blank" rel="external">http://sdadad</a>‘)<br>except error.URLEroor as e:<br>    print(e.reason)</p>
+<p>###URL解析<br>from urlliv.parse import urlparse<br>result = urlparse(‘httdasdsadsada’)<br>print(resuel)</p>
+<h3 id="URL-合成"><a href="#URL-合成" class="headerlink" title="URL 合成"></a>URL 合成</h3><p>from urllib.parse import urlunparse<br>data = [‘http’,’www.baidu.com’.’index.html’,’user’,’a=6’,’comment’]<br>print(urlunparse(data))</p>
+<p>###拼接 URL<br>from urllib.parse import urljoin<br>urljoin(‘<a href="http://www.baidu.com&#39;,&#39;FAQ.html" target="_blank" rel="external">http://www.baidu.com&#39;,&#39;FAQ.html</a>‘)</p>
+<h3 id="字典转URL参数"><a href="#字典转URL参数" class="headerlink" title="字典转URL参数"></a>字典转URL参数</h3><p>from urllib.parse import urlencode<br>params = {<br>    ‘name’=’germey’<br>    ‘age’:22<br>}<br>base_url = ‘<a href="http://www.baidu.com?" target="_blank" rel="external">http://www.baidu.com?</a>‘<br>url = base_url + urlencode(params)<br>print(url)</p>
+<p>##request   部分</p>
+<h3 id="jason"><a href="#jason" class="headerlink" title="jason"></a>jason</h3><p>r= resadas.get….//<br>r.jason</p>
+<p>###文件上次<br>files = {‘file’:open(‘fasdasd.asd)’,’rb’}<br>r = request.post(‘htt……’,files=files)</p>
+<p>r = request.get(‘htt..)<br>for key,value in response.cookies.items():<br>    print(..)</p>
+<p>###session  获取cookie<br>s = requests.Session()<br>s.get(‘http……’)<br>r = s.get(‘http….’)</p>
+<h3 id="证书验证"><a href="#证书验证" class="headerlink" title="证书验证"></a>证书验证</h3><p>r = request.get(‘https…..’,verify=False)<br>取消警告<br>from requests.packages import urllib3<br>urllib3.disable_warnings()<br>手动指定位置<br>r = requests.get(‘https…’,cert=(‘/path/server.cert’,’/path/key’))</p>
+<p>###代理<br>proxies = {<br>    ‘http’:’https:user:password@127.0.0.1:9743’<br>}<br>r = requests.get(‘https:…….’,proxies=proxies)</p>
+<p>###捕捉超时<br>import requests.exceptions import ReadTimeout<br>try:<br>    r = requests.get(‘h////‘,’timeout=0.5)<br>except ReadTimeout:<br>    print()</p>
+<p>###认证<br>r = request.get(‘htt…..’,auth={‘user’,’123’})</p>
+<p>##beautifulsoup</p>
+<p>###获取属性<br>soup.p.attrs[‘name’]<br>soup.p[‘name’]</p>
+<h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><p>soup.p.a</p>
+<h3 id="子节点-列表"><a href="#子节点-列表" class="headerlink" title="子节点 列表"></a>子节点 列表</h3><p>soup.p.contents</p>
+<h3 id="子节点-迭代器"><a href="#子节点-迭代器" class="headerlink" title="子节点  迭代器"></a>子节点  迭代器</h3><p>soup.p.children</p>
+<h3 id="子孙迭代器"><a href="#子孙迭代器" class="headerlink" title="子孙迭代器"></a>子孙迭代器</h3><p>soup.p.descendants<br>parent parents </p>
+<h3 id="兄弟节点"><a href="#兄弟节点" class="headerlink" title="兄弟节点"></a>兄弟节点</h3><p>soup.a.next_siblings<br>soup.a.previous_siblings</p>
+<p>soup.find_all(attrs={‘class’:’asd’})<br>soup.fiind<em>all(calss</em>=’asdsad)</p>
+<p>soup.select(标签’u li’  ID获取#1 类.class)</p>
+<p>###获取属性<br>soup.select(‘ul)<br>for ul in soup.select(‘ul’):<br>    print(ul[‘id’])<br>    print(ul.attrs[‘id’])</p>
+<h4 id="获取文本"><a href="#获取文本" class="headerlink" title="获取文本"></a>获取文本</h4><p>ui.get_text()</p>
+<p>#selenium 部分</p>
+<p>###声明浏览器对象<br>from selenium import webdriver<br>browser = webdriver.Chrome()<br>browser = webdriver.FIREFOX()<br>browser = webdriver.Edge()<br>browser = webdriver.PhantomJS()<br>browser = webdriver.Safari()</p>
+<p>###访问页面<br>browser = webdriver.Chrome()<br>browser.get(‘httt……’)<br>print(browser.page_source)<br>browser.close()</p>
+<p>###查找元素<br>browser.find_element_by_id(‘1)<br>browser.find_element_by_naem<br>browser.find_element_by_xpath<br>browser.find_element_by_link_text<br>browser.find_element_by_partial_link_text<br>browser.find_element_by_tag_name<br>browser.find_element_by_class_name<br>browser.find_element_by_css_selector</p>
+<p>browser.find_element(By.ID,’q’)</p>
+<p>###多个元素<br>browser.find_elements<em>by</em><em>*</em></p>
+<p>###元素交互<br>browser = webdriver.Chrome()<br>browser.get(‘<a href="https://www.taobao.com" target="_blank" rel="external">https://www.taobao.com</a>‘)<br>input = browser.find_element_by_id(‘q’)<br>input.send_keys(‘iPhone’)<br>time.sleep(1)<br>input.clear()<br>input.send_keys(‘Ipad’)<br>button = browser.find_element_by_class_name(‘bin-search’)<br>button.click()</p>
+<p>###交互动作<br>from selenium import webdriver<br>from selenium.webdriver import ActionChains</p>
+<p>browser = webdriver.Chrome()<br>url = ‘http//www.runoob.com/try/try.php?filename=jqueryui-api-droppable’<br>browser.get(url)<br>browser.switch_to.frame(‘iframeResult)<br>source = browser/find_element_by_css_selector(‘#draggable’)<br>target = browser.find_element_by_css_selector(‘#droppable’)<br>actions = ActionChains(browser)<br>actions.drag_and_drop(source,target)<br>actions.perform()</p>
+<p>###执行javascript<br>brewser.execute_script(‘window.scrollTo(0,document.body.scrollHeight)’)<br>browser.execute_script(‘alert(‘To Bottom’)’)</p>
+<h3 id="获取属性"><a href="#获取属性" class="headerlink" title="获取属性"></a>获取属性</h3><p><em>*</em>.get_attribute(‘class’)</p>
+<h3 id="获取文本-1"><a href="#获取文本-1" class="headerlink" title="获取文本"></a>获取文本</h3><p>input = browser.find_element_by_class_name(‘zu-top-add-question)<br>print(input.text)</p>
+<h3 id="获取ID-位置-标签名-大小"><a href="#获取ID-位置-标签名-大小" class="headerlink" title="获取ID 位置 标签名 大小"></a>获取ID 位置 标签名 大小</h3><p>input.id<br>input.location<br>input.tag_name<br>input.size</p>
+<h3 id="frame-切换-子frame-不能找到父frame"><a href="#frame-切换-子frame-不能找到父frame" class="headerlink" title="frame 切换   子frame 不能找到父frame"></a>frame 切换   子frame 不能找到父frame</h3><p><strong><em>.switch_to.parent_frame()
+</em></strong>.switch_to.frame(‘ddd’)</p>
+<p>##等待</p>
+<h3 id="隐式等待"><a href="#隐式等待" class="headerlink" title="隐式等待"></a>隐式等待</h3><p>browser = webdriver.Chrome()<br>browser.implicity_wait(10)<br>browser.get(‘httt….’t)</p>
+<p>###显式等待<br>from selemnium import webdriver<br>from selemnium.webdriver.common.by import By<br>from selemnium.webdriver.support.ui import WebDriverWait<br>from selemnium.webdriver.support import expected_conditions as EC<br>browser = webdriver.Chrome()<br>browser.get(‘http////‘)<br>wait = WebDriverWait(browser,10)<br>input = wait.until(EC.presence_of_element_located((By.ID,’q’)))<br>button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR,’.btn-search’)))</p>
+<p>expected_conditions:<br>title_is 标题是某内容<br>title_contains 标题包含某内容<br>presence_of_element_located 元素加载出 传入定位元祖<br>visibility_of_element_located 元素可见 传入定位元祖<br>visibility_of 可见 传入元素对象<br>presence_of_all_elements_located 所有元素加载<br>text_to_be_present_in_element 某个元素值包含某文字<br>text_to_be_present_in_element_value 某个元素值包含某值<br>frame_to_be_avaliabel_and_switch_to_it frame加载并切换<br>invisibility_of_element_located 元素不可见<br>element_to_be_clickable 元素可点击<br>staleness_of 判断一个元素是否仍在DOM 可判断页面是否已经刷新<br>element_to_be_selected 元素可选择 传元素对象<br>element_located_to_be_selected 元素可选择 传入定位元组<br>element_selection_state_to_be 传入元素对象以及状态 相等返回True 否则 False<br>element_selection_state_to_be 传入定位元祖以及状态 相等 True 否 False<br>alert_is_present 是否出现Alert</p>
+<p>###前进 后退<br>browser.back()<br>browser.forward()</p>
+<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><p>browser.add_cookie()<br>browser.delete_all_cookies()</p>
+<p>###网页选项卡<br>browser.execute_script(‘window.open()’)</p>
+<p>browser.switch_to_window(browser.window_handles[1])<br>browser.switch_to_window(browser.window_handles[0])</p>
 
       
     </div>
@@ -577,342 +475,18 @@ for循环
     <header>
       
         <div class="icon"></div>
-        <time datetime="2017-11-13T02:09:24.000Z"><a href="/2017/11/13/恐怖直播/">2017-11-13</a></time>
+        <time datetime="2018-02-23T05:48:53.000Z"><a href="/2018/02/23/kali-linux/">2018-02-23</a></time>
       
       
   
-    <h1 class="title"><a href="/2017/11/13/恐怖直播/">恐怖直播</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>电台和直播挺像啊<br>电影开始通过紧凑的节奏 瞬间把一个做电台的主播变成了形象适合的电视主播，一连串的操作，显示了媒体对于收视率的追求。<br>瞬间拿无线耳机反应也是快</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-11-10T10:17:33.000Z"><a href="/2017/11/10/multiprocess-for-python/">2017-11-10</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/11/10/multiprocess-for-python/">multiprocess for python</a></h1>
+    <h1 class="title"><a href="/2018/02/23/kali-linux/">kali linux</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <p>#####进程 资源的集合 进程至少包含一个线程 起一个进程 相当于克隆一份父进程数据</p>
-<p>#####线程 cpu调度最小单位</p>
-<p>#####什么情况下用多线程：<br>io 操作不占CPU<br>计算占用CPU<br>python多线程 （原生县城）适合io密集（socket service）  不适合计算密集<br>用多进程做 计算密集（操作系统原生进程）</p>
-<p>######第一步<br>import multiprocessing</p>
-<p>######第二步<br>定义一个函数<br>def run(name):<br>    time.sleep(2)<br>    print(‘hello’,name)</p>
-<p>if <strong>name</strong>==’main’<br>    p = multiprocessing.process(target=run, args=(‘bob’,))<br>    p.start<br>    p.join</p>
-<p>每个子进程都由父进程启动。 验证 两个方法 getpid getppid 调用查看</p>
-<p>#####进程队列 queue<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">from multiprocessing import Process,Queue</div><div class="line">import queue</div><div class="line">import threading</div><div class="line">def f(q):</div><div class="line">    print(2)</div><div class="line">    q.put([1,2,3])</div><div class="line"></div><div class="line">if __name__==&apos;__main__&apos;:</div><div class="line">    print(1)</div><div class="line">    q=Queue()</div><div class="line">    p=Process(target=f,args=(q,))</div><div class="line">    # p=threading.Thread(target=f,)</div><div class="line">    p.start()</div><div class="line">    print(q.get())</div><div class="line">    p.join()</div></pre></td></tr></table></figure></p>
-<p>#####第二种<br>pip</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">from multiprocessing import Process,Pipe</div><div class="line">def f(conn):</div><div class="line">	conn.send([1,2,3])</div><div class="line">    conn.close()</div><div class="line">if __name__ == &apos;__main__&apos;</div><div class="line">	parent_conn,child_conn = Pipe()</div><div class="line">    p=Process(target=f,args=(child_conn,))</div><div class="line">	p.start()</div><div class="line">    print(parent_conn.recv())</div><div class="line">    p.join()</div></pre></td></tr></table></figure>
-<p>#####manager<br>数据共享</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">from multiprocessing import Process,Manager</div><div class="line">import multiprocessing</div><div class="line"></div><div class="line">def f(d, l):</div><div class="line">    d[1] = &apos;1&apos;</div><div class="line">    d[&apos;2&apos;] = 2</div><div class="line">    d[0.25] = None</div><div class="line">    l.append(1)</div><div class="line">    # l.append(l)</div><div class="line">    print(l,d)</div><div class="line">    print(d)</div><div class="line"></div><div class="line"></div><div class="line">if __name__==&apos;__main__&apos;:</div><div class="line">    with Manager() as manager:</div><div class="line">        d = manager.dict()</div><div class="line"></div><div class="line">        l = manager.list(range(5))</div><div class="line">        p_list=[]</div><div class="line">        for i in range(10):</div><div class="line">            p = Process(target=f,args=(d,l))</div><div class="line">            p.start()</div><div class="line">            p_list.append(p)</div><div class="line">        for res in p_list:</div><div class="line">            res.join()</div><div class="line">        print(d)</div><div class="line">        print(l)</div></pre></td></tr></table></figure>
-<p>#####进程锁<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">from multiprocessing import Lock</div><div class="line"></div><div class="line">def (l,i):</div><div class="line">	l.acquire()</div><div class="line">    try</div><div class="line">    	print(&apos;hello world&apos;,i)</div><div class="line">    finally</div><div class="line">    	;.lease()</div><div class="line">if __name__ ==&apos;__main__&apos;:</div><div class="line">	lock = Lock()</div><div class="line">    for num in rang(10):</div><div class="line">    	Process(target=f,(lock,num)).start()</div></pre></td></tr></table></figure></p>
-<p>#####进程池<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">from  multiprocessing import Process, Pool,freeze_support</div><div class="line">import time</div><div class="line">import os</div><div class="line"></div><div class="line">def Foo(i):</div><div class="line">    time.sleep(2)</div><div class="line">    print(&quot;in process&quot;,os.getpid())</div><div class="line">    return i + 100</div><div class="line"></div><div class="line">def Bar(arg):</div><div class="line">    print(&apos;--&gt;exec done:&apos;, arg,os.getpid())</div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    #freeze_support()</div><div class="line">    pool = Pool(processes=2) #允许进程池同时放入5个进程</div><div class="line">    print(&quot;主进程&quot;,os.getpid())</div><div class="line">    for i in range(10):</div><div class="line">        pool.apply_async(func=Foo, args=(i,), callback=Bar) #callback=回调</div><div class="line">        #pool.apply(func=Foo, args=(i,)) #串行</div><div class="line">        # pool.apply_async(func=Foo, args=(i,)) #串行</div><div class="line">    print(&apos;end&apos;)</div><div class="line">    pool.close()</div><div class="line">    pool.join() #进程池中进程执行完毕后再关闭，如果注释，那么程序直接关闭。.join()</div></pre></td></tr></table></figure></p>
-<p>#####协成 用户态轻量级线程</p>
-<p>手动切换<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">from greenlet import greenlet</div><div class="line">def test1():</div><div class="line">    print(12)</div><div class="line">    gr2.switch()</div><div class="line">    print(34)</div><div class="line">    gr2.switch()</div><div class="line">def test2():</div><div class="line">    print(56)</div><div class="line">    gr1.switch()</div><div class="line">    print(78)</div><div class="line"></div><div class="line">gr1 = greenlet(test1) #启动一个携程</div><div class="line">gr2 = greenlet(test2)</div><div class="line">gr1.switch()</div></pre></td></tr></table></figure></p>
-<p>自动IO操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">import gevent</div><div class="line"></div><div class="line">def foo():</div><div class="line">    print(&apos;Running in foo&apos;)</div><div class="line">    gevent.sleep(2)</div><div class="line">    print(&apos;Explicit context switch to foo again&apos;)</div><div class="line">def bar():</div><div class="line">    print(&apos;Explicit精确的 context内容 to bar&apos;)</div><div class="line">    gevent.sleep(1)</div><div class="line">    print(&apos;Implicit context switch back to bar&apos;)</div><div class="line">def func3():</div><div class="line">    print(&quot;running func3 &quot;)</div><div class="line">    gevent.sleep(0)</div><div class="line">    print(&quot;running func3  again &quot;)</div><div class="line"></div><div class="line"></div><div class="line">gevent.joinall([</div><div class="line">    gevent.spawn(foo), #生成，</div><div class="line">    gevent.spawn(bar),</div><div class="line">    gevent.spawn(func3),</div><div class="line">])</div></pre></td></tr></table></figure></p>
-<p>异步下载<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">from urllib import request</div><div class="line">import gevent,time</div><div class="line">from gevent import monkey</div><div class="line">monkey.patch_all() #把当前程序的所有的io操作给我单独的做上标记</div><div class="line"></div><div class="line">def f(url):</div><div class="line">    print(&apos;GET: %s&apos; % url)</div><div class="line">    resp = request.urlopen(url)</div><div class="line">    data = resp.read()</div><div class="line">    print(&apos;%d bytes received from %s.&apos; % (len(data), url))</div><div class="line"></div><div class="line">urls = [&apos;https://www.python.org/&apos;,</div><div class="line">        &apos;https://www.yahoo.com/&apos;,</div><div class="line">        &apos;https://github.com/&apos; ]</div><div class="line">time_start = time.time()</div><div class="line">for url in urls:</div><div class="line">    f(url)</div><div class="line">print(&quot;同步cost&quot;,time.time() - time_start)</div><div class="line">async_time_start = time.time()</div><div class="line">gevent.joinall([</div><div class="line">    gevent.spawn(f, &apos;https://www.python.org/&apos;),</div><div class="line">    gevent.spawn(f, &apos;https://www.yahoo.com/&apos;),</div><div class="line">    gevent.spawn(f, &apos;https://github.com/&apos;),</div><div class="line">])</div><div class="line">print(&quot;异步cost&quot;,time.time() - async_time_start)</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-11-08T10:22:38.000Z"><a href="/2017/11/08/收集正则表达式/">2017-11-08</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/11/08/收集正则表达式/">收集正则表达式</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>匹配任意网址 (?i)\b((?:[a-z][\w-]+:(?:/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.-]+[.][a-z]{2,4}/)(?:[^\s()&lt;&gt;]+|(([^\s()&lt;&gt;]+|(([^\s()&lt;&gt;]+)))<em>))+(?:(([^\s()&lt;&gt;]+|(([^\s()&lt;&gt;]+)))</em>)|[^\s`!()[]{};:’”.,&lt;&gt;?«»“”‘’]))</p>
-<p>匹配 汉字 [\u4E00-\u9FA5]+</p>
-<p><a href="http://www.cnblogs.com/dreamer-fish/p/5282679.html" target="_blank" rel="external">http://www.cnblogs.com/dreamer-fish/p/5282679.html</a></p>
-<p><a href="https://www.zhihu.com/question/36111342" target="_blank" rel="external">https://www.zhihu.com/question/36111342</a></p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-10-30T11:38:14.000Z"><a href="/2017/10/30/线程/">2017-10-30</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/10/30/线程/">线程</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>HTML<br>1、一套规则，浏览器认识的规则。<br>2、开发者：<br>    学习Html规则<br>    开发后台程序：</p>
-<pre><code>- 写Html文件（充当模板的作用） ******
- 数据库获取数据，然后替换到html文件的指定位置（Web框架）
-</code></pre><p>3、本地测试</p>
-<pre><code>- 找到文件路径，直接浏览器打开
-- pycharm打开测试
-</code></pre><p>4、编写Html文件</p>
-<pre><code>- doctype对应关系
-- html标签，标签内部可以写属性 ====&gt; 只能有一个
-- 注释：  &lt;!--  注释的内容  --&gt;
-</code></pre><p>5、标签分类</p>
-<pre><code>- 自闭合标签
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-- 主动闭合标签
-    title&gt;老男孩&lt;/title&gt;
-</code></pre><p>6、<br>    head标签中<br>    外不可见</p>
-<pre><code>    - &lt;meta  -&gt; 编码，跳转，刷新，关键字，描述，IE兼容
-            &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=IE9;IE=IE8;&quot; /&gt;
-&lt;meta http-equiv=&quot;content-type&quot; content=&apos;text/html;charset=utf-8&quot;&gt;
-&lt;mete http-equiv=&quot;Refresh&quot; Content=&quot;5;Url=http://www.ssddd.com&quot;/&gt;     跳转
-&lt;meta name=&quot;keywords&quot; content=&quot;dsadasd&quot;&gt;    
-    - title标签  窗口上
-    - &lt;link /&gt; 搞图标，欠
-&lt;link rel=&quot;shortcut icon&quot; href=&quot;image/favicon.ico&quot;&gt;    title旁的小图标
-    - &lt;style /&gt;欠
-    - &lt;script&gt; 欠
-</code></pre><p>7、body标签</p>
-<pre><code> - 图标，  &amp;nbsp;  &amp;gt;   &amp;lt;
- - p标签，段落
- - br，换行   &lt;h1&gt; &lt;h6&gt; 大小
- ======== 小总结  =====
-    所有标签分为：
-        块级标签： div（白板），H系列（加大加粗），p标签（段落和段落之间有间距）
-        行内标签： span（白板）
-    标签之间可以嵌套
-    标签存在的意义，css操作，js操作
-    ps:chorme审查元素的使用
-        - 定位
-        - 查看样式
-- h系列
-- div
-- span
-- input系列 + form标签
-    input type=&apos;text&apos;     - name属性，value=&quot;赵凡&quot; 
-    input type=&apos;password&apos; - name属性，value=&quot;赵凡&quot; 
-    input type=&apos;submit&apos;   - value=&apos;提交&apos; 提交按钮，表单
-    input type=&apos;button&apos;   - value=&apos;登录&apos; 按钮
-
-    input type=&apos;radio&apos;    - 单选框 value，checked=&quot;checked&quot;，name属性（name相同则互斥）
-    input type=&apos;checkbox&apos; - 复选框 value, checked=&quot;checked&quot;，name属性（批量获取数据）
-    input type=&apos;file&apos;     - 依赖form表单的一个属性 enctype=&quot;multipart/form-data&quot;
-    input type=&apos;rest&apos;     - 重置
-
-    &lt;textarea &gt;默认值&lt;/textarea&gt;  - name属性
-    select标签            - name,内部option value, 提交到后台，size，multiple
-
-- a标签
-    - 跳转
-    - 锚     href=&apos;#某个标签的ID&apos;    标签的ID不允许重复
-
-- img 
-     src
-     alt
-     title
-
-- 列表
-    ul
-        li
-    ol
-        li
-    dl
-        dt
-        dd
-- 表格
-    table
-        thead
-            tr
-                th
-        tbody
-            tr
-                td
-    colspan = &apos;&apos;
-    rowspan = &apos;&apos;
-- label
-    用于点击文件，使得关联的标签获取光标
-    &lt;label for=&quot;username&quot;&gt;用户名：&lt;/label&gt;
-    &lt;input id=&quot;username&quot; type=&quot;text&quot; name=&quot;user&quot; /&gt;
-- fieldset
-    legend
-</code></pre><ul>
-<li>20个标签<br>CSS</li>
-</ul>
-<p>在标签上设置style属性：<br>    background-color: #2459a2;<br>    height: 48px;<br>    …</p>
-<p>编写css样式：</p>
-<pre><code>1. 标签的style属性
-2. 写在head里面 style标签中写样式
-    - id选择区
-          #i1{
-            background-color: #2459a2;
-            height: 48px;
-          }
-
-    - class选择器 ******
-
-          .名称{
-            ...
-          }
-
-          &lt;标签 class=&apos;名称&apos;&gt; &lt;/标签&gt;
-
-    - 标签选择器
-            div{
-                ...
-            }
-
-
-            所有div设置上此样式
-
-    - 层级选择器（空格） ******
-           .c1 .c2 div{
-
-           }
-    - 组合选择器（逗号） ******
-            #c1,.c2,div{
-
-           }
-
-    - 属性选择器 ******
-           对选择到的标签再通过属性再进行一次筛选
-           .c1[n=&apos;alex&apos;]{ width:100px; height:200px; }
-
-    PS:
-        - 优先级，标签上style优先，编写顺序，就近原则
-
-2.5 css样式也可以写在单独文件中
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;commons.css&quot; /&gt;
-
-3、注释
-    /*   */
-
-4、边框
-     - 宽度，样式，颜色  (border: 4px dotted red;)
-     - border-left
-
-5、  
-    height，         高度 百分比
-    width，          宽度 像素，百分比
-    text-align:ceter, 水平方向居中
-    line-height，垂直方向根据标签高度
-    color、     字体颜色
-    font-size、 字体大小
-    font-weight 字体加粗
-
-6、float
-    让标签浪起来，块级标签也可以堆叠
-    老子管不住：
-        &lt;div style=&quot;clear: both;&quot;&gt;&lt;/div&gt;
-
-7、display
-    display: none; -- 让标签消失
-    display: inline;
-    display: block;
-    display: inline-block;
-             具有inline,默认自己有多少占多少
-             具有block，可以设置无法设置高度，宽度，padding  margin
-    ******
-    行内标签：无法设置高度，宽度，padding  margin
-    块级标签：设置高度，宽度，padding  margin
-
-
-8、padding  margin(0,auto)
-</code></pre>
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-10-24T13:47:14.000Z"><a href="/2017/10/24/发现/">2017-10-24</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/10/24/发现/">发发现</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>dsfdsf 是对象  是内存<br>dsfdsf()  是调用方法  是值</p>
-<p>while threadin.active_coun() !=1: 判断其他线程是否执行完毕  只剩主线程</p>
-<p>包括 数字列表如何合并 列表倒序<br>print(“ “.join(str(a[::-1])))<br>输出 [ 4 ,   3 ,   2 ,   1 ]<br>print(“ “.join(map(str,a[::-1])))        #将后面列表内单个取出 换成str类型<br>输出 ：4 3 2 1<br>print(“ “.join(str(st) for st in (a[::-1])))      #将后面列表内单个取出 换成str类型<br>输出 4 3 2 1</p>
-<p>根据输入的数字 来决定后面语句执行次数<br>for i in range(int(input())): s=input()</p>
+        <p>环境搭建<br>软件下载 更新<br>apt-get update upgrade<br>vim /etc/apt/sources.list<br>找国内源</p>
+<p>msfconsole</p>
 
       
     </div>
