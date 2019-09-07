@@ -52,6 +52,136 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2018-02-23T10:39:27.000Z"><a href="/2018/02/23/spider/">2018-02-23</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/02/23/spider/">spider</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>request 对象常用属性<br>r.status_code<br>r.text<br>r.encoding<br>r.apparent_encoding<br>r.content</p>
+<p>request 异常<br>requests.ConnectionError<br>requests.HTTPError<br>requests.URLRequired<br>requests.TooManyRedirects<br>requests.ConnectTimeout<br>requests.Timeout</p>
+<p>r.raise_for_status()</p>
+<p>http 协议对资源的操作<br>get<br>head<br>post<br>put<br>patch<br>delete</p>
+<p>requests.requesr(method,url,<strong>kwargs)
+</strong>kwargs 控制访问参数 均可选<br>params  data json headers cookies auth files timeout<br>proxies allow_redirects stream verify cert </p>
+<p>from bs4 import BeautifulSoup<br>soup = BeautifulSoup(‘</p><p>data</p><p>‘,’html.parser’)<br>解析器 lxml xml html5lib </p>
+<p>urllib 库<br>//获取网页<br>r=urllib.request.urlopen()<br>r.read().decode(‘utf-8)<br>//编码文字 post方法访问<br>data = bytes(urllib.parse.urlencode({‘word’:’hello’}),encoding=’utf-8’)<br>r = urllib.request.urlopen(‘<a href="http://httpbin.org/post&#39;,data" target="_blank" rel="external">http://httpbin.org/post&#39;,data</a> =data)</p>
+<p>//timeout  超时  单位 秒<br>import socket<br>import urllib.request<br>import urllib.error</p>
+<p>try:<br>    r = urllib.request.urlopen(‘<a href="http://httpbin.org/get&#39;,timeout=0.1" target="_blank" rel="external">http://httpbin.org/get&#39;,timeout=0.1</a>)<br>except urllib.error.URLError as e :<br>    if isinstance(e.reason,socker.timeout):<br>        print(‘TIMEOUT’)</p>
+<p>//request<br>url = ‘h…..’<br>dict = {<br>    ‘name’:’Germey’<br>}<br>data = bytes(parse.urlencode(dict),encoding=’utf-8’)<br>req = request.Request(url=rul,data=data,method=’POST’)<br>r = request.urlopen(req)</p>
+<p>//代理</p>
+<p>proxy_handler = urllib.request.ProvyHandler({<br>    ‘http’:’<a href="http://127.0.0.1:9743" target="_blank" rel="external">http://127.0.0.1:9743</a>‘,<br>    ‘https’:’<a href="https://127.0.0.1:9743" target="_blank" rel="external">https://127.0.0.1:9743</a>‘<br>})<br>opener = urllib.request.build_opener(proxy_handler)<br>response = opener.open(‘<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a>‘)</p>
+<p>//cookie<br>//获取COOKIE<br>import http.cookiejar,urllib.request<br>cookie = http.cookiejar.CookieJar()<br>handler = urllib.request.HTTPCookieProcessor(cookie)<br>opener = urllib.request.build_opener(handler)<br>response = opener.open(‘<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a>‘)<br>for item in cookie:<br>print(item.name+’=’+item.valir)<br>//文件保存cookie<br>import http.cookiejar,urllib.request<br>filename=’cookie.txt’<br>cookie=http.cookiejar.MozillaCookie.Jar(filename)<br>handler=urlliv.request.HTTPCookieProcessor(cookie)<br>opener=urllib.request.build_opener(handler)<br>response=opener.open(‘<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a>‘)<br>cookie.save(ignore_discard=True,ignore_expires=True)</p>
+<p>import http.cookiejar,urllib.request<br>filename=’cookie.txt’<br>cookie=http.cookiejar.LWPCookieJar(filename)<br>handler=urlliv.request.HTTPCookieProcessor(cookie)<br>opener=urllib.request.build_opener(handler)<br>response=opener.open(‘<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a>‘)<br>cookie.save(ignore_discard=True,ignore_expires=True)</p>
+<p>//文件读取<br>import http.cookiejar,urllib.request<br>cookie= http.cookiejar.LWPCookie.Jar()<br>cookie.load(‘cookie.txt,ignore_discard = True,ignore_expires=True)<br>handler = urllib.request.HTTPCookieProcessor(cookie)<br>opener = urllib.request.build_opener(handler)<br>response = opener.open(‘<a href="http://www.baidu.com" target="_blank" rel="external">http://www.baidu.com</a>‘)<br>print(response.read().decod(‘utf-8))</p>
+<p>###异常处理<br>from urllib import request,error<br>try:<br>    response = request.urlopen(‘<a href="http://sdadad" target="_blank" rel="external">http://sdadad</a>‘)<br>except error.URLEroor as e:<br>    print(e.reason)</p>
+<p>###URL解析<br>from urlliv.parse import urlparse<br>result = urlparse(‘httdasdsadsada’)<br>print(resuel)</p>
+<h3 id="URL-合成"><a href="#URL-合成" class="headerlink" title="URL 合成"></a>URL 合成</h3><p>from urllib.parse import urlunparse<br>data = [‘http’,’www.baidu.com’.’index.html’,’user’,’a=6’,’comment’]<br>print(urlunparse(data))</p>
+<p>###拼接 URL<br>from urllib.parse import urljoin<br>urljoin(‘<a href="http://www.baidu.com&#39;,&#39;FAQ.html" target="_blank" rel="external">http://www.baidu.com&#39;,&#39;FAQ.html</a>‘)</p>
+<h3 id="字典转URL参数"><a href="#字典转URL参数" class="headerlink" title="字典转URL参数"></a>字典转URL参数</h3><p>from urllib.parse import urlencode<br>params = {<br>    ‘name’=’germey’<br>    ‘age’:22<br>}<br>base_url = ‘<a href="http://www.baidu.com?" target="_blank" rel="external">http://www.baidu.com?</a>‘<br>url = base_url + urlencode(params)<br>print(url)</p>
+<p>##request   部分</p>
+<h3 id="jason"><a href="#jason" class="headerlink" title="jason"></a>jason</h3><p>r= resadas.get….//<br>r.jason</p>
+<p>###文件上次<br>files = {‘file’:open(‘fasdasd.asd)’,’rb’}<br>r = request.post(‘htt……’,files=files)</p>
+<p>r = request.get(‘htt..)<br>for key,value in response.cookies.items():<br>    print(..)</p>
+<p>###session  获取cookie<br>s = requests.Session()<br>s.get(‘http……’)<br>r = s.get(‘http….’)</p>
+<h3 id="证书验证"><a href="#证书验证" class="headerlink" title="证书验证"></a>证书验证</h3><p>r = request.get(‘https…..’,verify=False)<br>取消警告<br>from requests.packages import urllib3<br>urllib3.disable_warnings()<br>手动指定位置<br>r = requests.get(‘https…’,cert=(‘/path/server.cert’,’/path/key’))</p>
+<p>###代理<br>proxies = {<br>    ‘http’:’https:user:password@127.0.0.1:9743’<br>}<br>r = requests.get(‘https:…….’,proxies=proxies)</p>
+<p>###捕捉超时<br>import requests.exceptions import ReadTimeout<br>try:<br>    r = requests.get(‘h////‘,’timeout=0.5)<br>except ReadTimeout:<br>    print()</p>
+<p>###认证<br>r = request.get(‘htt…..’,auth={‘user’,’123’})</p>
+<p>##beautifulsoup</p>
+<p>###获取属性<br>soup.p.attrs[‘name’]<br>soup.p[‘name’]</p>
+<h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><p>soup.p.a</p>
+<h3 id="子节点-列表"><a href="#子节点-列表" class="headerlink" title="子节点 列表"></a>子节点 列表</h3><p>soup.p.contents</p>
+<h3 id="子节点-迭代器"><a href="#子节点-迭代器" class="headerlink" title="子节点  迭代器"></a>子节点  迭代器</h3><p>soup.p.children</p>
+<h3 id="子孙迭代器"><a href="#子孙迭代器" class="headerlink" title="子孙迭代器"></a>子孙迭代器</h3><p>soup.p.descendants<br>parent parents </p>
+<h3 id="兄弟节点"><a href="#兄弟节点" class="headerlink" title="兄弟节点"></a>兄弟节点</h3><p>soup.a.next_siblings<br>soup.a.previous_siblings</p>
+<p>soup.find_all(attrs={‘class’:’asd’})<br>soup.fiind<em>all(calss</em>=’asdsad)</p>
+<p>soup.select(标签’u li’  ID获取#1 类.class)</p>
+<p>###获取属性<br>soup.select(‘ul)<br>for ul in soup.select(‘ul’):<br>    print(ul[‘id’])<br>    print(ul.attrs[‘id’])</p>
+<h4 id="获取文本"><a href="#获取文本" class="headerlink" title="获取文本"></a>获取文本</h4><p>ui.get_text()</p>
+<p>#selenium 部分</p>
+<p>###声明浏览器对象<br>from selenium import webdriver<br>browser = webdriver.Chrome()<br>browser = webdriver.FIREFOX()<br>browser = webdriver.Edge()<br>browser = webdriver.PhantomJS()<br>browser = webdriver.Safari()</p>
+<p>###访问页面<br>browser = webdriver.Chrome()<br>browser.get(‘httt……’)<br>print(browser.page_source)<br>browser.close()</p>
+<p>###查找元素<br>browser.find_element_by_id(‘1)<br>browser.find_element_by_naem<br>browser.find_element_by_xpath<br>browser.find_element_by_link_text<br>browser.find_element_by_partial_link_text<br>browser.find_element_by_tag_name<br>browser.find_element_by_class_name<br>browser.find_element_by_css_selector</p>
+<p>browser.find_element(By.ID,’q’)</p>
+<p>###多个元素<br>browser.find_elements<em>by</em><em>*</em></p>
+<p>###元素交互<br>browser = webdriver.Chrome()<br>browser.get(‘<a href="https://www.taobao.com" target="_blank" rel="external">https://www.taobao.com</a>‘)<br>input = browser.find_element_by_id(‘q’)<br>input.send_keys(‘iPhone’)<br>time.sleep(1)<br>input.clear()<br>input.send_keys(‘Ipad’)<br>button = browser.find_element_by_class_name(‘bin-search’)<br>button.click()</p>
+<p>###交互动作<br>from selenium import webdriver<br>from selenium.webdriver import ActionChains</p>
+<p>browser = webdriver.Chrome()<br>url = ‘http//www.runoob.com/try/try.php?filename=jqueryui-api-droppable’<br>browser.get(url)<br>browser.switch_to.frame(‘iframeResult)<br>source = browser/find_element_by_css_selector(‘#draggable’)<br>target = browser.find_element_by_css_selector(‘#droppable’)<br>actions = ActionChains(browser)<br>actions.drag_and_drop(source,target)<br>actions.perform()</p>
+<p>###执行javascript<br>brewser.execute_script(‘window.scrollTo(0,document.body.scrollHeight)’)<br>browser.execute_script(‘alert(‘To Bottom’)’)</p>
+<h3 id="获取属性"><a href="#获取属性" class="headerlink" title="获取属性"></a>获取属性</h3><p><em>*</em>.get_attribute(‘class’)</p>
+<h3 id="获取文本-1"><a href="#获取文本-1" class="headerlink" title="获取文本"></a>获取文本</h3><p>input = browser.find_element_by_class_name(‘zu-top-add-question)<br>print(input.text)</p>
+<h3 id="获取ID-位置-标签名-大小"><a href="#获取ID-位置-标签名-大小" class="headerlink" title="获取ID 位置 标签名 大小"></a>获取ID 位置 标签名 大小</h3><p>input.id<br>input.location<br>input.tag_name<br>input.size</p>
+<h3 id="frame-切换-子frame-不能找到父frame"><a href="#frame-切换-子frame-不能找到父frame" class="headerlink" title="frame 切换   子frame 不能找到父frame"></a>frame 切换   子frame 不能找到父frame</h3><p><strong><em>.switch_to.parent_frame()
+</em></strong>.switch_to.frame(‘ddd’)</p>
+<p>##等待</p>
+<h3 id="隐式等待"><a href="#隐式等待" class="headerlink" title="隐式等待"></a>隐式等待</h3><p>browser = webdriver.Chrome()<br>browser.implicity_wait(10)<br>browser.get(‘httt….’t)</p>
+<p>###显式等待<br>from selemnium import webdriver<br>from selemnium.webdriver.common.by import By<br>from selemnium.webdriver.support.ui import WebDriverWait<br>from selemnium.webdriver.support import expected_conditions as EC<br>browser = webdriver.Chrome()<br>browser.get(‘http////‘)<br>wait = WebDriverWait(browser,10)<br>input = wait.until(EC.presence_of_element_located((By.ID,’q’)))<br>button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR,’.btn-search’)))</p>
+<p>expected_conditions:<br>title_is 标题是某内容<br>title_contains 标题包含某内容<br>presence_of_element_located 元素加载出 传入定位元祖<br>visibility_of_element_located 元素可见 传入定位元祖<br>visibility_of 可见 传入元素对象<br>presence_of_all_elements_located 所有元素加载<br>text_to_be_present_in_element 某个元素值包含某文字<br>text_to_be_present_in_element_value 某个元素值包含某值<br>frame_to_be_avaliabel_and_switch_to_it frame加载并切换<br>invisibility_of_element_located 元素不可见<br>element_to_be_clickable 元素可点击<br>staleness_of 判断一个元素是否仍在DOM 可判断页面是否已经刷新<br>element_to_be_selected 元素可选择 传元素对象<br>element_located_to_be_selected 元素可选择 传入定位元组<br>element_selection_state_to_be 传入元素对象以及状态 相等返回True 否则 False<br>element_selection_state_to_be 传入定位元祖以及状态 相等 True 否 False<br>alert_is_present 是否出现Alert</p>
+<p>###前进 后退<br>browser.back()<br>browser.forward()</p>
+<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><p>browser.add_cookie()<br>browser.delete_all_cookies()</p>
+<p>###网页选项卡<br>browser.execute_script(‘window.open()’)</p>
+<p>browser.switch_to_window(browser.window_handles[1])<br>browser.switch_to_window(browser.window_handles[0])</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-02-23T05:48:53.000Z"><a href="/2018/02/23/kali-linux/">2018-02-23</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/02/23/kali-linux/">kali linux</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>环境搭建<br>软件下载 更新<br>apt-get update upgrade<br>vim /etc/apt/sources.list<br>找国内源</p>
+<p>msfconsole</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2018-02-22T07:57:19.000Z"><a href="/2018/02/22/网络是怎么连接的/">2018-02-22</a></time>
       
       
@@ -693,245 +823,6 @@ for循环
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-10-30T11:38:14.000Z"><a href="/2017/10/30/线程/">2017-10-30</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/10/30/线程/">线程</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>HTML<br>1、一套规则，浏览器认识的规则。<br>2、开发者：<br>    学习Html规则<br>    开发后台程序：</p>
-<pre><code>- 写Html文件（充当模板的作用） ******
- 数据库获取数据，然后替换到html文件的指定位置（Web框架）
-</code></pre><p>3、本地测试</p>
-<pre><code>- 找到文件路径，直接浏览器打开
-- pycharm打开测试
-</code></pre><p>4、编写Html文件</p>
-<pre><code>- doctype对应关系
-- html标签，标签内部可以写属性 ====&gt; 只能有一个
-- 注释：  &lt;!--  注释的内容  --&gt;
-</code></pre><p>5、标签分类</p>
-<pre><code>- 自闭合标签
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-- 主动闭合标签
-    title&gt;老男孩&lt;/title&gt;
-</code></pre><p>6、<br>    head标签中<br>    外不可见</p>
-<pre><code>    - &lt;meta  -&gt; 编码，跳转，刷新，关键字，描述，IE兼容
-            &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=IE9;IE=IE8;&quot; /&gt;
-&lt;meta http-equiv=&quot;content-type&quot; content=&apos;text/html;charset=utf-8&quot;&gt;
-&lt;mete http-equiv=&quot;Refresh&quot; Content=&quot;5;Url=http://www.ssddd.com&quot;/&gt;     跳转
-&lt;meta name=&quot;keywords&quot; content=&quot;dsadasd&quot;&gt;    
-    - title标签  窗口上
-    - &lt;link /&gt; 搞图标，欠
-&lt;link rel=&quot;shortcut icon&quot; href=&quot;image/favicon.ico&quot;&gt;    title旁的小图标
-    - &lt;style /&gt;欠
-    - &lt;script&gt; 欠
-</code></pre><p>7、body标签</p>
-<pre><code> - 图标，  &amp;nbsp;  &amp;gt;   &amp;lt;
- - p标签，段落
- - br，换行   &lt;h1&gt; &lt;h6&gt; 大小
- ======== 小总结  =====
-    所有标签分为：
-        块级标签： div（白板），H系列（加大加粗），p标签（段落和段落之间有间距）
-        行内标签： span（白板）
-    标签之间可以嵌套
-    标签存在的意义，css操作，js操作
-    ps:chorme审查元素的使用
-        - 定位
-        - 查看样式
-- h系列
-- div
-- span
-- input系列 + form标签
-    input type=&apos;text&apos;     - name属性，value=&quot;赵凡&quot; 
-    input type=&apos;password&apos; - name属性，value=&quot;赵凡&quot; 
-    input type=&apos;submit&apos;   - value=&apos;提交&apos; 提交按钮，表单
-    input type=&apos;button&apos;   - value=&apos;登录&apos; 按钮
-
-    input type=&apos;radio&apos;    - 单选框 value，checked=&quot;checked&quot;，name属性（name相同则互斥）
-    input type=&apos;checkbox&apos; - 复选框 value, checked=&quot;checked&quot;，name属性（批量获取数据）
-    input type=&apos;file&apos;     - 依赖form表单的一个属性 enctype=&quot;multipart/form-data&quot;
-    input type=&apos;rest&apos;     - 重置
-
-    &lt;textarea &gt;默认值&lt;/textarea&gt;  - name属性
-    select标签            - name,内部option value, 提交到后台，size，multiple
-
-- a标签
-    - 跳转
-    - 锚     href=&apos;#某个标签的ID&apos;    标签的ID不允许重复
-
-- img 
-     src
-     alt
-     title
-
-- 列表
-    ul
-        li
-    ol
-        li
-    dl
-        dt
-        dd
-- 表格
-    table
-        thead
-            tr
-                th
-        tbody
-            tr
-                td
-    colspan = &apos;&apos;
-    rowspan = &apos;&apos;
-- label
-    用于点击文件，使得关联的标签获取光标
-    &lt;label for=&quot;username&quot;&gt;用户名：&lt;/label&gt;
-    &lt;input id=&quot;username&quot; type=&quot;text&quot; name=&quot;user&quot; /&gt;
-- fieldset
-    legend
-</code></pre><ul>
-<li>20个标签<br>CSS</li>
-</ul>
-<p>在标签上设置style属性：<br>    background-color: #2459a2;<br>    height: 48px;<br>    …</p>
-<p>编写css样式：</p>
-<pre><code>1. 标签的style属性
-2. 写在head里面 style标签中写样式
-    - id选择区
-          #i1{
-            background-color: #2459a2;
-            height: 48px;
-          }
-
-    - class选择器 ******
-
-          .名称{
-            ...
-          }
-
-          &lt;标签 class=&apos;名称&apos;&gt; &lt;/标签&gt;
-
-    - 标签选择器
-            div{
-                ...
-            }
-
-
-            所有div设置上此样式
-
-    - 层级选择器（空格） ******
-           .c1 .c2 div{
-
-           }
-    - 组合选择器（逗号） ******
-            #c1,.c2,div{
-
-           }
-
-    - 属性选择器 ******
-           对选择到的标签再通过属性再进行一次筛选
-           .c1[n=&apos;alex&apos;]{ width:100px; height:200px; }
-
-    PS:
-        - 优先级，标签上style优先，编写顺序，就近原则
-
-2.5 css样式也可以写在单独文件中
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;commons.css&quot; /&gt;
-
-3、注释
-    /*   */
-
-4、边框
-     - 宽度，样式，颜色  (border: 4px dotted red;)
-     - border-left
-
-5、  
-    height，         高度 百分比
-    width，          宽度 像素，百分比
-    text-align:ceter, 水平方向居中
-    line-height，垂直方向根据标签高度
-    color、     字体颜色
-    font-size、 字体大小
-    font-weight 字体加粗
-
-6、float
-    让标签浪起来，块级标签也可以堆叠
-    老子管不住：
-        &lt;div style=&quot;clear: both;&quot;&gt;&lt;/div&gt;
-
-7、display
-    display: none; -- 让标签消失
-    display: inline;
-    display: block;
-    display: inline-block;
-             具有inline,默认自己有多少占多少
-             具有block，可以设置无法设置高度，宽度，padding  margin
-    ******
-    行内标签：无法设置高度，宽度，padding  margin
-    块级标签：设置高度，宽度，padding  margin
-
-
-8、padding  margin(0,auto)
-</code></pre>
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2017-10-24T13:47:14.000Z"><a href="/2017/10/24/发现/">2017-10-24</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2017/10/24/发现/">发发现</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>dsfdsf 是对象  是内存<br>dsfdsf()  是调用方法  是值</p>
-<p>while threadin.active_coun() !=1: 判断其他线程是否执行完毕  只剩主线程</p>
-<p>包括 数字列表如何合并 列表倒序<br>print(“ “.join(str(a[::-1])))<br>输出 [ 4 ,   3 ,   2 ,   1 ]<br>print(“ “.join(map(str,a[::-1])))        #将后面列表内单个取出 换成str类型<br>输出 ：4 3 2 1<br>print(“ “.join(str(st) for st in (a[::-1])))      #将后面列表内单个取出 换成str类型<br>输出 4 3 2 1</p>
-<p>根据输入的数字 来决定后面语句执行次数<br>for i in range(int(input())): s=input()</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
 
 <nav id="pagination">
   
@@ -958,7 +849,7 @@ for循环
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2018 lee
+  &copy; 2019 lee
   
 </div>
 <div class="clearfix"></div></footer>

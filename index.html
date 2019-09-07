@@ -52,6 +52,75 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2019-03-30T07:31:19.000Z"><a href="/2019/03/30/sqlalchemy/">2019-03-30</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2019/03/30/sqlalchemy/">sqlalchemy</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>flask_sqlalchemy获取数据库中已有的表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">from flask import Flask</div><div class="line">from flask_sqlalchemy import SQLAlchemy</div><div class="line">from flask_sqlalchemy import make_url</div><div class="line"># from server import create_app</div><div class="line"></div><div class="line"></div><div class="line"># def get_mysql_conn_url(config):</div><div class="line">#     &quot;&quot;&quot;</div><div class="line">#     :description: 生成sqlalchemy使用的连接url</div><div class="line">#     :param hy_config: hy_config</div><div class="line">#     :return: url</div><div class="line">#     &quot;&quot;&quot;</div><div class="line">    # mysql_conn_map = dict(</div><div class="line">    #     dialect=&quot;mysql&quot;,</div><div class="line">    #     driver=&quot;pymysql&quot;,</div><div class="line">    #     host=config[&quot;MYSQL_HOST&quot;],</div><div class="line">    #     port=config[&quot;MYSQL_PORT&quot;],</div><div class="line">    #     database=config[&quot;MYSQL_DB&quot;],</div><div class="line">    #     user=config[&quot;MYSQL_USER&quot;],</div><div class="line">    #     password=config[&quot;MYSQL_PASSWORD&quot;],</div><div class="line">    # )</div><div class="line">    # s = &quot;&#123;dialect&#125;+&#123;driver&#125;://&#123;user&#125;:&#123;password&#125;@&#123;host&#125;:&#123;port&#125;/&#123;database&#125;?charset=utf8&quot;.format(**mysql_conn_map)</div><div class="line">    # # s = &quot;&#123;dialect&#125;+&#123;driver&#125;://&#123;user&#125;:&#123;password&#125;@&#123;host&#125;:&#123;port&#125;/&#123;database&#125;&quot;.format(**mysql_conn_map)</div><div class="line">    # url = make_url(s)</div><div class="line">    # return url</div><div class="line"></div><div class="line">def create_mysql_ORM(app):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    创建MySQL的ORM对象并反射数据库中已存在的表，获取所有存在的表对象</div><div class="line">    :param app: app:flask实例</div><div class="line">    :return: (db:orm-obj, all_table:数据库中所有已存在的表的对象(dict))</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    # 创建mysql连接对象</div><div class="line">    # url = get_mysql_conn_url(config=app.config)</div><div class="line">    app.config[&quot;SQLALCHEMY_DATABASE_URI&quot;] = &apos;mysql://root:123456@localhost:3306/dvwa?charset=utf8mb4&apos;</div><div class="line">    app.config[&quot;SQLALCHEMY_TRACK_MODIFICATIONS&quot;] = True  # 每次请求结束时自动commit数据库修改</div><div class="line">    app.config[&quot;SQLALCHEMY_ECHO&quot;] = False   # 如果设置成 True，SQLAlchemy将会记录所有发到标准输出(stderr)的语句,这对调试很有帮助.</div><div class="line">    app.config[&quot;SQLALCHEMY_RECORD_QUERIES&quot;] = None  # 可以用于显式地禁用或者启用查询记录。查询记录 在调试或者测试模式下自动启用。</div><div class="line">    app.config[&quot;SQLALCHEMY_POOL_SIZE&quot;] = 5  # 数据库连接池的大小。默认是数据库引擎的默认值(通常是 5)。</div><div class="line">    app.config[&quot;SQLALCHEMY_POOL_TIMEOUT&quot;] = 10  # 指定数据库连接池的超时时间。默认是 10。</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    自动回收连接的秒数。</div><div class="line">    这对 MySQL 是必须的，默认 情况下 MySQL 会自动移除闲置 8 小时或者以上的连接。 </div><div class="line">    需要注意地是如果使用 MySQL 的话， Flask-SQLAlchemy 会自动地设置这个值为 2 小时。</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    app.config[&quot;SQLALCHEMY_POOL_RECYCLE&quot;] = None</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    控制在连接池达到最大值后可以创建的连接数。</div><div class="line">    当这些额外的 连接回收到连接池后将会被断开和抛弃。</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    app.config[&quot;SQLALCHEMY_MAX_OVERFLOW&quot;] = None</div><div class="line">    # 获取SQLAlchemy实例对象</div><div class="line">    db = SQLAlchemy(app)</div><div class="line"></div><div class="line">    # 反射数据库中已存在的表，并获取所有存在的表对象。</div><div class="line">    db.reflect()</div><div class="line">    all_table = &#123;table_obj.name: table_obj for table_obj in db.get_tables_for_bind()&#125;</div><div class="line">    return db, all_table</div><div class="line"></div><div class="line">app = Flask(__name__)</div><div class="line">db, all_table = create_mysql_ORM(app=app)</div><div class="line"></div><div class="line">a = db.session.query(all_table[&quot;users&quot;]).filter_by(user=&quot;admin&quot;).all()</div><div class="line">print(a)</div><div class="line"></div><div class="line">ret = [x._asdict() for x in a]</div><div class="line">print(ret)</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-09-18T11:58:53.000Z"><a href="/2018/09/18/data-anlysis/">2018-09-18</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/09/18/data-anlysis/">data anlysis</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>偏态 平均值偏离的衡量<br>峰态 数据分布集中强度</p>
+<p>数据分类<br>定序<br>定类<br>定距<br>定比</p>
+<p>异常分析  连续异常值 </p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2018-09-10T03:59:27.000Z"><a href="/2018/09/10/color/">2018-09-10</a></time>
       
       
@@ -331,117 +400,6 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2018-04-22T10:20:43.268Z"><a href="/2018/04/22/python基础教程笔记—即时标记（详解）/">2018-04-22</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2018/04/22/python基础教程笔记—即时标记（详解）/"></a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <hr>
-<p>title: python基础教程笔记—即时标记（详解）<br>date: 2018-04-22 18:20:43</p>
-<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><p>看的有点晚 基本上网上都有代码  但是看的时候 卡了下 </p>
-<pre><code>#encoding:utf-8
-#生成器，for循环时会依次返回每一行，它只在文件的最后追加了一个空行\n
-def lines(file):
-    for line in file:yield line
-    yield &apos;\n&apos;
-#生成器，for循环时会依次返回文本块组成的函数
-def blocks(file):
-    block = []
-    for line in lines(file):
-        if line.strip():
-            block.append(line)
-        elif block:
-            yield &apos;&apos;.join(block).strip()
-            block = []
-</code></pre><p>首先我们来看lines()方法，参数是文件，然后对文件进行循环，每次读取一行文件，yield关键字，这里代表方法是一个生成器，循环的时候到yield我们可以理解成返回一次line内容。文本读完后，yield处是一个’\n’。   </p>
-<p><font color="red">但是现在这个版本的python可以不需要这个步骤了 （3.6）导致我看的时候  卡了很长时间 。</font><br>blocks()方法就使用了上面的生成器，每次循环取出内容后，对line内容进行判断，如果有值，去除两边空格，添加到列表中，否则将block列表生成字符串。我们可以看出blocks也是一个生成器，他的实际功能是，从文件中，依次读取出来一个文本块。</p>
-<p>这里可以总结的 是<br>sys.stdin  可以在pycharm里直接输入  同时也可以将file 改成   open(‘files.txt’,’r+’)   代替在python命令里输入文件<br>同时 if 处理的是 line  而 elif处理的是block  打破了if 和 elif 必须比较同类的思维定势</p>
-<pre><code>import sys,re
-from util import *
-
-print &apos;&lt;html&gt;&lt;head&gt;&lt;title&gt;hello&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&apos;
-
-title = True
-for block in blocks(sys.stdin):
-    block = re.sub(r&apos;\*(.+?)\*&apos;,r&apos;&lt;em&gt;\1&lt;/em&gt;&apos;,block)
-    if title:
-        print &apos;&lt;h1&gt;&apos;
-        print block
-        print &apos;&lt;/h1&gt;&apos;
-        title = False
-    else:
-        print &apos;&lt;p&gt;&apos;
-        print block
-        print &apos;&lt;/p&gt;&apos;
-print &apos;&lt;/body&gt;&lt;/html&gt;&apos;
-</code></pre><p>这里注意的是   from util import *   可以直接用util里的方法和变量<br>而 import util  想引用要util.blocks()  加util名<br>正则的第二个参数  \1 可以保留前面匹配的内容。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2018-04-20T07:18:08.000Z"><a href="/2018/04/20/delphi/">2018-04-20</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2018/04/20/delphi/">delphi</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>大小写无影响<br>缩进无影响  两个空格<br>所有按键在一个文件</p>
-<p>else 后没：<br>label.Caption:=inttostr();  赋值有: 有=  有分号</p>
-<p>类型生命<br>m,n,k:integer;<br>var Key:char;</p>
-<p>随机数<br>randomize;<br>m:random(50)</p>
-<p>赋值给 caption<br>label.Caption :=inttostr(m)</p>
-<p>弹窗<br>shwomessage(‘’)</p>
-<p>焦点<br>eeee.SetFocus</p>
-<p>edit 的输入<br>edit.text</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
 
 <nav id="pagination">
   
@@ -466,7 +424,7 @@ print &apos;&lt;/body&gt;&lt;/html&gt;&apos;
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2018 lee
+  &copy; 2019 lee
   
 </div>
 <div class="clearfix"></div></footer>
